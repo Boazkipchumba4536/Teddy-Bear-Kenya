@@ -4,10 +4,10 @@ export function formatKES(amount: number): string {
 
 export function categoryLabel(cat: string): string {
   const labels: Record<string, string> = {
-    "mini-teddy-bear": "Mini Teddy Bears",
-    "teddy-bear": "Classic Teddy Bears",
+    "teddy-bear": "Classic & Medium",
     "big-teddy-bear": "Big Teddy Bears",
     "giant-teddy-bear": "Giant Teddy Bears",
+    panda: "Panda Teddy Bears",
     personalized: "Personalized",
   };
   return labels[cat] ?? cat;

@@ -44,7 +44,7 @@ export default function LoginPage() {
       </p>
 
       <div className="card p-6 md:p-8">
-        <div className="flex rounded-full bg-brand-50 p-1 mb-6">
+        <div className="flex rounded-full bg-rose-50 p-1 mb-6">
           <button
             type="button"
             onClick={() => setMode("login")}
@@ -118,7 +118,7 @@ export default function LoginPage() {
       </div>
 
       <p className="text-center text-sm text-cocoa/50 mt-6">
-        <Link href="/shop" className="hover:text-brand-600">
+        <Link href="/shop" className="hover:text-rose-600">
           Continue shopping without an account
         </Link>
       </p>

@@ -139,7 +139,7 @@ export default function CheckoutPage() {
                   key={id}
                   className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition ${
                     payment === id
-                      ? "border-brand-600 bg-brand-50"
+                      ? "border-rose-600 bg-rose-50"
                       : "border-brand-100 hover:border-brand-300"
                   }`}
                 >
@@ -175,7 +175,7 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between font-bold text-lg border-t border-brand-100 pt-3">
                 <span>Total (KES)</span>
-                <span className="text-brand-600">{formatKES(total)}</span>
+                <span className="text-rose-600">{formatKES(total)}</span>
               </div>
             </div>
             <button type="submit" className="btn-primary w-full">

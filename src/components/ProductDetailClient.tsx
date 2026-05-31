@@ -9,6 +9,7 @@ import { getProductPrice } from "@/data/products";
 import { useStore } from "@/context/StoreContext";
 import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
+import { IMAGE_SIZES } from "@/lib/images";
 import StickyBuyBar from "@/components/StickyBuyBar";
 import type { Product as ProductType } from "@/lib/types";
 
@@ -38,26 +39,23 @@ export default function ProductDetailClient({ product, related }: Props) {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 pb-28 lg:pb-10">
-      <nav className="text-sm text-cocoa/50 mb-8">
-        <Link href="/" className="hover:text-plum transition">
-          Home
-        </Link>
-        {" / "}
-        <Link href="/shop" className="hover:text-plum transition">
-          Shop
-        </Link>
-        {" / "}
-        <span className="text-cocoa font-medium">{product.shortName}</span>
+    <div className="container-main py-10 md:py-14 pb-28 lg:pb-14">
+      <nav className="text-sm text-ink-muted mb-10">
+        <Link href="/" className="hover:text-ink transition">Home</Link>
+        <span className="mx-2 opacity-40">/</span>
+        <Link href="/shop" className="hover:text-ink transition">Shop</Link>
+        <span className="mx-2 opacity-40">/</span>
+        <span className="text-ink">{product.shortName}</span>
       </nav>
 
-      <div className="grid lg:grid-cols-2 gap-12 mb-20">
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-24">
         <div>
-          <div className="relative aspect-square rounded-3xl overflow-hidden bg-ivory-dark mb-4 shadow-soft border border-white">
+          <div className="relative aspect-square rounded-4xl overflow-hidden bg-sand mb-4 shadow-soft">
             <ProductImage
               src={product.images[activeImage] ?? product.image}
               alt={product.name}
               priority
+              sizes={IMAGE_SIZES.detail}
             />
             {!product.inStock && <span className="badge-sold text-sm px-5 py-2">Sold Out</span>}
             {product.salePrice && product.inStock && (
@@ -71,57 +69,51 @@ export default function ProductDetailClient({ product, related }: Props) {
                   key={`${img}-${i}`}
                   type="button"
                   onClick={() => setActiveImage(i)}
-                  className={`relative w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
+                  className={`relative w-20 h-20 rounded-2xl overflow-hidden ring-2 transition-all ${
                     activeImage === i
-                      ? "border-plum shadow-soft scale-105"
-                      : "border-transparent opacity-70 hover:opacity-100"
+                      ? "ring-wine shadow-soft scale-105"
+                      : "ring-transparent opacity-60 hover:opacity-100"
                   }`}
                 >
-                  <ProductImage src={img} alt="" />
+                  <ProductImage src={img} alt="" sizes={IMAGE_SIZES.thumb} />
                 </button>
               ))}
             </div>
           )}
         </div>
 
-        <div className="lg:py-4">
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-cocoa leading-tight mb-4">
+        <div className="lg:py-6 lg:pl-4">
+          <h1 className="font-display text-3xl md:text-4xl font-medium text-ink leading-tight tracking-tight mb-5">
             {product.name}
           </h1>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="flex text-honey">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="flex text-champagne">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  className={`w-4 h-4 ${i < Math.round(product.rating) ? "fill-current" : "text-brand-200"}`}
+                  className={`w-4 h-4 ${i < Math.round(product.rating) ? "fill-current" : "text-ink/15"}`}
                 />
               ))}
             </div>
-            <span className="text-sm font-semibold text-cocoa/50">
-              {product.rating} · Loved in Nairobi
-            </span>
+            <span className="text-sm text-ink-muted">{product.rating} rating</span>
           </div>
 
-          <div className="mb-8 p-5 rounded-2xl bg-ivory-dark/80 border border-brand-100">
+          <div className="mb-8 pb-8 border-b border-ink/10">
             {product.salePrice ? (
               <div className="flex items-baseline gap-3">
-                <span className="text-4xl font-bold text-plum">
-                  {formatKES(product.salePrice)}
-                </span>
-                <span className="text-xl text-cocoa/35 line-through">
-                  {formatKES(product.price)}
-                </span>
+                <span className="text-3xl font-semibold text-ink">{formatKES(product.salePrice)}</span>
+                <span className="text-lg text-ink-light line-through">{formatKES(product.price)}</span>
               </div>
             ) : (
-              <span className="text-4xl font-bold text-plum">{formatKES(price)}</span>
+              <span className="text-3xl font-semibold text-ink">{formatKES(price)}</span>
             )}
           </div>
 
-          <p className="text-cocoa/70 leading-relaxed mb-8 text-lg">{product.description}</p>
+          <p className="text-ink-muted leading-relaxed mb-8">{product.description}</p>
 
           {product.variants && product.variants.length > 0 && (
             <div className="mb-6">
-              <label className="block text-sm font-bold text-cocoa mb-3 uppercase tracking-wide">
+              <label className="block text-xs font-bold text-ink-muted mb-3 uppercase tracking-widest">
                 Choose option
               </label>
               <div className="flex flex-wrap gap-2">
@@ -130,10 +122,10 @@ export default function ProductDetailClient({ product, related }: Props) {
                     key={v.id}
                     type="button"
                     onClick={() => setVariantId(v.id)}
-                    className={`px-5 py-2.5 rounded-full border-2 text-sm font-semibold transition-all ${
+                    className={`px-5 py-2.5 rounded-full border text-sm font-medium transition-all ${
                       variantId === v.id
-                        ? "border-plum bg-plum text-white shadow-soft"
-                        : "border-brand-200 hover:border-plum/40"
+                        ? "border-ink bg-ink text-white"
+                        : "border-ink/15 hover:border-ink/40"
                     }`}
                   >
                     {v.name} – {formatKES(v.price)}
@@ -163,11 +155,11 @@ export default function ProductDetailClient({ product, related }: Props) {
           {product.inStock && (
             <div className="flex items-center gap-4 mb-8">
               <span className="text-sm font-bold">Quantity</span>
-              <div className="flex items-center border-2 border-brand-200 rounded-full overflow-hidden">
+              <div className="flex items-center border border-ink/15 rounded-full overflow-hidden">
                 <button
                   type="button"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-3 hover:bg-ivory-dark transition"
+                  className="p-3 hover:bg-sand transition"
                   aria-label="Decrease"
                 >
                   <Minus className="w-4 h-4" />
@@ -176,7 +168,7 @@ export default function ProductDetailClient({ product, related }: Props) {
                 <button
                   type="button"
                   onClick={() => setQuantity(quantity + 1)}
-                  className="p-3 hover:bg-ivory-dark transition"
+                  className="p-3 hover:bg-sand transition"
                   aria-label="Increase"
                 >
                   <Plus className="w-4 h-4" />
@@ -199,18 +191,18 @@ export default function ProductDetailClient({ product, related }: Props) {
             <button
               type="button"
               onClick={() => toggleWishlist(product.id)}
-              className={`btn-secondary ${wished ? "!border-plum !text-plum" : ""}`}
+              className={`btn-secondary ${wished ? "!border-wine !text-wine" : ""}`}
             >
               <Heart className={`w-4 h-4 ${wished ? "fill-current" : ""}`} />
               Wishlist
             </button>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-4 text-sm text-cocoa/60">
-            <span className="flex items-center gap-2 bg-sage/15 text-sage-dark px-4 py-2 rounded-full font-medium">
+          <div className="mt-8 flex flex-wrap gap-3 text-sm">
+            <span className="bg-sand text-ink-muted px-4 py-2 rounded-full font-medium">
               🚚 Same-day Nairobi
             </span>
-            <span className="flex items-center gap-2 bg-honey/20 text-plum px-4 py-2 rounded-full font-medium">
+            <span className="bg-sand text-ink-muted px-4 py-2 rounded-full font-medium">
               💳 M-Pesa accepted
             </span>
           </div>
@@ -219,8 +211,8 @@ export default function ProductDetailClient({ product, related }: Props) {
 
       {related.length > 0 && (
         <section>
-          <h2 className="font-display text-2xl md:text-3xl font-bold mb-8">You may also like</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <h2 className="font-display text-2xl md:text-3xl font-medium text-ink mb-10">You may also like</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-10">
             {related.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

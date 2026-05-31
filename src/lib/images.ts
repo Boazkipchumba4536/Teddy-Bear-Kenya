@@ -1,64 +1,109 @@
 /**
- * Product images: public/images/
- *
- *   image1.jpg  → product id 1
- *   image2.jpg  → product id 2
- *   …
- *   image12.jpg → product id 12
- *   hero.jpg    → homepage hero
- *
- * Any size or format (.jpg .png .webp) works.
+ * Images loaded directly from teddybearhaven.co.ke CDN.
+ * Product cards use WordPress thumbnails (~300px) for fast loads; hero/detail use larger sizes.
  */
 
-const IMAGE_DIR = "/images";
+const CDN = "https://teddybearhaven.co.ke/wp-content/uploads";
 
-export const IMAGE_FALLBACK = `${IMAGE_DIR}/fallback.svg`;
+export const IMAGE_FALLBACK = "/images/fallback.svg";
 
-const DEFAULT_EXT = ".jpg";
+export const HERO_IMAGE = `${CDN}/2024/12/Teddy-Bear-Kenya-Woman-with-Big-Teddy-Bears.webp`;
+export const LOGO_IMAGE = `${CDN}/2025/10/cropped-cropped-cropped-teddybearhaven_logo2-e1759596208230.jpeg`;
 
-const EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"];
+export const PRODUCT_COUNT = 16;
 
-export const PRODUCT_COUNT = 12;
+export const PRODUCT_IMAGES: Record<string, string> = {
+  "1": `${CDN}/2025/01/Customized-teddy-bear-Gifts-for-her.jpg`,
+  "2": `${CDN}/2026/02/Everyday-Joy-Teddy-Bear-cream-white.jpeg`,
+  "3": `${CDN}/2026/02/medium-70cm-brown-teddy-bear.jpeg`,
+  "4": `${CDN}/2026/02/big-teddy-bear-brown-hug-me.jpeg`,
+  "5": `${CDN}/2026/02/giant-purple-teddy-bear.jpeg`,
+  "6": `${CDN}/2026/02/Everyday-Joy-Teddy-Bear-pink.jpeg`,
+  "7": `${CDN}/2024/01/cute-panda-teddy-140cm.webp`,
+  "8": `${CDN}/2024/12/65cm-big-blue-sitting-teddy-bear.webp`,
+  "9": `${CDN}/2025/01/Buy-Big-Teddy-Bear-Dolls-online-130cm-Giant-Teddy-Bear-in-Pink-and-White-front.jpg`,
+  "10": `${CDN}/2025/01/Big-Blue-Love-Song-Teddy-Bear-Buy-Teddy-Bear-Dolls-Online.webp`,
+  "11": `${CDN}/2026/01/big-teddy-bear-brown-cream.jpeg`,
+  "12": `${CDN}/2025/01/Big-teddy-bear-white-Big-Teddy-Bear-in-Kenya.webp`,
+  "13": `${CDN}/2024/12/big-white-65cm-teddy-bears.webp`,
+  "14": `${CDN}/2026/02/med-large-purple-teddy-bear.jpeg`,
+  "15": `${CDN}/2024/12/lady-holding-65cm-big-blue-teddy-bears.webp`,
+  "16": `${CDN}/2025/01/Big-teddy-bear-collection-Big-Teddy-Bear-in-Kenya.webp`,
+};
+
+export const CATEGORY_IMAGES = {
+  giant: `${CDN}/2024/04/WhatsApp-Image-2024-04-21-at-15.43.29_7852c64f.jpg`,
+  big: `${CDN}/2026/02/big-teddy-bear-brown-hug-me.jpeg`,
+  personalised: `${CDN}/2025/01/Customized-teddy-bear-Gifts-for-her.jpg`,
+  panda: `${CDN}/2024/01/cute-panda-teddy-140cm.webp`,
+} as const;
+
+export const TESTIMONIAL_IMAGES = [1, 2, 3, 4, 5, 6, 7].map(
+  (n) => `${CDN}/2024/02/testimonial${n}.jpg`
+);
+
+export type ImageVariant = "thumb" | "card" | "banner" | "detail" | "hero";
+
+const WP_SIZES: Record<ImageVariant, number> = {
+  thumb: 150,
+  card: 300,
+  banner: 768,
+  detail: 768,
+  hero: 1024,
+};
+
+export const IMAGE_SIZES = {
+  card: "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw",
+  hero: "(max-width: 1024px) 100vw, 560px",
+  banner: "(max-width: 1024px) 100vw, 640px",
+  detail: "(max-width: 1024px) 100vw, 600px",
+  thumb: "80px",
+  category: "(max-width: 640px) 50vw, 25vw",
+  testimonial: "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px",
+  logo: "48px",
+} as const;
+
+export function isRemoteImage(src: string): boolean {
+  return src.startsWith("http://") || src.startsWith("https://");
+}
+
+/** WordPress auto-generated thumbnail (e.g. photo-300x300.jpg) */
+export function wpThumbnail(url: string, px: number): string {
+  return url.replace(/(\.[a-z]+)$/i, `-${px}x${px}$1`);
+}
 
 export function imageForProduct(productId: string | number): string {
-  const n = typeof productId === "number" ? productId : parseInt(productId, 10);
-  if (Number.isNaN(n) || n < 1 || n > PRODUCT_COUNT) return IMAGE_FALLBACK;
-  return `${IMAGE_DIR}/image${n}${DEFAULT_EXT}`;
+  return PRODUCT_IMAGES[String(productId)] ?? IMAGE_FALLBACK;
 }
 
-export const HERO_IMAGE = `${IMAGE_DIR}/hero${DEFAULT_EXT}`;
-
-export function imageSrcCandidates(basePath: string): string[] {
-  const withoutExt = basePath.replace(/\.(jpe?g|png|webp)$/i, "");
-  const seen = new Set<string>();
-  const list: string[] = [];
-
-  for (const ext of EXTENSIONS) {
-    const path = `${withoutExt}${ext}`;
-    if (!seen.has(path.toLowerCase())) {
-      seen.add(path.toLowerCase());
-      list.push(path);
+export function imageSrcCandidates(
+  basePath: string,
+  variant: ImageVariant = "card"
+): string[] {
+  if (isRemoteImage(basePath)) {
+    const px = WP_SIZES[variant];
+    const thumb = wpThumbnail(basePath, px);
+    if (variant === "hero" || variant === "detail" || variant === "banner") {
+      return [thumb, basePath];
     }
+    return [thumb, wpThumbnail(basePath, 768), basePath];
   }
-  return list.length > 0 ? list : [basePath];
+
+  const withoutExt = basePath.replace(/\.(jpe?g|png|webp|svg)$/i, "");
+  return [".webp", ".jpg", ".jpeg", ".png"].map((ext) => `${withoutExt}${ext}`);
 }
 
-export function productImage(id: string, extra?: string): string {
-  return extra ?? imageForProduct(id);
+export function productImage(id: string): string {
+  return imageForProduct(id);
 }
 
-export const PRODUCT_IMAGE_GUIDE: { file: string; productId: string; name: string }[] = [
-  { file: "image1.jpg", productId: "1", name: "Name Embroidery" },
-  { file: "image2.jpg", productId: "2", name: "Mini Teddy Keychains" },
-  { file: "image3.jpg", productId: "3", name: "45cm Brown Teddy" },
-  { file: "image4.jpg", productId: "4", name: "55cm Pink Teddy" },
-  { file: "image5.jpg", productId: "5", name: "65cm Blue Teddy" },
-  { file: "image6.jpg", productId: "6", name: "80cm Brown Teddy" },
-  { file: "image7.jpg", productId: "7", name: "100cm Giant Teddy" },
-  { file: "image8.jpg", productId: "8", name: "120cm Life-Size Teddy" },
-  { file: "image9.jpg", productId: "9", name: "130cm Pink & White" },
-  { file: "image10.jpg", productId: "10", name: "130cm Musical Teddy" },
-  { file: "image11.jpg", productId: "11", name: "140cm Giant Teddy" },
-  { file: "image12.jpg", productId: "12", name: "White Teddy (Sale)" },
-  { file: "hero.jpg", productId: "—", name: "Homepage hero" },
-];
+export function variantFromSizes(sizes?: string): ImageVariant {
+  if (!sizes) return "card";
+  if (sizes.includes("80px") || sizes.includes("48px")) return "thumb";
+  if (sizes.includes("560px") || sizes === IMAGE_SIZES.hero) return "hero";
+  if (sizes === IMAGE_SIZES.detail) return "detail";
+  if (sizes === IMAGE_SIZES.banner) return "banner";
+  if (sizes === IMAGE_SIZES.testimonial || sizes === IMAGE_SIZES.category)
+    return "card";
+  return "card";
+}

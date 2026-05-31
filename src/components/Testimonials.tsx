@@ -26,7 +26,7 @@ export default function Testimonials() {
     <section className="py-20 md:py-28 bg-gradient-to-b from-white to-ivory-dark/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-14">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-plum/55 mb-3">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-rose-600/55 mb-3">
             Teddy lovers
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-cocoa">
@@ -40,7 +40,7 @@ export default function Testimonials() {
               key={review.name}
               className="card p-8 relative hover:shadow-soft transition-shadow duration-300"
             >
-              <div className="flex gap-0.5 text-honey mb-4">
+              <div className="flex gap-0.5 text-gold mb-4">
                 {Array.from({ length: review.rating }).map((_, j) => (
                   <Star key={j} className="w-4 h-4 fill-current" />
                 ))}
@@ -54,7 +54,7 @@ export default function Testimonials() {
                 </cite>
                 <span className="text-sm text-cocoa/45">{review.location}</span>
               </footer>
-              <span className="absolute top-6 right-8 text-5xl text-plum/10 font-display leading-none select-none">
+              <span className="absolute top-6 right-8 text-5xl text-rose-600/10 font-display leading-none select-none">
                 &ldquo;
               </span>
             </blockquote>

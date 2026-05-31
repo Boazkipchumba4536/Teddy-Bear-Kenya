@@ -44,8 +44,8 @@ export default function AccountPage() {
 
       <div className="grid sm:grid-cols-2 gap-4 mb-10">
         <Link href="/orders" className="card p-6 hover:shadow-md transition group">
-          <Package className="w-8 h-8 text-brand-600 mb-3" />
-          <h2 className="font-semibold group-hover:text-brand-600">Orders</h2>
+          <Package className="w-8 h-8 text-rose-600 mb-3" />
+          <h2 className="font-semibold group-hover:text-rose-600">Orders</h2>
           <p className="text-sm text-cocoa/50">{orders.length} order(s)</p>
         </Link>
         <Link
@@ -53,11 +53,11 @@ export default function AccountPage() {
           className="card p-6 hover:shadow-md transition group"
         >
           <span className="text-3xl block mb-2">❤️</span>
-          <h2 className="font-semibold group-hover:text-brand-600">Wishlist</h2>
+          <h2 className="font-semibold group-hover:text-rose-600">Wishlist</h2>
           <p className="text-sm text-cocoa/50">{wishlist.length} item(s)</p>
         </Link>
         <div className="card p-6 sm:col-span-2">
-          <MapPin className="w-8 h-8 text-brand-600 mb-3" />
+          <MapPin className="w-8 h-8 text-rose-600 mb-3" />
           <h2 className="font-semibold mb-2">Account details</h2>
           <dl className="text-sm space-y-1 text-cocoa/70">
             <div className="flex gap-2">

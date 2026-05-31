@@ -16,11 +16,11 @@ export default function NewsletterStrip() {
     <section className="py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="relative rounded-[2rem] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-sage-dark via-sage to-sage-light" />
+          <div className="absolute inset-0 bg-gradient-to-br from-rose-700 via-rose-600 to-rose-500" />
           <div className="absolute inset-0 bg-grain opacity-30" />
           <div className="relative grid md:grid-cols-2 gap-10 p-10 md:p-14 items-center">
             <div className="text-white">
-              <p className="text-honey-light font-bold text-xs uppercase tracking-widest mb-3">
+              <p className="text-gold-light font-bold text-xs uppercase tracking-widest mb-3">
                 Teddy bear updates
               </p>
               <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">
@@ -46,11 +46,11 @@ export default function NewsletterStrip() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="flex-1 rounded-full px-5 py-3.5 text-cocoa bg-white shadow-card focus:outline-none focus:ring-2 focus:ring-honey"
+                  className="flex-1 rounded-full px-5 py-3.5 text-cocoa bg-white shadow-card focus:outline-none focus:ring-2 focus:ring-gold"
                 />
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-plum-dark text-white px-6 py-3.5 font-bold hover:bg-cocoa transition shadow-soft"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-600-dark text-white px-6 py-3.5 font-bold hover:bg-cocoa transition shadow-soft"
                 >
                   <Send className="w-4 h-4" />
                   Subscribe

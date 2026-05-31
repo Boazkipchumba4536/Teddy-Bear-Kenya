@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import ProductImage from "@/components/ProductImage";
+import { IMAGE_SIZES } from "@/lib/images";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { products } from "@/data/products";
 import { getProductPrice } from "@/data/products";
@@ -43,17 +44,17 @@ export default function CartPage() {
           return (
             <div key={`${item.productId}-${item.variantId}`} className="card p-4 flex gap-4">
               <div className="relative w-24 h-24 rounded-xl overflow-hidden shrink-0 bg-ivory-dark">
-                <ProductImage src={product.image} alt={product.shortName} />
+                <ProductImage src={product.image} alt={product.shortName} sizes={IMAGE_SIZES.thumb} />
               </div>
               <div className="flex-1 min-w-0">
                 <Link
                   href={`/product/${product.slug}`}
-                  className="font-semibold hover:text-plum line-clamp-2"
+                  className="font-semibold hover:text-rose-600 line-clamp-2"
                 >
                   {product.name}
                 </Link>
                 {variant && <p className="text-sm text-cocoa/50">{variant.name}</p>}
-                <p className="text-plum font-bold mt-1">
+                <p className="text-rose-600 font-bold mt-1">
                   {formatKES(linePrice * item.quantity)}
                 </p>
                 <div className="flex items-center gap-3 mt-3">
@@ -63,7 +64,7 @@ export default function CartPage() {
                       onClick={() =>
                         updateQuantity(item.productId, item.variantId, item.quantity - 1)
                       }
-                      className="p-2 hover:bg-brand-50 rounded-l-full"
+                      className="p-2 hover:bg-rose-50 rounded-l-full"
                     >
                       <Minus className="w-3 h-3" />
                     </button>
@@ -73,7 +74,7 @@ export default function CartPage() {
                       onClick={() =>
                         updateQuantity(item.productId, item.variantId, item.quantity + 1)
                       }
-                      className="p-2 hover:bg-brand-50 rounded-r-full"
+                      className="p-2 hover:bg-rose-50 rounded-r-full"
                     >
                       <Plus className="w-3 h-3" />
                     </button>
@@ -104,7 +105,7 @@ export default function CartPage() {
         </div>
         <div className="flex justify-between font-bold text-lg border-t border-brand-100 pt-3">
           <span>Total</span>
-          <span className="text-plum">{formatKES(total)}</span>
+          <span className="text-rose-600">{formatKES(total)}</span>
         </div>
         <Link href="/checkout" className="btn-primary w-full text-center block mt-4">
           Proceed to Checkout
@@ -112,7 +113,7 @@ export default function CartPage() {
         <button
           type="button"
           onClick={clearCart}
-          className="w-full text-sm text-cocoa/50 hover:text-brand-600 py-2"
+          className="w-full text-sm text-cocoa/50 hover:text-rose-600 py-2"
         >
           Clear cart
         </button>

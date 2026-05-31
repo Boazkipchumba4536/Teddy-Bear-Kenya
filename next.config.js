@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Product uploads use native <img> in public/images/ — any dimension is OK
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "teddybearhaven.co.ke",
+        pathname: "/wp-content/uploads/**",
+      },
+    ],
     unoptimized: true,
   },
 };

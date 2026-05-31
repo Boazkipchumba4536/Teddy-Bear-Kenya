@@ -38,7 +38,7 @@ export default function OrdersPage() {
             <div key={order.id} className="card p-6">
               <div className="flex flex-wrap justify-between gap-2 mb-4">
                 <div>
-                  <p className="font-bold text-brand-600">{order.id}</p>
+                  <p className="font-bold text-rose-600">{order.id}</p>
                   <p className="text-xs text-cocoa/50">
                     {new Date(order.createdAt).toLocaleString("en-KE")}
                   </p>

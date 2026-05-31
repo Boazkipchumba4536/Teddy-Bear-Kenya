@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import ProductImage from "@/components/ProductImage";
+import { IMAGE_SIZES } from "@/lib/images";
 import { Minus, Plus, X } from "lucide-react";
 import { products } from "@/data/products";
 import { getProductPrice } from "@/data/products";
@@ -23,12 +24,12 @@ export default function CartDrawer() {
   return (
     <>
       <div
-        className="fixed inset-0 bg-cocoa/40 z-[60]"
+        className="fixed inset-0 bg-ink/40 backdrop-blur-sm z-[60]"
         onClick={() => setCartOpen(false)}
         aria-hidden
       />
       <aside
-        className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-ivory z-[70] shadow-2xl flex flex-col"
+        className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white z-[70] shadow-2xl flex flex-col"
         role="dialog"
         aria-label="Shopping cart"
       >
@@ -37,7 +38,7 @@ export default function CartDrawer() {
           <button
             type="button"
             onClick={() => setCartOpen(false)}
-            className="p-2 rounded-full hover:bg-brand-50"
+            className="p-2 rounded-full hover:bg-rose-50"
             aria-label="Close cart"
           >
             <X className="w-5 h-5" />
@@ -73,6 +74,7 @@ export default function CartDrawer() {
                     <ProductImage
                       src={product.image}
                       alt={product.shortName}
+                      sizes={IMAGE_SIZES.thumb}
                     />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -87,7 +89,7 @@ export default function CartDrawer() {
                         Name: {item.customization}
                       </p>
                     )}
-                    <p className="text-plum font-bold text-sm mt-1">
+                    <p className="text-rose-600 font-bold text-sm mt-1">
                       {formatKES(linePrice)}
                     </p>
                     <div className="flex items-center gap-2 mt-2">
@@ -100,7 +102,7 @@ export default function CartDrawer() {
                             item.quantity - 1
                           )
                         }
-                        className="p-1 rounded border border-brand-200 hover:bg-brand-50"
+                        className="p-1 rounded border border-brand-200 hover:bg-rose-50"
                         aria-label="Decrease quantity"
                       >
                         <Minus className="w-3 h-3" />
@@ -115,7 +117,7 @@ export default function CartDrawer() {
                             item.quantity + 1
                           )
                         }
-                        className="p-1 rounded border border-brand-200 hover:bg-brand-50"
+                        className="p-1 rounded border border-brand-200 hover:bg-rose-50"
                         aria-label="Increase quantity"
                       >
                         <Plus className="w-3 h-3" />
@@ -125,7 +127,7 @@ export default function CartDrawer() {
                         onClick={() =>
                           removeFromCart(item.productId, item.variantId)
                         }
-                        className="ml-auto text-xs text-cocoa/50 hover:text-brand-600"
+                        className="ml-auto text-xs text-cocoa/50 hover:text-rose-600"
                       >
                         Remove
                       </button>
@@ -141,7 +143,7 @@ export default function CartDrawer() {
           <div className="border-t border-brand-100 p-4 space-y-3">
             <div className="flex justify-between font-bold text-lg">
               <span>Subtotal</span>
-              <span className="text-plum">{formatKES(cartTotal)}</span>
+              <span className="text-rose-600">{formatKES(cartTotal)}</span>
             </div>
             <p className="text-xs text-cocoa/50">
               Delivery calculated at checkout. M-Pesa accepted.

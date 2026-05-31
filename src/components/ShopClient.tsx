@@ -91,27 +91,25 @@ export default function ShopClient() {
   return (
     <>
       {!wishlistOnly && <ShopHero />}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+      <div className="container-main py-10 md:py-14">
         {wishlistOnly && (
           <div className="mb-10">
-            <h1 className="font-display text-3xl md:text-4xl font-bold text-cocoa mb-2">
-              My Wishlist
-            </h1>
-            <p className="text-cocoa/60">
+            <h1 className="section-title mb-2">My Wishlist</h1>
+            <p className="text-ink-muted">
               {filtered.length} saved item{filtered.length !== 1 ? "s" : ""}
             </p>
           </div>
         )}
 
         {!wishlistOnly && (
-          <p className="text-cocoa/55 mb-8 font-medium">
+          <p className="text-ink-muted mb-8 text-sm">
             Showing{" "}
             {paginated.length > 0 ? (page - 1) * PER_PAGE + 1 : 0}–
             {Math.min(page * PER_PAGE, filtered.length)} of {filtered.length} results
             {q && (
               <>
                 {" "}
-                for &ldquo;<span className="text-plum">{q}</span>&rdquo;
+                for &ldquo;<span className="text-wine font-medium">{q}</span>&rdquo;
               </>
             )}
           </p>
@@ -150,7 +148,7 @@ export default function ShopClient() {
                 <button
                   type="button"
                   onClick={() => setLocalCategory("")}
-                  className={`hover:text-plum ${!localCategory ? "text-plum font-semibold" : "text-cocoa/70"}`}
+                  className={`hover:text-wine transition ${!localCategory ? "text-wine font-semibold" : "text-ink-muted"}`}
                 >
                   All products ({products.length})
                 </button>
@@ -160,10 +158,10 @@ export default function ShopClient() {
                   <button
                     type="button"
                     onClick={() => setLocalCategory(cat.id)}
-                    className={`hover:text-plum ${
+                    className={`hover:text-wine transition ${
                       localCategory === cat.id
-                        ? "text-plum font-semibold"
-                        : "text-cocoa/70"
+                        ? "text-wine font-semibold"
+                        : "text-ink-muted"
                     }`}
                   >
                     {cat.name} ({cat.count})
@@ -200,12 +198,12 @@ export default function ShopClient() {
           </div>
 
           {paginated.length === 0 ? (
-            <div className="text-center py-20 text-cocoa/50">
+            <div className="text-center py-20 text-ink-muted">
               <p className="text-4xl mb-4">🔍</p>
               <p>No products found. Try adjusting your filters.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10">
               {paginated.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -223,8 +221,8 @@ export default function ShopClient() {
                   href={`/shop?page=${p}${q ? `&q=${q}` : ""}${localCategory ? `&category=${localCategory}` : ""}`}
                   className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold transition ${
                     p === page
-                      ? "bg-plum text-white shadow-soft"
-                      : "bg-white border border-brand-200 hover:bg-ivory-dark"
+                      ? "bg-ink text-white"
+                      : "bg-white border border-ink/10 hover:bg-sand"
                   }`}
                 >
                   {p}

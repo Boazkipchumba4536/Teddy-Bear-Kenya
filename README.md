@@ -1,19 +1,19 @@
 # Teddy Bear Kenya
 
-A complete teddy bear e-commerce website for Kenya — giant plush bears, classic sizes, mini teddies, and name embroidery.
+Premium teddy bear e-commerce site for Kenya — inspired by [Teddy Bear Haven](https://teddybearhaven.co.ke/), built with Next.js 14.
 
 ## Features
 
-- **Home** – Hero, shop by size, featured teddy bears
-- **Shop** – 12 teddy bear products with search, filters, price range, sorting, pagination
-- **Product pages** – Variants, customization, wishlist, add to cart
+- **Home** – Hero, exclusive collections, shop by category, trending bears, customer reviews, Instagram feed
+- **Shop** – 16 teddy bear products with search, filters, sorting, pagination
+- **Product pages** – Size variants, name customisation, wishlist, add to cart
 - **Cart drawer** – Slide-out cart with quantity controls
-- **Checkout** – Delivery form, M-Pesa / card / cash on delivery
+- **Checkout** – Delivery form, M-Pesa till / card / cash on delivery
 - **Wishlist** – Save favourites (persisted in browser)
 - **Account** – Register / login, order history
-- **Contact** – Location, WhatsApp, contact form
+- **Contact** – Yala Towers location, Google Maps, WhatsApp, M-Pesa details
 
-All prices in **Kenyan Shillings (KSh)**. Data persists in `localStorage` (no backend required for demo).
+All prices in **Kenyan Shillings (KSh)**. Cart, wishlist, auth, and orders persist in `localStorage` (no backend required).
 
 ## Tech stack
 
@@ -38,24 +38,36 @@ npm run build
 npm start
 ```
 
-## Upload product images
+## Go live (Vercel)
 
-Add your photos to **`public/images/`** using these names:
+1. Push this repo to GitHub
+2. Import the project on [Vercel](https://vercel.com)
+3. Set environment variable: `NEXT_PUBLIC_SITE_URL=https://yourdomain.co.ke`
+4. Deploy — Vercel runs `npm run build` automatically
 
-| File | Product |
-|------|---------|
-| `image1.jpg` … `image12.jpg` | Teddy bear products 1–12 (see `public/images/README.md`) |
-| `hero.jpg` | Homepage hero |
+Update business details in **`src/lib/site.ts`** (phone, M-Pesa till, address, domain).
 
-Any image size or aspect ratio works (`.jpg`, `.png`, `.webp` also supported). Refresh the browser after uploading.
+## Product images
+
+Images live in **`public/images/`**:
+
+| File | Use |
+|------|-----|
+| `image1.jpg` … `image16.webp` | Product photos (see `src/lib/images.ts`) |
+| `hero.webp` | Homepage hero |
+| `logo.png` | Site logo |
+| `category-giant.webp`, `category-personalised.webp` | Category banners |
+| `testimonial1.jpg` … `testimonial7.jpg` | Customer review photos |
+
+Replace any file to update photos — refresh the browser after uploading.
 
 ## Customize
 
-- **Products**: Edit `src/data/products.ts`
-- **Categories**: Edit `src/data/categories.ts`
-- **Contact info**: Update `src/components/Footer.tsx` and `src/app/contact/page.tsx`
-- **Branding**: Adjust colors in `tailwind.config.ts`
+- **Products**: `src/data/products.ts`
+- **Categories**: `src/data/categories.ts`
+- **Business info**: `src/lib/site.ts`
+- **Branding / colors**: `tailwind.config.ts`
 
-## Deploy
+## Deploy elsewhere
 
-Deploy to [Vercel](https://vercel.com), Netlify, or any Node.js host. For real payments, integrate [M-Pesa Daraja API](https://developer.safaricom.co.ke/) at checkout.
+Works on Netlify, Railway, or any Node.js host. For live M-Pesa payments, integrate [Safaricom Daraja API](https://developer.safaricom.co.ke/) in checkout.

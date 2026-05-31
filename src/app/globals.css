@@ -7,60 +7,97 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-ivory text-cocoa antialiased;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236D2E46' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    @apply bg-sand text-ink antialiased;
   }
   ::selection {
-    @apply bg-honey/40 text-plum-dark;
+    @apply bg-wine-100 text-wine-dark;
   }
 }
 
 @layer components {
+  .container-main {
+    @apply max-w-7xl mx-auto px-5 sm:px-8;
+  }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-plum px-7 py-3.5 text-sm font-bold text-white shadow-soft transition-all duration-300 hover:bg-plum-light hover:shadow-glow hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-honey focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-wine hover:shadow-elevated hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-wine/30 focus:ring-offset-2 disabled:opacity-50;
   }
+
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-plum/20 bg-white/80 backdrop-blur-sm px-7 py-3.5 text-sm font-bold text-plum transition-all duration-300 hover:border-plum/40 hover:bg-white hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-sage/50;
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full border border-ink/15 bg-white px-8 py-4 text-sm font-semibold text-ink transition-all duration-300 hover:border-ink/30 hover:shadow-soft;
   }
+
+  .btn-wine {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-wine px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-wine-light hover:shadow-elevated hover:-translate-y-0.5;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full border border-white/40 text-white px-8 py-4 text-sm font-semibold hover:bg-white/10 transition-all duration-300;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-wine transition-colors underline-offset-4 hover:underline;
+  }
+
   .input-field {
-    @apply w-full rounded-xl border border-brand-200/80 bg-white/90 px-4 py-3 text-cocoa placeholder:text-cocoa/35 focus:border-plum/40 focus:outline-none focus:ring-2 focus:ring-plum/10 transition;
+    @apply w-full rounded-2xl border border-ink/10 bg-white px-5 py-3.5 text-ink placeholder:text-ink-light focus:border-wine/40 focus:outline-none focus:ring-4 focus:ring-wine/5 transition;
   }
+
   .card {
-    @apply rounded-2xl bg-white/90 backdrop-blur-sm shadow-card border border-white/60 overflow-hidden transition-all duration-300;
+    @apply rounded-3xl bg-white shadow-card overflow-hidden transition-all duration-300;
   }
+
   .card-hover {
-    @apply card hover:shadow-soft hover:-translate-y-1 hover:border-honey/30;
+    @apply card hover:shadow-soft hover:-translate-y-1;
   }
+
   .glass-nav {
-    @apply bg-white/70 backdrop-blur-xl border-b border-white/50 shadow-sm;
+    @apply bg-white/80 backdrop-blur-2xl border-b border-ink/5;
   }
+
+  .glass-nav-solid {
+    @apply bg-white/95 backdrop-blur-2xl border-b border-ink/5 shadow-sm;
+  }
+
   .text-gradient {
-    @apply bg-gradient-to-r from-plum via-plum-light to-honey-dark bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-wine via-wine-light to-champagne bg-clip-text text-transparent;
   }
+
   .badge-sale {
-    @apply absolute top-3 left-3 z-20 bg-honey text-plum-dark text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-glow;
+    @apply absolute top-4 left-4 z-20 bg-champagne text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full;
   }
+
   .badge-sold {
-    @apply absolute top-3 left-3 z-20 bg-cocoa/90 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full;
+    @apply absolute top-4 left-4 z-20 bg-ink/80 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-sm;
   }
+
+  .badge-new {
+    @apply absolute top-4 left-4 z-20 bg-wine text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full;
+  }
+
+  .section-label {
+    @apply text-[11px] font-bold uppercase tracking-[0.25em] text-wine mb-4 block;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl lg:text-[2.75rem] font-medium text-ink leading-[1.1] tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply text-ink-muted text-base md:text-lg leading-relaxed max-w-xl;
+  }
+
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  .bento-tile {
-    @apply card-hover relative overflow-hidden p-6 md:p-8 flex flex-col justify-end min-h-[140px] md:min-h-[180px];
+
+  .image-zoom {
+    @apply transition-transform duration-700 ease-out group-hover:scale-105;
   }
 }
 
 @layer utilities {
   .animate-marquee {
     animation: marquee 40s linear infinite;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .animate-marquee,
-    .animate-float,
-    .animate-fade-up,
-    .animate-shimmer {
-      animation: none !important;
-    }
   }
 }

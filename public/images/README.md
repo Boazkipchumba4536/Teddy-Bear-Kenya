@@ -1,23 +1,29 @@
-# Teddy bear product images
+# Teddy bear product images — Teddy Bear Kenya
 
-Upload photos to **`public/images/`** — teddy bears only.
+Replace files in `public/images/` to update the shop.
 
 | File | Product |
 |------|---------|
-| `image1.jpg` | Name embroidery / personalisation |
-| `image2.jpg` | Mini teddy keychains (3 pack) |
-| `image3.jpg` | Classic 45cm brown teddy |
-| `image4.jpg` | 55cm pink teddy |
-| `image5.jpg` | 65cm blue teddy |
-| `image6.jpg` | 80cm brown teddy |
-| `image7.jpg` | 100cm giant teddy |
-| `image8.jpg` | 120cm life-size teddy |
-| `image9.jpg` | 130cm pink & white giant |
-| `image10.jpg` | 130cm blue musical teddy |
-| `image11.jpg` | 140cm giant teddy |
-| `image12.jpg` | White teddy (sale) |
-| `hero.jpg` | Homepage hero banner |
+| `hero.webp` | Homepage hero |
+| `logo.png` | Site logo |
+| `image1.jpg` | Name Customisation |
+| `image2.webp` | Everyday Joy Collection |
+| `image3.webp` | 70cm Cuddle Companion |
+| `image4.webp` | 100cm Sweet Heart Teddy |
+| `image5.webp` | Royal Purple Collection |
+| `image6.webp` | 35cm Pink Teddy (Sale) |
+| `image7.webp` | Panda Teddy 140cm |
+| `image8.webp` | 65cm Blue Teddy |
+| `image9.webp` | 130cm Giant Pink |
+| `image10.webp` | 130cm Musical Teddy |
+| `image11.webp` | 120cm Brown Cream |
+| `image12.webp` | White Teddy (Sale) |
+| `image13.webp` | 65cm White Teddy |
+| `image14.webp` | Medium Purple Teddy |
+| `image15.webp` | 140cm Giant Teddy |
+| `image16.webp` | Teddy Collection |
+| `testimonial1-7.jpg` | Customer review photos |
+| `category-giant.webp` | Category banner |
+| `category-personalised.webp` | Personalised banner |
 
-- Any image size works — portrait or landscape.
-- Use `.jpg`, `.png`, or `.webp`.
-- Replace a file and refresh the browser — no code changes needed.
+Any image size works (.jpg, .webp, .png).

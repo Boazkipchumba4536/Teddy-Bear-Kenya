@@ -1,8 +1,8 @@
 export type Category =
-  | "mini-teddy-bear"
   | "teddy-bear"
   | "big-teddy-bear"
   | "giant-teddy-bear"
+  | "panda"
   | "personalized";
 
 export interface ProductVariant {
@@ -26,6 +26,7 @@ export interface Product {
   tags: string[];
   inStock: boolean;
   featured?: boolean;
+  exclusive?: boolean;
   popularity: number;
   rating: number;
   createdAt: string;

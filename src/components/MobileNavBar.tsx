@@ -18,7 +18,7 @@ export default function MobileNavBar() {
 
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-t border-brand-100/80 safe-bottom"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-2xl border-t border-ink/5 safe-bottom"
       aria-label="Mobile navigation"
     >
       <div className="flex items-center justify-around h-16 px-2">
@@ -34,15 +34,15 @@ export default function MobileNavBar() {
                 key="cart"
                 type="button"
                 onClick={() => setCartOpen(true)}
-                className="flex flex-col items-center gap-0.5 text-cocoa/50 hover:text-plum transition relative min-w-[4rem] py-1"
+                className="flex flex-col items-center gap-0.5 text-ink-light hover:text-ink transition relative min-w-[4rem] py-1"
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-5 h-5" strokeWidth={1.75} />
                 {cartCount > 0 && (
-                  <span className="absolute top-0 right-3 bg-plum text-white text-[9px] font-black min-w-[16px] h-4 rounded-full flex items-center justify-center px-1">
+                  <span className="absolute top-0 right-3 bg-wine text-white text-[9px] font-bold min-w-[16px] h-4 rounded-full flex items-center justify-center px-1">
                     {cartCount}
                   </span>
                 )}
-                <span className="text-[10px] font-bold">{item.label}</span>
+                <span className="text-[10px] font-semibold">{item.label}</span>
               </button>
             );
           }
@@ -52,10 +52,10 @@ export default function MobileNavBar() {
               <Link
                 key="search"
                 href="/shop"
-                className="flex flex-col items-center gap-0.5 text-cocoa/50 hover:text-plum transition min-w-[4rem] py-1"
+                className="flex flex-col items-center gap-0.5 text-ink-light hover:text-ink transition min-w-[4rem] py-1"
               >
-                <Icon className="w-5 h-5" />
-                <span className="text-[10px] font-bold">{item.label}</span>
+                <Icon className="w-5 h-5" strokeWidth={1.75} />
+                <span className="text-[10px] font-semibold">{item.label}</span>
               </Link>
             );
           }
@@ -65,11 +65,11 @@ export default function MobileNavBar() {
               key={item.href + item.label}
               href={item.href}
               className={`flex flex-col items-center gap-0.5 transition min-w-[4rem] py-1 ${
-                isActive ? "text-plum" : "text-cocoa/50 hover:text-plum"
+                isActive ? "text-wine" : "text-ink-light hover:text-ink"
               }`}
             >
-              <Icon className={`w-5 h-5 ${isActive ? "scale-110" : ""}`} />
-              <span className="text-[10px] font-bold">{item.label}</span>
+              <Icon className={`w-5 h-5 ${isActive ? "scale-110" : ""}`} strokeWidth={1.75} />
+              <span className="text-[10px] font-semibold">{item.label}</span>
             </Link>
           );
         })}
