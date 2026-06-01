@@ -14,6 +14,9 @@ export const checkoutSchema = z.object({
   deliveryType: z.enum(["same-day", "standard"]),
   giftMessage: z.string().max(200, "Message must be 200 characters or less").optional(),
   paymentMethod: z.enum(["mpesa", "card"]),
+  acceptPolicies: z.boolean().refine((v) => v === true, {
+    message: "You must accept the Terms and Privacy Policy to place an order",
+  }),
 });
 
 export type CheckoutSchema = z.infer<typeof checkoutSchema>;
@@ -45,6 +48,9 @@ export const registerSchema = z
       .regex(kenyanPhoneRegex, "Use format +254 7XX XXX XXX"),
     password: z.string().min(6, "Password must be at least 6 characters"),
     confirmPassword: z.string(),
+    acceptTerms: z.boolean().refine((v) => v === true, {
+      message: "You must accept the Terms and Privacy Policy",
+    }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -52,6 +58,24 @@ export const registerSchema = z
   });
 
 export type RegisterSchema = z.infer<typeof registerSchema>;
+
+export const forgotPasswordSchema = z.object({
+  email: z.string().email("Enter a valid email address"),
+});
+
+export type ForgotPasswordSchema = z.infer<typeof forgotPasswordSchema>;
+
+export const resetPasswordSchema = z
+  .object({
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+export type ResetPasswordSchema = z.infer<typeof resetPasswordSchema>;
 
 export function normalizePhone(phone: string): string {
   const digits = phone.replace(/\D/g, "");

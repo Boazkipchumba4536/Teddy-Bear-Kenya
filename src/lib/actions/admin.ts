@@ -10,6 +10,7 @@ import type { Product } from "@/types/product";
 import { DEFAULT_TESTIMONIALS } from "@/lib/products";
 import { SEED_CATALOG_PRODUCTS } from "@/lib/seedCatalog";
 import { defaultSiteSettings } from "@/store/catalogStore";
+import { isAllowedImageMime, resolveImageMime } from "@/lib/imageMime";
 
 async function requireAdmin() {
   const supabase = await createClient();
@@ -69,24 +70,39 @@ export async function adminUploadProductImage(formData: FormData) {
   const file = formData.get("file");
   if (!(file instanceof File)) throw new Error("No image file provided.");
 
-  const allowed = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-  if (!allowed.includes(file.type)) {
-    throw new Error("Only JPG, PNG, WEBP, and GIF images are allowed.");
+  const contentType = resolveImageMime(file);
+  if (!isAllowedImageMime(contentType)) {
+    throw new Error(
+      "Only JPG, PNG, WEBP, and GIF images are allowed. HEIC/iPhone photos: export as JPEG first."
+    );
   }
   if (file.size > 5 * 1024 * 1024) {
     throw new Error("Image must be 5MB or smaller.");
   }
 
   const arrayBuffer = await file.arrayBuffer();
-  const filePath = `products/${safeFileName(file.name)}`;
+  const ext =
+    contentType === "image/jpeg"
+      ? "jpg"
+      : contentType.replace("image/", "") || "jpg";
+  const filePath = `products/${safeFileName(file.name.replace(/\.[^.]+$/, `.${ext}`))}`;
+
   const { error: uploadError } = await admin.storage
     .from("product-images")
     .upload(filePath, Buffer.from(arrayBuffer), {
-      contentType: file.type,
+      contentType,
       upsert: false,
+      cacheControl: "3600",
     });
 
-  if (uploadError) throw new Error(uploadError.message);
+  if (uploadError) {
+    if (uploadError.message.includes("Bucket not found")) {
+      throw new Error(
+        "Storage bucket missing. Run supabase/migrations/002_product_images_storage.sql in Supabase SQL Editor."
+      );
+    }
+    throw new Error(uploadError.message);
+  }
 
   const { data } = admin.storage.from("product-images").getPublicUrl(filePath);
   if (!data?.publicUrl) throw new Error("Could not get uploaded image URL.");

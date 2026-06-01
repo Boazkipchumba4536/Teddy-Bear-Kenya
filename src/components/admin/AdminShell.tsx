@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
 import { checkIsAdmin } from "@/lib/actions/admin";
-import AdminSidebar, { useAdminSidebarState } from "./AdminSidebar";
+import AdminSidebar from "./AdminSidebar";
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -12,9 +12,13 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   const authLoaded = useAuthStore((s) => s.loaded);
   const [checking, setChecking] = useState(true);
   const [allowed, setAllowed] = useState(false);
-  const { collapsed, setCollapsed, ready, contentPad } = useAdminSidebarState();
+  const [sidebarHovered, setSidebarHovered] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const isLoginPage = pathname === "/admin/login";
+  const sidebarExpanded = sidebarHovered;
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!authLoaded) return;
@@ -36,7 +40,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
     verify();
   }, [authLoaded, isLoginPage, router]);
 
-  if (!authLoaded || checking || (!isLoginPage && !ready)) {
+  if (!authLoaded || checking || !mounted) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center text-ink-muted">
         Loading admin…
@@ -52,8 +56,8 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminSidebar collapsed={collapsed} onCollapsedChange={setCollapsed} />
-      <div className={`${contentPad} pt-14 lg:pt-0 transition-[padding] duration-300`}>
+      <AdminSidebar expanded={sidebarExpanded} onHoverChange={setSidebarHovered} />
+      <div className="lg:pl-[4.5rem] pt-14 lg:pt-0 transition-[padding] duration-300">
         <div className="p-4 md:p-8 max-w-7xl mx-auto">{children}</div>
       </div>
     </div>

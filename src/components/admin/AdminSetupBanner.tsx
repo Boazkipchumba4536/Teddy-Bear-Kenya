@@ -11,8 +11,7 @@ export default function AdminSetupBanner() {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    const key = "bearhug-admin-setup-dismissed";
-    setDismissed(sessionStorage.getItem(key) === "1");
+    setDismissed(sessionStorage.getItem("bearhug-admin-setup-dismissed") === "1");
   }, []);
 
   if (!loaded || dismissed || products.length > 0) return null;
@@ -21,13 +20,13 @@ export default function AdminSetupBanner() {
     <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 flex gap-3">
       <AlertCircle className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
       <div className="flex-1 text-sm">
-        <p className="font-semibold text-amber-900">Catalog not seeded yet</p>
+        <p className="font-semibold text-amber-900">Catalog empty</p>
         <p className="text-amber-800 mt-1">
-          Your store has no products in the database. Go to{" "}
+          Go to{" "}
           <Link href="/admin/settings" className="underline font-medium">
             Settings
           </Link>{" "}
-          and click <strong>Seed Catalog to Supabase</strong>, or add your first product manually.
+          and click <strong>Seed ~100 Products to Supabase</strong>, or add products manually.
         </p>
       </div>
       <button

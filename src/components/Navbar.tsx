@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Search, Heart, ShoppingBag, User, Menu, X } from "lucide-react";
+import { Search, Heart, ShoppingBag, User, UserCog, Menu, X } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
+import { useAuthStore } from "@/store/authStore";
 import { site } from "@/lib/site";
 import SearchModal from "./SearchModal";
+import StaffNavLink from "./StaffNavLink";
 
 const navLinks = [
   { href: "/shop", label: "Shop" },
@@ -37,6 +39,8 @@ export default function Navbar() {
   const itemCount = useCartStore((s) => s.itemCount());
   const wishlistCount = useWishlistStore((s) => s.ids.length);
   const toggleCart = useCartStore((s) => s.toggleOpen);
+  const isAdmin = useAuthStore((s) => s.isAdmin);
+  const staffHref = isAdmin ? "/admin" : "/admin/login";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -99,6 +103,7 @@ export default function Navbar() {
             >
               <User className="w-5 h-5 text-ink" />
             </Link>
+            <StaffNavLink className="hidden sm:flex" />
             <button
               type="button"
               onClick={toggleCart}
@@ -161,6 +166,14 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href={staffHref}
+              onClick={() => setMobileOpen(false)}
+              className="px-4 py-3 min-h-[44px] rounded-xl text-base font-medium text-ink/60 hover:bg-blush/30 transition-colors flex items-center gap-3"
+            >
+              <UserCog className="w-5 h-5 shrink-0" />
+              <span>Staff</span>
+            </Link>
           </nav>
         </div>
       </div>

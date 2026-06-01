@@ -14,6 +14,7 @@ import {
   type RegisterSchema,
 } from "@/lib/validators";
 import { signInUser, signUpUser } from "@/lib/actions/auth";
+import { notifyAuthChanged } from "@/lib/authEvents";
 import { site } from "@/lib/site";
 
 type Tab = "login" | "register";
@@ -30,6 +31,7 @@ export default function AuthForm() {
 
   const registerForm = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
+    defaultValues: { acceptTerms: false },
   });
 
   const onLogin = async (data: LoginSchema) => {
@@ -41,6 +43,7 @@ export default function AuthForm() {
       setError(result.error ?? "Login failed");
       return;
     }
+    notifyAuthChanged();
     router.push("/account");
     router.refresh();
   };
@@ -59,6 +62,7 @@ export default function AuthForm() {
       setError(result.error ?? "Registration failed");
       return;
     }
+    notifyAuthChanged();
     router.push("/account");
     router.refresh();
   };
@@ -112,7 +116,12 @@ export default function AuthForm() {
                   )}
                 </div>
                 <div>
-                  <label className="text-sm font-medium mb-1 block">Password</label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="text-sm font-medium">Password</label>
+                    <Link href="/forgot-password" className="text-xs text-caramel hover:underline">
+                      Forgot password?
+                    </Link>
+                  </div>
                   <input {...loginForm.register("password")} type="password" className="input-field" placeholder="••••••••" />
                   {loginForm.formState.errors.password && (
                     <p className="text-red-600 text-xs mt-1">{loginForm.formState.errors.password.message}</p>
@@ -159,15 +168,50 @@ export default function AuthForm() {
                     <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.confirmPassword.message}</p>
                   )}
                 </div>
+                <label className="flex items-start gap-3 cursor-pointer text-sm">
+                  <input
+                    type="checkbox"
+                    {...registerForm.register("acceptTerms")}
+                    className="mt-1 w-4 h-4 accent-caramel shrink-0"
+                  />
+                  <span className="text-ink-muted leading-snug">
+                    I agree to the{" "}
+                    <Link href="/terms" className="text-caramel hover:underline" target="_blank">
+                      Terms of Service
+                    </Link>
+                    ,{" "}
+                    <Link href="/privacy" className="text-caramel hover:underline" target="_blank">
+                      Privacy Policy
+                    </Link>
+                    , and{" "}
+                    <Link href="/cookies" className="text-caramel hover:underline" target="_blank">
+                      Cookie Policy
+                    </Link>
+                    .
+                  </span>
+                </label>
+                {registerForm.formState.errors.acceptTerms && (
+                  <p className="text-red-600 text-xs">{registerForm.formState.errors.acceptTerms.message}</p>
+                )}
                 <button type="submit" disabled={loading} className="btn-primary w-full">
                   {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Create Account"}
                 </button>
               </form>
             )}
 
-            <p className="text-center text-xs text-ink-light mt-6">
-              By continuing, you agree to our terms of service and privacy policy.
-            </p>
+            {tab === "login" && (
+              <p className="text-center text-xs text-ink-light mt-6">
+                By signing in you agree to our{" "}
+                <Link href="/terms" className="text-caramel hover:underline">
+                  Terms
+                </Link>{" "}
+                and{" "}
+                <Link href="/privacy" className="text-caramel hover:underline">
+                  Privacy Policy
+                </Link>
+                .
+              </p>
+            )}
           </div>
         </div>
 

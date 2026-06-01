@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2, Shield } from "lucide-react";
 import { adminSignIn } from "@/lib/actions/auth";
+import { notifyAuthChanged } from "@/lib/authEvents";
 
 const schema = z.object({
   email: z.string().email(),
@@ -33,6 +34,7 @@ export default function AdminLoginForm() {
       setError(result.error ?? "Login failed");
       return;
     }
+    notifyAuthChanged();
     router.push("/admin");
     router.refresh();
   };
@@ -45,7 +47,7 @@ export default function AdminLoginForm() {
             <Shield className="w-7 h-7 text-white" />
           </div>
           <h1 className="font-display text-2xl font-semibold text-cream">Admin Panel</h1>
-          <p className="text-cream/50 text-sm mt-2">Sign in with your Supabase admin account</p>
+          <p className="text-cream/50 text-sm mt-2">BearHug KE management dashboard</p>
         </div>
 
         <form
@@ -72,9 +74,6 @@ export default function AdminLoginForm() {
           <button type="submit" disabled={loading} className="btn-primary w-full bg-ink hover:bg-ink/90">
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Sign In to Admin"}
           </button>
-          <p className="text-xs text-ink-light text-center">
-            Create an admin user in Supabase Auth, then set <code className="text-caramel">profiles.role = &apos;admin&apos;</code>
-          </p>
         </form>
       </div>
     </div>

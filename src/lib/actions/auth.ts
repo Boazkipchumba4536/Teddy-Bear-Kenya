@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { getSiteOrigin } from "@/lib/siteUrl";
 import { normalizePhone } from "@/lib/validators";
 import type { User } from "@/types/order";
 
@@ -40,6 +41,33 @@ export async function signInUser(
 export async function signOutUser() {
   const supabase = await createClient();
   await supabase.auth.signOut();
+}
+
+export async function requestPasswordReset(
+  email: string
+): Promise<{ ok: boolean; error?: string }> {
+  const supabase = await createClient();
+  const redirectTo = `${getSiteOrigin()}/auth/reset-password`;
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
+export async function updatePassword(
+  newPassword: string
+): Promise<{ ok: boolean; error?: string }> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    return { ok: false, error: "Your reset link may have expired. Request a new one." };
+  }
+
+  const { error } = await supabase.auth.updateUser({ password: newPassword });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
 }
 
 export async function getCurrentUser(): Promise<User | null> {

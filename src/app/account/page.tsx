@@ -16,6 +16,7 @@ import { useWishlistStore } from "@/store/wishlistStore";
 import { useAuthStore } from "@/store/authStore";
 import { useCartStore } from "@/store/cartStore";
 import { signOutUser } from "@/lib/actions/auth";
+import { notifyAuthChanged } from "@/lib/authEvents";
 import { fetchUserOrders } from "@/lib/actions/orders";
 import { site } from "@/lib/site";
 import { formatKES } from "@/lib/format";
@@ -73,6 +74,7 @@ export default function AccountPage() {
           onClick={async () => {
             await signOutUser();
             clear();
+            notifyAuthChanged();
             router.push("/");
             router.refresh();
           }}

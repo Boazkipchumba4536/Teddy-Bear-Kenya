@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { Loader2, Check, PackageX } from "lucide-react";
 import { trackOrderSchema, type TrackOrderSchema } from "@/lib/validators";
-import { fetchOrderByRef } from "@/lib/actions/orders";
+import { fetchOrderByRef, fetchUserOrders } from "@/lib/actions/orders";
 import { getOrderProgress } from "@/store/authStore";
+import { useAuthStore } from "@/store/authStore";
 import { formatKES } from "@/lib/format";
+import PageLoader from "@/components/PageLoader";
 import type { Order } from "@/types/order";
 
 const STEPS = [
@@ -18,6 +21,10 @@ const STEPS = [
 ] as const;
 
 export default function TrackOrderClient() {
+  const user = useAuthStore((s) => s.user);
+  const authLoaded = useAuthStore((s) => s.loaded);
+  const [myOrders, setMyOrders] = useState<Order[]>([]);
+  const [ordersLoading, setOrdersLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [tracked, setTracked] = useState(false);
   const [order, setOrder] = useState<Order | null>(null);
@@ -26,15 +33,35 @@ export default function TrackOrderClient() {
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<TrackOrderSchema>({
     resolver: zodResolver(trackOrderSchema),
+    defaultValues: { orderNumber: "", phone: "" },
   });
 
-  const onSubmit = async (data: TrackOrderSchema) => {
+  const selectedOrderId = watch("orderNumber");
+
+  useEffect(() => {
+    if (!authLoaded || !user) {
+      setMyOrders([]);
+      return;
+    }
+    setOrdersLoading(true);
+    if (user.phone) setValue("phone", user.phone);
+    fetchUserOrders()
+      .then((orders) => {
+        setMyOrders(orders);
+        if (orders.length > 0) setValue("orderNumber", orders[0].id);
+      })
+      .finally(() => setOrdersLoading(false));
+  }, [authLoaded, user, setValue]);
+
+  const trackOrder = async (orderNumber: string, phone: string) => {
     setLoading(true);
     setNotFound(false);
-    const found = await fetchOrderByRef(data.orderNumber, data.phone);
+    const found = await fetchOrderByRef(orderNumber, phone);
     setLoading(false);
     if (found) {
       setOrder(found);
@@ -47,21 +74,91 @@ export default function TrackOrderClient() {
     }
   };
 
+  const onSubmit = async (data: TrackOrderSchema) => {
+    await trackOrder(data.orderNumber, data.phone);
+  };
+
+  const onQuickSelect = async (orderId: string) => {
+    setValue("orderNumber", orderId);
+    const phone = watch("phone") || user?.phone || "";
+    if (phone) {
+      await trackOrder(orderId, phone);
+    }
+  };
+
   const activeStep = order ? getOrderProgress(order.status) : 0;
+
+  if (!authLoaded) {
+    return <PageLoader label="Loading…" compact />;
+  }
 
   return (
     <div className="container-main py-16 max-w-lg mx-auto">
       <div className="text-center mb-10">
         <h1 className="font-display text-3xl font-medium text-ink">Track Your Order</h1>
         <p className="text-ink-muted mt-2">
-          Enter your order number and phone to see delivery status
+          {user
+            ? "Select one of your orders or enter details below"
+            : "Enter your order number and phone to see delivery status"}
         </p>
       </div>
+
+      {user && (
+        <div className="bg-caramel/10 rounded-2xl p-4 mb-6 text-sm">
+          <p className="font-medium text-ink">
+            Signed in as <span className="text-caramel">{user.name}</span>
+          </p>
+          {!user.phone && (
+            <p className="text-ink-muted mt-1">
+              Add your phone on{" "}
+              <Link href="/account" className="text-caramel underline">
+                My Account
+              </Link>{" "}
+              for faster tracking.
+            </p>
+          )}
+        </div>
+      )}
 
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white rounded-2xl p-6 shadow-card space-y-4"
       >
+        {user && myOrders.length > 0 && (
+          <div>
+            <label className="text-sm font-medium mb-1 block">Your orders</label>
+            <select
+              className="input-field"
+              value={selectedOrderId}
+              disabled={ordersLoading}
+              onChange={(e) => {
+                const id = e.target.value;
+                setValue("orderNumber", id);
+                void onQuickSelect(id);
+              }}
+            >
+              {myOrders.map((o) => (
+                <option key={o.id} value={o.id}>
+                  {o.id} — {formatKES(o.total)} —{" "}
+                  {new Date(o.createdAt).toLocaleDateString("en-KE")}
+                </option>
+              ))}
+            </select>
+            <p className="text-xs text-ink-muted mt-1">
+              Pick an order to track instantly using your account phone.
+            </p>
+          </div>
+        )}
+
+        {user && !ordersLoading && myOrders.length === 0 && (
+          <p className="text-sm text-ink-muted bg-cream rounded-xl p-3">
+            No orders on this account yet.{" "}
+            <Link href="/shop" className="text-caramel font-medium hover:underline">
+              Shop bears
+            </Link>
+          </p>
+        )}
+
         <div>
           <label className="text-sm font-medium mb-1 block">Order Number</label>
           <input
@@ -92,6 +189,15 @@ export default function TrackOrderClient() {
             "Track Order"
           )}
         </button>
+
+        {!user && (
+          <p className="text-center text-xs text-ink-muted pt-1">
+            <Link href="/login" className="text-caramel hover:underline">
+              Sign in
+            </Link>{" "}
+            to pick from your past orders.
+          </p>
+        )}
       </form>
 
       {notFound && (

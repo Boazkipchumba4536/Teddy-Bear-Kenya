@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, CheckCircle } from "lucide-react";
@@ -29,6 +30,7 @@ export default function CheckoutForm() {
     defaultValues: {
       deliveryType: "standard",
       paymentMethod: "mpesa",
+      acceptPolicies: false,
     },
   });
 
@@ -198,6 +200,34 @@ export default function CheckoutForm() {
           <h2 className="font-display text-xl font-medium mb-4">Payment</h2>
           <input type="hidden" {...register("paymentMethod")} value="mpesa" />
           <MpesaButton amount={tot} />
+        </section>
+
+        <section className="bg-white rounded-2xl p-6 shadow-card">
+          <label className="flex items-start gap-3 cursor-pointer text-sm">
+            <input
+              type="checkbox"
+              {...register("acceptPolicies")}
+              className="mt-1 w-4 h-4 accent-caramel shrink-0"
+            />
+            <span className="text-ink-muted leading-snug">
+              I agree to the{" "}
+              <Link href="/terms" className="text-caramel hover:underline" target="_blank">
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link href="/privacy" className="text-caramel hover:underline" target="_blank">
+                Privacy Policy
+              </Link>
+              . I understand how cookies are used per the{" "}
+              <Link href="/cookies" className="text-caramel hover:underline" target="_blank">
+                Cookie Policy
+              </Link>
+              .
+            </span>
+          </label>
+          {errors.acceptPolicies && (
+            <p className="text-red-600 text-xs mt-2">{errors.acceptPolicies.message}</p>
+          )}
         </section>
 
         <button type="submit" disabled={loading} className="btn-mpesa w-full lg:hidden">

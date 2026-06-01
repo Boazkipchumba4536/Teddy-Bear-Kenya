@@ -1,10 +1,12 @@
+import { getSiteOrigin } from "@/lib/siteUrl";
+
 /** BearHug KE — business details */
 export const site = {
   name: "BearHug KE",
   tagline: "Every bear tells a story.",
   description:
     "Handpicked teddy bears delivered across Kenya. Same-day Nairobi delivery. M-Pesa accepted.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://bearhugke.co.ke",
+  url: getSiteOrigin(),
   phone: "0712667782",
   phoneDisplay: "+254 712 667 782",
   whatsapp: "254712667782",

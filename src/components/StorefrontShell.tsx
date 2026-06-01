@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import WhatsAppFAB from "@/components/WhatsAppFAB";
 import MobileNav from "@/components/MobileNav";
-import StaffAccess from "@/components/StaffAccess";
+import CookieConsent from "@/components/CookieConsent";
 
 export default function StorefrontShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -27,7 +27,7 @@ export default function StorefrontShell({ children }: { children: React.ReactNod
       <Footer />
       <CartDrawer />
       <WhatsAppFAB />
-      <StaffAccess />
+      <CookieConsent />
       <MobileNav />
     </>
   );
