@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
@@ -10,10 +10,12 @@ import { Loader2 } from "lucide-react";
 import {
   loginSchema,
   registerSchema,
+  normalizePhone,
   type LoginSchema,
   type RegisterSchema,
 } from "@/lib/validators";
-import { signInUser, signUpUser } from "@/lib/actions/auth";
+import { createClient } from "@/lib/supabase/client";
+import { loadAuthIntoStore, friendlyAuthError } from "@/lib/auth/syncStore";
 import { notifyAuthChanged } from "@/lib/authEvents";
 import { site } from "@/lib/site";
 
@@ -21,8 +23,15 @@ type Tab = "login" | "register";
 
 export default function AuthForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackError = searchParams.get("error");
   const [tab, setTab] = useState<Tab>("login");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(
+    callbackError === "auth_callback"
+      ? "Sign-in link expired or was already used. Please try again."
+      : ""
+  );
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
   const loginForm = useForm<LoginSchema>({
@@ -37,34 +46,85 @@ export default function AuthForm() {
   const onLogin = async (data: LoginSchema) => {
     setLoading(true);
     setError("");
-    const result = await signInUser(data.email, data.password);
-    setLoading(false);
-    if (!result.ok) {
-      setError(result.error ?? "Login failed");
+    setSuccess("");
+
+    const supabase = createClient();
+    const email = data.email.trim().toLowerCase();
+
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password: data.password,
+    });
+
+    if (signInError) {
+      setLoading(false);
+      setError(friendlyAuthError(signInError.message));
       return;
     }
+
+    const synced = await loadAuthIntoStore(6);
     notifyAuthChanged();
-    router.push("/account");
+    setLoading(false);
+
+    if (!synced) {
+      setError("Signed in, but we could not load your account. Refresh the page or try again.");
+      router.refresh();
+      return;
+    }
+
     router.refresh();
+    router.push("/account");
   };
 
   const onRegister = async (data: RegisterSchema) => {
     setLoading(true);
     setError("");
-    const result = await signUpUser({
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
+    setSuccess("");
+
+    const supabase = createClient();
+    const email = data.email.trim().toLowerCase();
+
+    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+      email,
       password: data.password,
+      options: {
+        data: {
+          name: data.name.trim(),
+          phone: normalizePhone(data.phone),
+          role: "customer",
+        },
+      },
     });
-    setLoading(false);
-    if (!result.ok) {
-      setError(result.error ?? "Registration failed");
+
+    if (signUpError) {
+      setLoading(false);
+      setError(friendlyAuthError(signUpError.message));
       return;
     }
+
+    if (!signUpData.session) {
+      setLoading(false);
+      setSuccess(
+        "Account created. If email confirmation is enabled, check your inbox, then sign in."
+      );
+      setTab("login");
+      loginForm.setValue("email", email);
+      return;
+    }
+
+    const synced = await loadAuthIntoStore(6);
     notifyAuthChanged();
-    router.push("/account");
+    setLoading(false);
+
+    if (!synced) {
+      setSuccess("Account created. Please sign in with your email and password.");
+      setTab("login");
+      loginForm.setValue("email", email);
+      return;
+    }
+
     router.refresh();
+    router.push("/account");
   };
 
   return (
@@ -89,6 +149,7 @@ export default function AuthForm() {
                 onClick={() => {
                   setTab(t);
                   setError("");
+                  setSuccess("");
                 }}
                 className={`flex-1 py-4 text-sm font-semibold capitalize transition-colors ${
                   tab === t
@@ -105,12 +166,15 @@ export default function AuthForm() {
             {error && (
               <div className="mb-4 p-3 rounded-xl bg-red-50 text-red-700 text-sm">{error}</div>
             )}
+            {success && (
+              <div className="mb-4 p-3 rounded-xl bg-green-50 text-green-800 text-sm">{success}</div>
+            )}
 
             {tab === "login" ? (
               <form onSubmit={loginForm.handleSubmit(onLogin)} className="space-y-4">
                 <div>
                   <label className="text-sm font-medium mb-1 block">Email</label>
-                  <input {...loginForm.register("email")} type="email" className="input-field" placeholder="you@email.com" />
+                  <input {...loginForm.register("email")} type="email" className="input-field" placeholder="you@email.com" autoComplete="email" />
                   {loginForm.formState.errors.email && (
                     <p className="text-red-600 text-xs mt-1">{loginForm.formState.errors.email.message}</p>
                   )}
@@ -122,7 +186,7 @@ export default function AuthForm() {
                       Forgot password?
                     </Link>
                   </div>
-                  <input {...loginForm.register("password")} type="password" className="input-field" placeholder="••••••••" />
+                  <input {...loginForm.register("password")} type="password" className="input-field" placeholder="••••••••" autoComplete="current-password" />
                   {loginForm.formState.errors.password && (
                     <p className="text-red-600 text-xs mt-1">{loginForm.formState.errors.password.message}</p>
                   )}
@@ -135,35 +199,35 @@ export default function AuthForm() {
               <form onSubmit={registerForm.handleSubmit(onRegister)} className="space-y-4">
                 <div>
                   <label className="text-sm font-medium mb-1 block">Full Name</label>
-                  <input {...registerForm.register("name")} className="input-field" placeholder="Jane Wanjiru" />
+                  <input {...registerForm.register("name")} className="input-field" placeholder="Jane Wanjiru" autoComplete="name" />
                   {registerForm.formState.errors.name && (
                     <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.name.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Email</label>
-                  <input {...registerForm.register("email")} type="email" className="input-field" placeholder="you@email.com" />
+                  <input {...registerForm.register("email")} type="email" className="input-field" placeholder="you@email.com" autoComplete="email" />
                   {registerForm.formState.errors.email && (
                     <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.email.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Phone</label>
-                  <input {...registerForm.register("phone")} className="input-field" placeholder="+254 712 345 678" />
+                  <input {...registerForm.register("phone")} className="input-field" placeholder="+254 712 345 678" autoComplete="tel" />
                   {registerForm.formState.errors.phone && (
                     <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.phone.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Password</label>
-                  <input {...registerForm.register("password")} type="password" className="input-field" placeholder="Min. 6 characters" />
+                  <input {...registerForm.register("password")} type="password" className="input-field" placeholder="Min. 6 characters" autoComplete="new-password" />
                   {registerForm.formState.errors.password && (
                     <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.password.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Confirm Password</label>
-                  <input {...registerForm.register("confirmPassword")} type="password" className="input-field" placeholder="Repeat password" />
+                  <input {...registerForm.register("confirmPassword")} type="password" className="input-field" placeholder="Repeat password" autoComplete="new-password" />
                   {registerForm.formState.errors.confirmPassword && (
                     <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.confirmPassword.message}</p>
                   )}

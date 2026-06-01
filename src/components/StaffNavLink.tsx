@@ -4,14 +4,16 @@ import Link from "next/link";
 import { UserCog } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
 
-/** Staff admin entry in the storefront navbar only. */
+/** Staff admin entry for guests only (hidden once signed in). */
 export default function StaffNavLink({ className = "" }: { className?: string }) {
-  const isAdmin = useAuthStore((s) => s.isAdmin);
-  const href = isAdmin ? "/admin" : "/admin/login";
+  const user = useAuthStore((s) => s.user);
+  const loaded = useAuthStore((s) => s.loaded);
+
+  if (!loaded || user) return null;
 
   return (
     <Link
-      href={href}
+      href="/admin/login"
       title="Staff"
       aria-label="Staff admin"
       className={`group relative flex flex-col items-center justify-center rounded-full p-2.5 min-w-[44px] min-h-[44px] hover:bg-caramel/10 transition-colors ${className}`}

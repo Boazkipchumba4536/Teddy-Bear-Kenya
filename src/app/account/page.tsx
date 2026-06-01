@@ -16,6 +16,7 @@ import { useWishlistStore } from "@/store/wishlistStore";
 import { useAuthStore } from "@/store/authStore";
 import { useCartStore } from "@/store/cartStore";
 import { signOutUser } from "@/lib/actions/auth";
+import { createClient } from "@/lib/supabase/client";
 import { notifyAuthChanged } from "@/lib/authEvents";
 import { fetchUserOrders } from "@/lib/actions/orders";
 import { site } from "@/lib/site";
@@ -72,6 +73,8 @@ export default function AccountPage() {
         <button
           type="button"
           onClick={async () => {
+            const supabase = createClient();
+            await supabase.auth.signOut();
             await signOutUser();
             clear();
             notifyAuthChanged();

@@ -17,19 +17,26 @@ export const useWishlistStore = create<WishlistState>()(
       setIds: (ids) => set({ ids }),
 
       toggle: async (productId) => {
-        try {
-          const added = await toggleWishlistItem(productId);
-          set((state) => ({
-            ids: added
-              ? [...state.ids, productId]
-              : state.ids.filter((id) => id !== productId),
-          }));
-        } catch {
+        const toggleLocal = () =>
           set((state) => ({
             ids: state.ids.includes(productId)
               ? state.ids.filter((id) => id !== productId)
               : [...state.ids, productId],
           }));
+
+        try {
+          const result = await toggleWishlistItem(productId);
+          if (result === null) {
+            toggleLocal();
+            return;
+          }
+          set((state) => ({
+            ids: result
+              ? [...state.ids, productId]
+              : state.ids.filter((id) => id !== productId),
+          }));
+        } catch {
+          toggleLocal();
         }
       },
 

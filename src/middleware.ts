@@ -31,7 +31,8 @@ export async function middleware(request: NextRequest) {
     },
   });
 
-  await supabase.auth.getUser();
+  // Refresh session cookies on each navigation (keeps sign-in stable).
+  await supabase.auth.getSession();
   return response;
 }
 

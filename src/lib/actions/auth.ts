@@ -81,13 +81,15 @@ export async function getCurrentUser(): Promise<User | null> {
     .from("profiles")
     .select("name, phone")
     .eq("id", user.id)
-    .single();
+    .maybeSingle();
+
+  const meta = user.user_metadata as { name?: string; phone?: string } | undefined;
 
   return {
     id: user.id,
     email: user.email ?? "",
-    name: profile?.name ?? user.email ?? "",
-    phone: profile?.phone ?? "",
+    name: profile?.name ?? meta?.name ?? user.email?.split("@")[0] ?? "",
+    phone: profile?.phone ?? meta?.phone ?? "",
   };
 }
 
@@ -135,12 +137,13 @@ export async function getWishlistProductIds(): Promise<string[]> {
   return (data ?? []).map((r) => r.product_id);
 }
 
-export async function toggleWishlistItem(productId: string): Promise<boolean> {
+/** `null` when not signed in — client should toggle local guest wishlist. */
+export async function toggleWishlistItem(productId: string): Promise<boolean | null> {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return false;
+  if (!user) return null;
 
   const { data: existing } = await supabase
     .from("wishlist_items")

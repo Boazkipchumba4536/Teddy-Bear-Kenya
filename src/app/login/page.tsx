@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import AuthForm from "@/components/AuthForm";
+import PageLoader from "@/components/PageLoader";
 
 export const metadata = {
   title: "Sign In | BearHug KE",
@@ -6,5 +8,9 @@ export const metadata = {
 };
 
 export default function LoginPage() {
-  return <AuthForm />;
+  return (
+    <Suspense fallback={<PageLoader label="Loading sign in…" compact />}>
+      <AuthForm />
+    </Suspense>
+  );
 }

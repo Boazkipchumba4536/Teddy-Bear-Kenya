@@ -6,8 +6,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2, Shield } from "lucide-react";
-import { adminSignIn } from "@/lib/actions/auth";
+import { createClient } from "@/lib/supabase/client";
+import { checkIsAdmin } from "@/lib/actions/admin";
+import { loadAuthIntoStore, friendlyAuthError } from "@/lib/auth/syncStore";
 import { notifyAuthChanged } from "@/lib/authEvents";
+import { signOutUser } from "@/lib/actions/auth";
 
 const schema = z.object({
   email: z.string().email(),
@@ -28,15 +31,35 @@ export default function AdminLoginForm() {
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     setError("");
-    const result = await adminSignIn(data.email, data.password);
-    setLoading(false);
-    if (!result.ok) {
-      setError(result.error ?? "Login failed");
+
+    const supabase = createClient();
+    const email = data.email.trim().toLowerCase();
+
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password: data.password,
+    });
+
+    if (signInError) {
+      setLoading(false);
+      setError(friendlyAuthError(signInError.message));
       return;
     }
+
+    const isAdmin = await checkIsAdmin();
+    if (!isAdmin) {
+      await signOutUser();
+      await supabase.auth.signOut();
+      setLoading(false);
+      setError("This account does not have admin access.");
+      return;
+    }
+
+    await loadAuthIntoStore(4);
     notifyAuthChanged();
-    router.push("/admin");
+    setLoading(false);
     router.refresh();
+    router.push("/admin");
   };
 
   return (
@@ -59,14 +82,14 @@ export default function AdminLoginForm() {
           )}
           <div>
             <label className="text-sm font-medium mb-1 block">Admin Email</label>
-            <input {...register("email")} type="email" className="input-field" placeholder="admin@bearhugke.co.ke" />
+            <input {...register("email")} type="email" className="input-field" placeholder="admin@bearhugke.co.ke" autoComplete="email" />
             {errors.email && (
               <p className="text-red-600 text-xs mt-1">{errors.email.message}</p>
             )}
           </div>
           <div>
             <label className="text-sm font-medium mb-1 block">Password</label>
-            <input {...register("password")} type="password" className="input-field" />
+            <input {...register("password")} type="password" className="input-field" autoComplete="current-password" />
             {errors.password && (
               <p className="text-red-600 text-xs mt-1">{errors.password.message}</p>
             )}
