@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2, Check, PackageX } from "lucide-react";
 import { trackOrderSchema, type TrackOrderSchema } from "@/lib/validators";
-import { useAuthStore, getOrderProgress } from "@/store/authStore";
-import { Check, PackageX } from "lucide-react";
+import { fetchOrderByRef } from "@/lib/actions/orders";
+import { getOrderProgress } from "@/store/authStore";
 import { formatKES } from "@/lib/format";
 import type { Order } from "@/types/order";
 
@@ -17,7 +18,7 @@ const STEPS = [
 ] as const;
 
 export default function TrackOrderClient() {
-  const getOrderByRef = useAuthStore((s) => s.getOrderByRef);
+  const [loading, setLoading] = useState(false);
   const [tracked, setTracked] = useState(false);
   const [order, setOrder] = useState<Order | null>(null);
   const [notFound, setNotFound] = useState(false);
@@ -30,8 +31,11 @@ export default function TrackOrderClient() {
     resolver: zodResolver(trackOrderSchema),
   });
 
-  const onSubmit = (data: TrackOrderSchema) => {
-    const found = getOrderByRef(data.orderNumber, data.phone);
+  const onSubmit = async (data: TrackOrderSchema) => {
+    setLoading(true);
+    setNotFound(false);
+    const found = await fetchOrderByRef(data.orderNumber, data.phone);
+    setLoading(false);
     if (found) {
       setOrder(found);
       setTracked(true);
@@ -78,8 +82,15 @@ export default function TrackOrderClient() {
           />
           {errors.phone && <p className="text-red-600 text-xs mt-1">{errors.phone.message}</p>}
         </div>
-        <button type="submit" className="btn-primary w-full">
-          Track Order
+        <button type="submit" disabled={loading} className="btn-primary w-full">
+          {loading ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin inline mr-2" />
+              Searching…
+            </>
+          ) : (
+            "Track Order"
+          )}
         </button>
       </form>
 

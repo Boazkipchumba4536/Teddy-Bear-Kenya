@@ -7,7 +7,8 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { mapProductToDb, mapSiteSettingsToDb } from "@/lib/supabase/mappers";
 import type { SiteSettings } from "@/types/admin";
 import type { Product } from "@/types/product";
-import { DEFAULT_PRODUCTS, DEFAULT_TESTIMONIALS } from "@/lib/products";
+import { DEFAULT_TESTIMONIALS } from "@/lib/products";
+import { SEED_CATALOG_PRODUCTS } from "@/lib/seedCatalog";
 import { defaultSiteSettings } from "@/store/catalogStore";
 
 async function requireAdmin() {
@@ -160,17 +161,25 @@ export async function adminUpdateSiteSettings(data: SiteSettings) {
   revalidateStore();
 }
 
-export async function adminSeedCatalog() {
+export async function adminSeedCatalog(force = false) {
   await requireAdmin();
   const admin = createAdminClient();
 
   const { count } = await admin.from("products").select("*", { count: "exact", head: true });
-  if ((count ?? 0) > 0) {
-    return { ok: false, message: "Catalog already has products. Delete them first or reset manually." };
+  if ((count ?? 0) > 0 && !force) {
+    return {
+      ok: false,
+      message: `Catalog already has ${count} products. Pass force=true to replace (not exposed in UI).`,
+    };
   }
 
-  const productRows = DEFAULT_PRODUCTS.map((p) => {
-    const { id: _id, createdAt, ...rest } = p;
+  if (force && (count ?? 0) > 0) {
+    const { error: delErr } = await admin.from("products").delete().neq("id", "00000000-0000-0000-0000-000000000000");
+    if (delErr) throw new Error(delErr.message);
+  }
+
+  const productRows = SEED_CATALOG_PRODUCTS.map((p) => {
+    const { createdAt, ...rest } = p;
     return mapProductToDb({ ...rest, createdAt });
   });
 

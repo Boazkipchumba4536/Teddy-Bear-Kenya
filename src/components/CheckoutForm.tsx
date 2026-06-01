@@ -7,7 +7,7 @@ import { Loader2, CheckCircle } from "lucide-react";
 import { checkoutSchema, type CheckoutSchema } from "@/lib/validators";
 import { KENYA_COUNTIES, isNairobiCounty } from "@/lib/counties";
 import { useCartStore } from "@/store/cartStore";
-import { useAuthStore } from "@/store/authStore";
+import { createOrder } from "@/lib/actions/orders";
 import { formatKES } from "@/lib/format";
 import { site } from "@/lib/site";
 import MpesaButton from "./MpesaButton";
@@ -16,8 +16,8 @@ export default function CheckoutForm() {
   const [confirmed, setConfirmed] = useState(false);
   const [orderId, setOrderId] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { items, giftWrap, subtotal, deliveryFee, total, clearCart } = useCartStore();
-  const placeOrder = useAuthStore((s) => s.placeOrder);
 
   const {
     register,
@@ -37,34 +37,44 @@ export default function CheckoutForm() {
 
   const onSubmit = async (data: CheckoutSchema) => {
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1500));
-    const order = placeOrder({
-      items: [...items],
-      shipping: {
-        name: data.name,
-        phone: data.phone,
-        email: data.email,
-        address: data.address,
-        county: data.county,
-        deliveryType: data.deliveryType,
-        giftMessage: data.giftMessage,
-      },
-      paymentMethod: data.paymentMethod,
-      subtotal: subtotal(),
-      deliveryFee: deliveryFee(),
-      giftWrap,
-      total: total(),
-    });
-    setLoading(false);
-    setOrderId(order.id);
-    setConfirmed(true);
-    clearCart();
+    setError("");
+    try {
+      const order = await createOrder({
+        items: [...items],
+        shipping: {
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          address: data.address,
+          county: data.county,
+          deliveryType: data.deliveryType,
+          giftMessage: data.giftMessage,
+        },
+        paymentMethod: data.paymentMethod,
+        subtotal: subtotal(),
+        deliveryFee: deliveryFee(),
+        giftWrap,
+        total: total(),
+      });
+      setOrderId(order.id);
+      setConfirmed(true);
+      clearCart();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to place order. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (items.length === 0 && !confirmed) {
     return (
-      <div className="text-center py-16">
-        <p className="text-ink-muted">Your cart is empty.</p>
+      <div className="text-center py-16 max-w-md mx-auto">
+        <p className="text-5xl mb-4">🛒</p>
+        <h2 className="font-display text-xl font-medium mb-2">Your cart is empty</h2>
+        <p className="text-ink-muted mb-6">Add a bear before checking out.</p>
+        <a href="/shop" className="btn-primary">
+          Go to shop
+        </a>
       </div>
     );
   }
@@ -78,8 +88,11 @@ export default function CheckoutForm() {
           Your order <strong className="text-caramel">{orderId}</strong> has been received.
           We&apos;ve sent a confirmation to your phone.
         </p>
+        <p className="text-sm text-ink-muted mb-6">
+          Save your order number — you&apos;ll need it with your phone number to track delivery.
+        </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="/track" className="btn-primary">
+          <a href={`/track`} className="btn-primary">
             Track Order
           </a>
           <a href="/shop" className="btn-outline">
@@ -96,6 +109,9 @@ export default function CheckoutForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid lg:grid-cols-3 gap-8">
+      {error && (
+        <div className="lg:col-span-3 p-4 rounded-xl bg-red-50 text-red-700 text-sm">{error}</div>
+      )}
       <div className="lg:col-span-2 space-y-8">
         {/* Contact */}
         <section className="bg-white rounded-2xl p-6 shadow-card">

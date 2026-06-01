@@ -3,6 +3,8 @@ import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import StorefrontShell from "@/components/StorefrontShell";
 import ToastContainer from "@/components/ToastContainer";
+import CatalogProvider from "@/providers/CatalogProvider";
+import AuthProvider from "@/providers/AuthProvider";
 import { site } from "@/lib/site";
 
 const display = Playfair_Display({
@@ -44,7 +46,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <StorefrontShell>{children}</StorefrontShell>
+        <AuthProvider>
+          <CatalogProvider>
+            <StorefrontShell>{children}</StorefrontShell>
+          </CatalogProvider>
+        </AuthProvider>
         <ToastContainer />
       </body>
     </html>

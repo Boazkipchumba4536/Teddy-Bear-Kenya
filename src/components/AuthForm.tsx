@@ -13,15 +13,13 @@ import {
   type LoginSchema,
   type RegisterSchema,
 } from "@/lib/validators";
-import { useAuthStore } from "@/store/authStore";
+import { signInUser, signUpUser } from "@/lib/actions/auth";
 import { site } from "@/lib/site";
 
 type Tab = "login" | "register";
 
 export default function AuthForm() {
   const router = useRouter();
-  const login = useAuthStore((s) => s.login);
-  const register = useAuthStore((s) => s.register);
   const [tab, setTab] = useState<Tab>("login");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -37,21 +35,20 @@ export default function AuthForm() {
   const onLogin = async (data: LoginSchema) => {
     setLoading(true);
     setError("");
-    await new Promise((r) => setTimeout(r, 600));
-    const result = login(data.email, data.password);
+    const result = await signInUser(data.email, data.password);
     setLoading(false);
     if (!result.ok) {
       setError(result.error ?? "Login failed");
       return;
     }
     router.push("/account");
+    router.refresh();
   };
 
   const onRegister = async (data: RegisterSchema) => {
     setLoading(true);
     setError("");
-    await new Promise((r) => setTimeout(r, 600));
-    const result = register({
+    const result = await signUpUser({
       name: data.name,
       email: data.email,
       phone: data.phone,
@@ -63,6 +60,7 @@ export default function AuthForm() {
       return;
     }
     router.push("/account");
+    router.refresh();
   };
 
   return (
@@ -108,30 +106,16 @@ export default function AuthForm() {
               <form onSubmit={loginForm.handleSubmit(onLogin)} className="space-y-4">
                 <div>
                   <label className="text-sm font-medium mb-1 block">Email</label>
-                  <input
-                    {...loginForm.register("email")}
-                    type="email"
-                    className="input-field"
-                    placeholder="you@email.com"
-                  />
+                  <input {...loginForm.register("email")} type="email" className="input-field" placeholder="you@email.com" />
                   {loginForm.formState.errors.email && (
-                    <p className="text-red-600 text-xs mt-1">
-                      {loginForm.formState.errors.email.message}
-                    </p>
+                    <p className="text-red-600 text-xs mt-1">{loginForm.formState.errors.email.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Password</label>
-                  <input
-                    {...loginForm.register("password")}
-                    type="password"
-                    className="input-field"
-                    placeholder="••••••••"
-                  />
+                  <input {...loginForm.register("password")} type="password" className="input-field" placeholder="••••••••" />
                   {loginForm.formState.errors.password && (
-                    <p className="text-red-600 text-xs mt-1">
-                      {loginForm.formState.errors.password.message}
-                    </p>
+                    <p className="text-red-600 text-xs mt-1">{loginForm.formState.errors.password.message}</p>
                   )}
                 </div>
                 <button type="submit" disabled={loading} className="btn-primary w-full">
@@ -142,70 +126,37 @@ export default function AuthForm() {
               <form onSubmit={registerForm.handleSubmit(onRegister)} className="space-y-4">
                 <div>
                   <label className="text-sm font-medium mb-1 block">Full Name</label>
-                  <input
-                    {...registerForm.register("name")}
-                    className="input-field"
-                    placeholder="Jane Wanjiru"
-                  />
+                  <input {...registerForm.register("name")} className="input-field" placeholder="Jane Wanjiru" />
                   {registerForm.formState.errors.name && (
-                    <p className="text-red-600 text-xs mt-1">
-                      {registerForm.formState.errors.name.message}
-                    </p>
+                    <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.name.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Email</label>
-                  <input
-                    {...registerForm.register("email")}
-                    type="email"
-                    className="input-field"
-                    placeholder="you@email.com"
-                  />
+                  <input {...registerForm.register("email")} type="email" className="input-field" placeholder="you@email.com" />
                   {registerForm.formState.errors.email && (
-                    <p className="text-red-600 text-xs mt-1">
-                      {registerForm.formState.errors.email.message}
-                    </p>
+                    <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.email.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Phone</label>
-                  <input
-                    {...registerForm.register("phone")}
-                    className="input-field"
-                    placeholder="+254 712 345 678"
-                  />
+                  <input {...registerForm.register("phone")} className="input-field" placeholder="+254 712 345 678" />
                   {registerForm.formState.errors.phone && (
-                    <p className="text-red-600 text-xs mt-1">
-                      {registerForm.formState.errors.phone.message}
-                    </p>
+                    <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.phone.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Password</label>
-                  <input
-                    {...registerForm.register("password")}
-                    type="password"
-                    className="input-field"
-                    placeholder="Min. 6 characters"
-                  />
+                  <input {...registerForm.register("password")} type="password" className="input-field" placeholder="Min. 6 characters" />
                   {registerForm.formState.errors.password && (
-                    <p className="text-red-600 text-xs mt-1">
-                      {registerForm.formState.errors.password.message}
-                    </p>
+                    <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.password.message}</p>
                   )}
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1 block">Confirm Password</label>
-                  <input
-                    {...registerForm.register("confirmPassword")}
-                    type="password"
-                    className="input-field"
-                    placeholder="Repeat password"
-                  />
+                  <input {...registerForm.register("confirmPassword")} type="password" className="input-field" placeholder="Repeat password" />
                   {registerForm.formState.errors.confirmPassword && (
-                    <p className="text-red-600 text-xs mt-1">
-                      {registerForm.formState.errors.confirmPassword.message}
-                    </p>
+                    <p className="text-red-600 text-xs mt-1">{registerForm.formState.errors.confirmPassword.message}</p>
                   )}
                 </div>
                 <button type="submit" disabled={loading} className="btn-primary w-full">

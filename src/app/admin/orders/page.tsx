@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useAuthStore } from "@/store/authStore";
+import { fetchAllOrders, updateOrderStatus, deleteOrder } from "@/lib/actions/orders";
+import { toastError, toastSuccess } from "@/store/toastStore";
 import { formatKES } from "@/lib/format";
-import type { OrderStatus } from "@/types/order";
+import type { Order, OrderStatus } from "@/types/order";
 
 const STATUSES: { value: OrderStatus; label: string }[] = [
   { value: "received", label: "Order Received" },
@@ -14,13 +15,42 @@ const STATUSES: { value: OrderStatus; label: string }[] = [
 ];
 
 export default function AdminOrdersPage() {
-  const orders = useAuthStore((s) => s.orders);
-  const updateOrderStatus = useAuthStore((s) => s.updateOrderStatus);
-  const deleteOrder = useAuthStore((s) => s.deleteOrder);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [filter, setFilter] = useState<"all" | OrderStatus>("all");
+  const [loading, setLoading] = useState(true);
 
-  const filtered =
-    filter === "all" ? orders : orders.filter((o) => o.status === filter);
+  useEffect(() => {
+    fetchAllOrders()
+      .then(setOrders)
+      .finally(() => setLoading(false));
+  }, []);
+
+  const filtered = filter === "all" ? orders : orders.filter((o) => o.status === filter);
+
+  const handleStatusChange = async (orderId: string, status: OrderStatus) => {
+    try {
+      await updateOrderStatus(orderId, status);
+      setOrders((prev) => prev.map((o) => (o.id === orderId ? { ...o, status } : o)));
+      toastSuccess("Order status updated");
+    } catch (err) {
+      toastError(err instanceof Error ? err.message : "Failed to update status");
+    }
+  };
+
+  const handleDelete = async (orderId: string) => {
+    if (!confirm(`Delete order ${orderId}?`)) return;
+    try {
+      await deleteOrder(orderId);
+      setOrders((prev) => prev.filter((o) => o.id !== orderId));
+      toastSuccess("Order deleted");
+    } catch (err) {
+      toastError(err instanceof Error ? err.message : "Failed to delete order");
+    }
+  };
+
+  if (loading) {
+    return <div className="text-ink-muted py-12">Loading orders…</div>;
+  }
 
   return (
     <div>
@@ -96,9 +126,7 @@ export default function AdminOrdersPage() {
                 <label className="text-sm font-medium">Status:</label>
                 <select
                   value={order.status}
-                  onChange={(e) =>
-                    updateOrderStatus(order.id, e.target.value as OrderStatus)
-                  }
+                  onChange={(e) => handleStatusChange(order.id, e.target.value as OrderStatus)}
                   className="input-field w-auto py-2 text-sm"
                 >
                   {STATUSES.map(({ value, label }) => (
@@ -109,9 +137,7 @@ export default function AdminOrdersPage() {
                 </select>
                 <button
                   type="button"
-                  onClick={() => {
-                    if (confirm(`Delete order ${order.id}?`)) deleteOrder(order.id);
-                  }}
+                  onClick={() => handleDelete(order.id)}
                   className="ml-auto text-sm text-red-600 hover:underline"
                 >
                   Delete

@@ -15,48 +15,50 @@ import {
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useAuthStore } from "@/store/authStore";
 import { useCartStore } from "@/store/cartStore";
+import { signOutUser } from "@/lib/actions/auth";
+import { fetchUserOrders } from "@/lib/actions/orders";
 import { site } from "@/lib/site";
 import { formatKES } from "@/lib/format";
+import PageLoader from "@/components/PageLoader";
+import EmptyState from "@/components/EmptyState";
+import type { Order } from "@/types/order";
 
 export default function AccountPage() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [orders, setOrders] = useState<Order[]>([]);
   const user = useAuthStore((s) => s.user);
-  const logout = useAuthStore((s) => s.logout);
-  const orders = useAuthStore((s) => s.orders);
+  const authLoaded = useAuthStore((s) => s.loaded);
+  const clear = useAuthStore((s) => s.clear);
   const wishlistCount = useWishlistStore((s) => s.ids.length);
   const cartCount = useCartStore((s) => s.itemCount());
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) {
-    return (
-      <div className="container-main py-20 text-center text-ink-muted">Loading account…</div>
-    );
+  useEffect(() => {
+    if (!authLoaded || !user) return;
+    fetchUserOrders().then(setOrders);
+  }, [authLoaded, user]);
+
+  if (!mounted || !authLoaded) {
+    return <PageLoader label="Loading account…" />;
   }
 
   if (!user) {
     return (
-      <div className="container-main py-16 max-w-md mx-auto text-center">
-        <span className="text-6xl mb-4 block">🧸</span>
-        <h1 className="font-display text-3xl font-medium mb-2">My Account</h1>
-        <p className="text-ink-muted mb-8">
-          Sign in to track orders, manage your wishlist, and checkout faster.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/login" className="btn-primary">
-            Sign In / Register
-          </Link>
-          <Link href="/shop" className="btn-outline">
-            Browse Shop
-          </Link>
-        </div>
-      </div>
+      <EmptyState
+        icon={User}
+        title="My Account"
+        description="Sign in to track orders, manage your wishlist, and checkout faster."
+        actionLabel="Sign in / Register"
+        actionHref="/login"
+        secondaryLabel="Browse shop"
+        secondaryHref="/shop"
+      />
     );
   }
 
-  const myOrders = orders.filter((o) => !o.userId || o.userId === user.id);
-  const recentOrder = myOrders[0];
+  const recentOrder = orders[0];
 
   return (
     <div className="container-main py-10 max-w-3xl">
@@ -68,9 +70,11 @@ export default function AccountPage() {
         </div>
         <button
           type="button"
-          onClick={() => {
-            logout();
+          onClick={async () => {
+            await signOutUser();
+            clear();
             router.push("/");
+            router.refresh();
           }}
           className="btn-outline text-sm py-2 px-4 shrink-0"
         >
@@ -79,10 +83,9 @@ export default function AccountPage() {
         </button>
       </div>
 
-      {/* Quick stats */}
       <div className="grid grid-cols-3 gap-3 mb-8">
         {[
-          { label: "Orders", value: myOrders.length, icon: Package },
+          { label: "Orders", value: orders.length, icon: Package },
           { label: "Wishlist", value: wishlistCount, icon: Heart },
           { label: "In Cart", value: cartCount, icon: ShoppingBag },
         ].map(({ label, value, icon: Icon }) => (
@@ -120,7 +123,7 @@ export default function AccountPage() {
         >
           <Package className="w-8 h-8 text-caramel mb-3" />
           <h2 className="font-semibold group-hover:text-caramel">My Orders</h2>
-          <p className="text-sm text-ink-muted">{myOrders.length} order(s)</p>
+          <p className="text-sm text-ink-muted">{orders.length} order(s)</p>
         </Link>
         <Link
           href="/wishlist"

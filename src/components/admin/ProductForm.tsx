@@ -1,9 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { Loader2, Upload } from "lucide-react";
 import type { Product } from "@/types/product";
 import type { BearColor, BearSize, Occasion, ProductBadge } from "@/types/product";
 import { BEAR_COLORS, BEAR_SIZES, OCCASIONS } from "@/lib/products";
+import { adminUploadProductImage } from "@/lib/actions/admin";
+import { toastError, toastSuccess } from "@/store/toastStore";
 
 const occasionOptions = OCCASIONS.filter((o) => o !== "All") as Occasion[];
 
@@ -39,6 +43,9 @@ export default function ProductForm({
   const [form, setForm] = useState<Omit<Product, "id" | "createdAt">>(
     initial ?? emptyProduct()
   );
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (initial) {
@@ -60,8 +67,33 @@ export default function ProductForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const images = form.images.length ? form.images : [form.image];
-    onSubmit({ ...form, images });
+    const cleanedImages = form.images
+      .map((img) => img.trim())
+      .filter(Boolean);
+    const primaryImage = form.image.trim() || cleanedImages[0];
+    const images = cleanedImages.length ? cleanedImages : primaryImage ? [primaryImage] : [];
+    onSubmit({ ...form, image: primaryImage, images });
+  };
+
+  const uploadImage = async () => {
+    if (!imageFile) return;
+    setUploading(true);
+    setUploadError("");
+    try {
+      const data = new FormData();
+      data.set("file", imageFile);
+      const uploaded = await adminUploadProductImage(data);
+      const nextImages = [uploaded.url, ...form.images.filter((img) => img !== uploaded.url)];
+      setForm((prev) => ({ ...prev, image: uploaded.url, images: nextImages }));
+      setImageFile(null);
+      toastSuccess("Image uploaded successfully");
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : "Upload failed";
+      setUploadError(msg);
+      toastError(msg);
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
@@ -153,14 +185,70 @@ export default function ProductForm({
             <span className="text-sm font-medium">Featured product</span>
           </label>
         </div>
-        <div className="sm:col-span-2">
-          <label className="text-sm font-medium mb-1 block">Image URL</label>
-          <input
-            value={form.image}
-            onChange={(e) => update("image", e.target.value)}
-            className="input-field"
-            placeholder="/images/image2.webp"
-          />
+        <div className="sm:col-span-2 space-y-3 rounded-xl border border-caramel/15 p-4">
+          <label className="text-sm font-medium block">Product Images</label>
+          <p className="text-xs text-ink-muted">
+            Use an image URL or upload a file to Supabase Storage.
+          </p>
+          <div>
+            <label className="text-xs font-medium mb-1 block">Primary image URL</label>
+            <input
+              value={form.image}
+              onChange={(e) => update("image", e.target.value)}
+              className="input-field"
+              placeholder="https://... or /images/..."
+            />
+          </div>
+          <div className="grid sm:grid-cols-[1fr_auto] gap-2 items-end">
+            <div>
+              <label className="text-xs font-medium mb-1 block">Upload image file (max 5MB)</label>
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp,image/gif"
+                onChange={(e) => setImageFile(e.target.files?.[0] ?? null)}
+                className="input-field py-2"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={uploadImage}
+              disabled={!imageFile || uploading}
+              className="btn-outline"
+            >
+              {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+              Upload
+            </button>
+          </div>
+          {uploadError && <p className="text-xs text-red-600">{uploadError}</p>}
+          <div>
+            <label className="text-xs font-medium mb-1 block">Gallery URLs (one per line)</label>
+            <textarea
+              rows={3}
+              value={form.images.join("\n")}
+              onChange={(e) =>
+                update(
+                  "images",
+                  e.target.value
+                    .split("\n")
+                    .map((line) => line.trim())
+                    .filter(Boolean)
+                )
+              }
+              className="input-field resize-y"
+              placeholder="https://...&#10;https://..."
+            />
+          </div>
+          <div className="grid grid-cols-4 gap-2">
+            {[form.image, ...form.images]
+              .filter(Boolean)
+              .filter((img, index, arr) => arr.indexOf(img) === index)
+              .slice(0, 4)
+              .map((img) => (
+                <div key={img} className="relative aspect-square rounded-lg overflow-hidden bg-cream border border-caramel/10">
+                  <Image src={img} alt="Preview" fill className="object-cover" />
+                </div>
+              ))}
+          </div>
         </div>
       </div>
 

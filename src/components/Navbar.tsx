@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/shop", label: "Shop" },
   { href: "/shop?occasion=Valentine's", label: "Occasions" },
   { href: "/custom", label: "Custom Bears" },
-  { href: "/#about", label: "About" },
+  { href: "/about", label: "About" },
   { href: "/track", label: "Track Order" },
   { href: "/account", label: "Account" },
 ];

@@ -1,20 +1,42 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { useParams } from "next/navigation";
-import { useAuthStore } from "@/store/authStore";
+import { fetchAllOrders, updateOrderStatus } from "@/lib/actions/orders";
+import { toastError, toastSuccess } from "@/store/toastStore";
 import { formatKES } from "@/lib/format";
-import type { OrderStatus } from "@/types/order";
+import type { Order, OrderStatus } from "@/types/order";
 
 const STATUSES: OrderStatus[] = ["received", "packed", "out_for_delivery", "delivered"];
 
 export default function AdminOrderDetailPage() {
   const params = useParams();
   const orderId = decodeURIComponent(params.id as string);
-  const orders = useAuthStore((s) => s.orders);
-  const updateOrderStatus = useAuthStore((s) => s.updateOrderStatus);
-  const order = orders.find((o) => o.id === orderId);
+  const [order, setOrder] = useState<Order | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAllOrders()
+      .then((orders) => setOrder(orders.find((o) => o.id === orderId) ?? null))
+      .finally(() => setLoading(false));
+  }, [orderId]);
+
+  const handleStatusChange = async (status: OrderStatus) => {
+    if (!order) return;
+    try {
+      await updateOrderStatus(order.id, status);
+      setOrder({ ...order, status });
+      toastSuccess("Order status updated");
+    } catch (err) {
+      toastError(err instanceof Error ? err.message : "Failed to update status");
+    }
+  };
+
+  if (loading) {
+    return <div className="text-ink-muted py-12">Loading order…</div>;
+  }
 
   if (!order) {
     return (
@@ -45,7 +67,7 @@ export default function AdminOrderDetailPage() {
         </div>
         <select
           value={order.status}
-          onChange={(e) => updateOrderStatus(order.id, e.target.value as OrderStatus)}
+          onChange={(e) => handleStatusChange(e.target.value as OrderStatus)}
           className="input-field w-auto"
         >
           {STATUSES.map((s) => (

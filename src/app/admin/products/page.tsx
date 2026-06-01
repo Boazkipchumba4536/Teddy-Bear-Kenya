@@ -5,19 +5,36 @@ import Link from "next/link";
 import Image from "next/image";
 import { Plus, Pencil, Trash2, Search } from "lucide-react";
 import { useCatalogStore } from "@/store/catalogStore";
+import { adminDeleteProduct } from "@/lib/actions/admin";
+import { refreshCatalog } from "@/lib/refreshCatalog";
+import { toastError, toastSuccess } from "@/store/toastStore";
 import { formatKES } from "@/lib/format";
 
 export default function AdminProductsPage() {
   const products = useCatalogStore((s) => s.products);
-  const deleteProduct = useCatalogStore((s) => s.deleteProduct);
   const [search, setSearch] = useState("");
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   const filtered = products.filter(
     (p) =>
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.slug.includes(search.toLowerCase())
   );
+
+  const handleDelete = async (id: string) => {
+    setDeleting(true);
+    try {
+      await adminDeleteProduct(id);
+      await refreshCatalog();
+      setConfirmDelete(null);
+      toastSuccess("Product deleted");
+    } catch (err) {
+      toastError(err instanceof Error ? err.message : "Failed to delete product");
+    } finally {
+      setDeleting(false);
+    }
+  };
 
   return (
     <div>
@@ -96,10 +113,8 @@ export default function AdminProductsPage() {
                         <div className="flex items-center gap-1">
                           <button
                             type="button"
-                            onClick={() => {
-                              deleteProduct(p.id);
-                              setConfirmDelete(null);
-                            }}
+                            disabled={deleting}
+                            onClick={() => handleDelete(p.id)}
                             className="text-xs bg-red-600 text-white px-2 py-1 rounded-lg"
                           >
                             Confirm

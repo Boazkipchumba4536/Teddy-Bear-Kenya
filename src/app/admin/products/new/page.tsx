@@ -1,14 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Loader2 } from "lucide-react";
 import ProductForm from "@/components/admin/ProductForm";
-import { useCatalogStore } from "@/store/catalogStore";
+import { adminCreateProduct } from "@/lib/actions/admin";
+import { refreshCatalog } from "@/lib/refreshCatalog";
+import { toastError, toastSuccess } from "@/store/toastStore";
 
 export default function NewProductPage() {
   const router = useRouter();
-  const addProduct = useCatalogStore((s) => s.addProduct);
+  const [saving, setSaving] = useState(false);
 
   return (
     <div>
@@ -20,13 +23,27 @@ export default function NewProductPage() {
       </Link>
       <h1 className="text-2xl font-display font-semibold text-ink mb-6">Add New Product</h1>
       <ProductForm
-        submitLabel="Create Product"
+        submitLabel={saving ? "Creating…" : "Create Product"}
         onCancel={() => router.push("/admin/products")}
-        onSubmit={(data) => {
-          addProduct(data);
-          router.push("/admin/products");
+        onSubmit={async (data) => {
+          setSaving(true);
+          try {
+            await adminCreateProduct(data);
+            await refreshCatalog();
+            toastSuccess("Product created");
+            router.push("/admin/products");
+          } catch (err) {
+            toastError(err instanceof Error ? err.message : "Failed to create product");
+          } finally {
+            setSaving(false);
+          }
         }}
       />
+      {saving && (
+        <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
+          <Loader2 className="w-8 h-8 animate-spin text-caramel" />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,30 +1,39 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Package, ShoppingCart, Users, TrendingUp, DollarSign } from "lucide-react";
 import { useCatalogStore } from "@/store/catalogStore";
-import { useAuthStore } from "@/store/authStore";
+import AdminSetupBanner from "@/components/admin/AdminSetupBanner";
+import { fetchAllCustomers, fetchAllOrders } from "@/lib/actions/orders";
 import { formatKES } from "@/lib/format";
+import type { Order } from "@/types/order";
+import type { User } from "@/types/order";
 
 export default function AdminDashboard() {
   const products = useCatalogStore((s) => s.products);
-  const orders = useAuthStore((s) => s.orders);
-  const users = useAuthStore((s) => s.credentials);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [customers, setCustomers] = useState<User[]>([]);
+
+  useEffect(() => {
+    fetchAllOrders().then(setOrders).catch(() => setOrders([]));
+    fetchAllCustomers().then(setCustomers).catch(() => setCustomers([]));
+  }, []);
 
   const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);
   const pendingOrders = orders.filter((o) => o.status !== "delivered").length;
-  const customerCount = Object.keys(users).length;
 
   const stats = [
     { label: "Total Products", value: products.length, icon: Package, href: "/admin/products" },
     { label: "Total Orders", value: orders.length, icon: ShoppingCart, href: "/admin/orders" },
     { label: "Pending Orders", value: pendingOrders, icon: TrendingUp, href: "/admin/orders" },
-    { label: "Customers", value: customerCount, icon: Users, href: "/admin/customers" },
+    { label: "Customers", value: customers.length, icon: Users, href: "/admin/customers" },
     { label: "Revenue", value: formatKES(totalRevenue), icon: DollarSign, href: "/admin/orders" },
   ];
 
   return (
     <div>
+      <AdminSetupBanner />
       <div className="mb-8">
         <h1 className="text-2xl font-display font-semibold text-ink">Dashboard</h1>
         <p className="text-ink-muted text-sm mt-1">Overview of your BearHug KE store</p>
