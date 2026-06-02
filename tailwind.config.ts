@@ -9,6 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        market: {
+          orange: "#f68b1e",
+          "orange-dark": "#e07b10",
+          gray: "#f5f5f5",
+          dark: "#333333",
+          text: "#444444",
+          muted: "#888888",
+          border: "#e0e0e0",
+          green: "#00b259",
+          red: "#e63946",
+        },
         caramel: {
           DEFAULT: "#8B5E3C",
           light: "#A67B5B",
@@ -35,12 +46,14 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "var(--font-sans)", "system-ui", "sans-serif"],
       },
       boxShadow: {
         soft: "0 8px 30px -8px rgba(26, 10, 0, 0.08)",
         card: "0 2px 16px rgba(26, 10, 0, 0.06)",
         elevated: "0 24px 64px -16px rgba(139, 94, 60, 0.18)",
+        market: "0 1px 4px rgba(0, 0, 0, 0.08)",
+        "market-hover": "0 4px 12px rgba(0, 0, 0, 0.12)",
       },
       animation: {
         pulseMpesa: "pulseMpesa 2s ease-in-out infinite",

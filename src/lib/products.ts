@@ -1,8 +1,8 @@
 import type { BearColor, BearSize, Occasion, Product } from "@/types/product";
+import { filterByOccasionCategory } from "@/lib/occasions";
+import { assignUniquePrimaryImages, catalogImage } from "@/lib/productImages";
 
-const JPG_ONLY = new Set([1]);
-const img = (n: number) =>
-  JPG_ONLY.has(n) ? `/images/image${n}.jpg` : `/images/image${n}.webp`;
+const img = catalogImage;
 
 export const OCCASIONS: (Occasion | "All")[] = [
   "All",
@@ -24,7 +24,7 @@ export const SIZE_PRICES: Record<BearSize, number> = {
   Giant: 8500,
 };
 
-export const products: Product[] = [
+const rawProducts: Product[] = [
   {
     id: "1",
     slug: "honey-love-xl",
@@ -95,7 +95,7 @@ export const products: Product[] = [
     price: 15000,
     size: "Giant",
     color: "Brown",
-    occasions: ["Valentine's", "Anniversary", "Birthday"],
+    occasions: ["Anniversary", "Birthday"],
     image: img(5),
     images: [img(5), img(16), img(4)],
     badge: "Best Seller",
@@ -131,7 +131,7 @@ export const products: Product[] = [
     price: 4500,
     size: "L",
     color: "Custom",
-    occasions: ["Valentine's", "Anniversary"],
+    occasions: ["Anniversary"],
     image: img(10),
     images: [img(10), img(15), img(3)],
     badge: "New Arrival",
@@ -202,7 +202,7 @@ export const products: Product[] = [
     price: 12000,
     size: "Giant",
     color: "Custom",
-    occasions: ["Birthday", "Valentine's"],
+    occasions: ["Birthday"],
     image: img(14),
     images: [img(14), img(5)],
     createdAt: "2026-02-10",
@@ -237,7 +237,7 @@ export const products: Product[] = [
     price: 5500,
     size: "M",
     color: "Brown",
-    occasions: ["Anniversary", "Valentine's"],
+    occasions: ["Anniversary"],
     image: img(16),
     images: [img(16), img(11), img(4)],
     badge: "New Arrival",
@@ -310,7 +310,7 @@ export const products: Product[] = [
     price: 6500,
     size: "L",
     color: "Brown",
-    occasions: ["Anniversary", "Valentine's"],
+    occasions: ["Anniversary"],
     image: img(4),
     images: [img(4), img(3), img(16)],
     featured: true,
@@ -363,8 +363,8 @@ export const products: Product[] = [
     price: 4200,
     size: "M",
     color: "Custom",
-    occasions: ["Birthday", "Valentine's"],
-    image: img(14),
+    occasions: ["Birthday"],
+    image: img(5),
     images: [img(14), img(5)],
     createdAt: "2026-02-12",
   },
@@ -415,7 +415,7 @@ export const products: Product[] = [
     price: 14000,
     size: "Giant",
     color: "Brown",
-    occasions: ["Valentine's", "Anniversary", "Birthday"],
+    occasions: ["Anniversary", "Birthday"],
     image: img(16),
     images: [img(16), img(5), img(9)],
     badge: "New Arrival",
@@ -423,6 +423,8 @@ export const products: Product[] = [
     createdAt: "2026-02-22",
   },
 ];
+
+export const products: Product[] = assignUniquePrimaryImages(rawProducts);
 
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
@@ -458,7 +460,7 @@ export function filterProducts(
   let result = [...productList];
 
   if (filters.occasion && filters.occasion !== "All") {
-    result = result.filter((p) => p.occasions.includes(filters.occasion as Occasion));
+    result = filterByOccasionCategory(result, filters.occasion);
   }
   if (filters.sizes?.length) {
     result = result.filter((p) => filters.sizes!.includes(p.size));

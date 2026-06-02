@@ -72,6 +72,39 @@
   .btn-mpesa:active:not(:disabled) {
     transform: scale(0.98);
   }
+
+  /* Jumia-style marketplace (shop listing) */
+  .market-input {
+    @apply w-full rounded border border-market-border bg-white px-3 py-2 text-market-dark text-[13px] focus:border-market-orange focus:outline-none focus:ring-1 focus:ring-market-orange/30;
+  }
+
+  .market-btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded border-2 border-market-orange bg-white px-4 py-2 text-[13px] font-bold text-market-orange transition-colors duration-200 hover:bg-market-orange hover:text-white;
+  }
+
+  .market-add-cart {
+    @apply w-full py-2.5 text-[13px] font-bold rounded border-2 border-market-orange bg-white text-market-orange transition-all duration-200 hover:bg-market-orange hover:text-white;
+  }
+
+  .market-add-cart.is-added {
+    @apply bg-market-green border-market-green text-white;
+  }
+
+  .market-page-btn {
+    @apply inline-flex items-center justify-center h-9 px-2 rounded border border-market-border bg-white text-market-text text-sm font-medium hover:border-market-orange disabled:opacity-40 disabled:pointer-events-none transition-colors;
+  }
+
+  .market-page-btn.is-active {
+    @apply bg-market-orange text-white border-market-orange;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes toastIn {

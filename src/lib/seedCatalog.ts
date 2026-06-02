@@ -2,9 +2,9 @@ import type { BearColor, BearSize, Occasion, Product, ProductBadge } from "@/typ
 import { DEFAULT_PRODUCTS } from "@/lib/products";
 import { SIZE_PRICES } from "@/lib/products";
 
-const JPG_ONLY = new Set([1]);
-const img = (n: number) =>
-  JPG_ONLY.has(n) ? `/images/image${n}.jpg` : `/images/image${n}.webp`;
+import { catalogImage } from "@/lib/productImages";
+
+const img = catalogImage;
 
 const NAME_PREFIXES = [
   "Honey", "Blush", "Cloud", "Caramel", "Midnight", "Rose", "Velvet", "Sunset",

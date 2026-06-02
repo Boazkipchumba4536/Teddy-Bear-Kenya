@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import DeliveryTrustStrip from "@/components/DeliveryTrustStrip";
@@ -9,6 +10,7 @@ import WhatsAppFAB from "@/components/WhatsAppFAB";
 import MobileNav from "@/components/MobileNav";
 import CookieConsent from "@/components/CookieConsent";
 import RouteProgressBar from "@/components/loading/RouteProgressBar";
+import CategoryTabBar from "@/components/marketplace/CategoryTabBar";
 
 export default function StorefrontShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -21,8 +23,11 @@ export default function StorefrontShell({ children }: { children: React.ReactNod
   return (
     <>
       <RouteProgressBar />
-      <Navbar />
       <DeliveryTrustStrip />
+      <Navbar />
+      <Suspense fallback={null}>
+        <CategoryTabBar />
+      </Suspense>
       <main id="main" className="flex-1 page-enter">
         {children}
       </main>

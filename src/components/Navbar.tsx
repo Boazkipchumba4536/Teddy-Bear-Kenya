@@ -1,130 +1,140 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Search, Heart, ShoppingBag, User, Menu, X } from "lucide-react";
+import { Search, Heart, ShoppingBag, User, Menu, X, HelpCircle } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useAuthStore } from "@/store/authStore";
 import { site } from "@/lib/site";
 import SearchModal from "./SearchModal";
-import StaffNavLink from "./StaffNavLink";
 
-const navLinks = [
-  { href: "/shop", label: "Shop" },
-  { href: "/shop?occasion=Valentine's", label: "Occasions" },
-  { href: "/custom", label: "Custom Bears" },
-  { href: "/about", label: "About" },
+const quickLinks = [
+  { href: "/shop", label: "Teddy Bears" },
+  { href: "/custom", label: "Custom" },
   { href: "/track", label: "Track Order" },
-  { href: "/account", label: "Account" },
+  { href: "/contact", label: "Help" },
 ];
 
-function BearLogo({ className = "w-8 h-8" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
-      <circle cx="20" cy="22" r="12" fill="#8B5E3C" />
-      <circle cx="11" cy="12" r="6" fill="#8B5E3C" />
-      <circle cx="29" cy="12" r="6" fill="#8B5E3C" />
-      <circle cx="15" cy="20" r="2" fill="#FFF8F0" />
-      <circle cx="25" cy="20" r="2" fill="#FFF8F0" />
-      <ellipse cx="20" cy="26" rx="3" ry="2" fill="#F5C5C5" />
-    </svg>
-  );
-}
-
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const itemCount = useCartStore((s) => s.itemCount());
   const wishlistCount = useWishlistStore((s) => s.ids.length);
   const toggleCart = useCartStore((s) => s.toggleOpen);
   const user = useAuthStore((s) => s.user);
   const authLoaded = useAuthStore((s) => s.loaded);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const onSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    if (q) router.push(`/shop?q=${encodeURIComponent(q)}`);
+    else router.push("/shop");
+    setSearchQuery("");
+  };
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-50 transition-all duration-500 ease-out ${
-          scrolled ? "glass-nav shadow-soft" : "bg-cream shadow-none"
-        }`}
-      >
-        <div className="container-main flex items-center justify-between h-16 md:h-18">
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <BearLogo />
-            <span className="font-display text-lg md:text-xl font-semibold text-ink">
-              {site.name}
-            </span>
-          </Link>
+      <header className="sticky top-0 z-50 bg-white border-b border-market-border shadow-market">
+        <div className="container-main">
+          <div className="flex items-center gap-3 md:gap-4 h-14 md:h-16">
+            <Link href="/" className="flex items-center gap-2 shrink-0">
+              <span className="text-2xl" aria-hidden>
+                🧸
+              </span>
+              <span className="font-bold text-[20px] md:text-[22px] text-market-orange leading-none">
+                {site.name}
+              </span>
+            </Link>
 
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-ink-muted hover:text-caramel transition-colors"
+            <form
+              onSubmit={onSearchSubmit}
+              className="hidden md:flex flex-1 max-w-2xl mx-2"
+              role="search"
+            >
+              <div className="flex w-full rounded overflow-hidden border border-market-border focus-within:border-market-orange focus-within:ring-1 focus-within:ring-market-orange/30">
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search teddy bears, occasions, gifts…"
+                  className="flex-1 px-4 py-2.5 text-[13px] text-market-dark placeholder:text-market-muted focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="bg-market-orange hover:bg-market-orange-dark text-white px-5 font-bold text-[13px] transition-colors"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
+
+            <div className="flex items-center gap-0.5 md:gap-1 ml-auto">
+              <button
+                type="button"
+                onClick={() => setSearchOpen(true)}
+                className="md:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-market-gray rounded"
+                aria-label="Search"
               >
-                {link.label}
+                <Search className="w-5 h-5 text-market-dark" />
+              </button>
+              <Link
+                href="/contact"
+                className="hidden lg:flex p-2.5 items-center gap-1 text-[13px] font-medium text-market-text hover:text-market-orange"
+              >
+                <HelpCircle className="w-4 h-4" />
+                Help
               </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-1 md:gap-2">
-            <button
-              type="button"
-              onClick={() => setSearchOpen(true)}
-              aria-label="Search"
-              className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-caramel/10 transition-colors"
-            >
-              <Search className="w-5 h-5 text-ink" />
-            </button>
-            <Link
-              href="/wishlist"
-              aria-label="Wishlist"
-              className="relative p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-caramel/10 transition-colors"
-            >
-              <Heart className="w-5 h-5 text-ink" />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-blush-dark text-ink text-[9px] font-bold rounded-full flex items-center justify-center">
-                  {wishlistCount}
+              <Link
+                href={user ? "/account" : "/login"}
+                className="flex flex-col items-center p-2 min-w-[44px] text-market-text hover:text-market-orange"
+                aria-label="Account"
+              >
+                <User className="w-5 h-5" />
+                <span className="text-[10px] font-medium hidden sm:block mt-0.5">
+                  {user ? "Account" : "Sign in"}
                 </span>
-              )}
-            </Link>
-            <Link
-              href="/account"
-              aria-label="My Account"
-              className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-caramel/10 transition-colors"
-            >
-              <User className="w-5 h-5 text-ink" />
-            </Link>
-            <StaffNavLink className="hidden sm:flex" />
-            <button
-              type="button"
-              onClick={toggleCart}
-              aria-label="Open cart"
-              className="relative p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-caramel/10 transition-colors"
-            >
-              <ShoppingBag className="w-5 h-5 text-ink" />
-              {itemCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-caramel text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                  {itemCount > 9 ? "9+" : itemCount}
-                </span>
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={() => setMobileOpen(true)}
-              aria-label="Open menu"
-              className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-caramel/10"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
+              </Link>
+              <Link
+                href="/wishlist"
+                className="relative flex flex-col items-center p-2 min-w-[44px] text-market-text hover:text-market-orange"
+                aria-label="Wishlist"
+              >
+                <Heart className="w-5 h-5" />
+                {wishlistCount > 0 && (
+                  <span className="absolute top-1 right-1 w-4 h-4 bg-market-orange text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                    {wishlistCount}
+                  </span>
+                )}
+                <span className="text-[10px] font-medium hidden sm:block mt-0.5">Saved</span>
+              </Link>
+              <button
+                type="button"
+                onClick={toggleCart}
+                className="relative flex flex-col items-center p-2 min-w-[44px] text-market-text hover:text-market-orange"
+                aria-label="Cart"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                {itemCount > 0 && (
+                  <span className="absolute top-1 right-1 min-w-[18px] h-[18px] bg-market-orange text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">
+                    {itemCount > 9 ? "9+" : itemCount}
+                  </span>
+                )}
+                <span className="text-[10px] font-medium hidden sm:block mt-0.5">Cart</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setMobileOpen(true)}
+                className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Menu"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -135,46 +145,54 @@ export default function Navbar() {
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
+        <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
         <div
-          className="absolute inset-0 bg-ink/40 backdrop-blur-sm"
-          onClick={() => setMobileOpen(false)}
-        />
-        <div
-          className={`absolute top-0 right-0 h-full w-[min(320px,85vw)] bg-cream shadow-elevated transition-transform duration-300 ${
+          className={`absolute top-0 right-0 h-full w-[min(320px,85vw)] bg-white shadow-elevated transition-transform duration-300 ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex items-center justify-between p-4 border-b border-caramel/10">
-            <span className="font-display font-semibold">{site.name}</span>
-            <button
-              type="button"
-              onClick={() => setMobileOpen(false)}
-              aria-label="Close menu"
-              className="p-2 rounded-full hover:bg-caramel/10"
-            >
+          <div className="flex items-center justify-between p-4 border-b border-market-border">
+            <span className="font-bold text-market-orange">{site.name}</span>
+            <button type="button" onClick={() => setMobileOpen(false)} aria-label="Close">
               <X className="w-5 h-5" />
             </button>
           </div>
-          <nav className="flex flex-col p-4 gap-1">
-            {navLinks.map((link) => (
+          <form onSubmit={onSearchSubmit} className="p-4 border-b border-market-border">
+            <div className="flex rounded overflow-hidden border border-market-border">
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search teddy bears…"
+                className="flex-1 px-3 py-2.5 text-sm"
+              />
+              <button type="submit" className="bg-market-orange text-white px-3 font-bold text-sm">
+                Go
+              </button>
+            </div>
+          </form>
+          <nav className="flex flex-col p-2">
+            {quickLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="px-4 py-3 min-h-[44px] rounded-xl text-base font-medium hover:bg-blush/30 transition-colors"
+                className={`px-4 py-3 rounded-lg text-[15px] font-medium ${
+                  pathname === link.href
+                    ? "bg-market-orange/10 text-market-orange"
+                    : "text-market-text hover:bg-market-gray"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
-            {authLoaded && !user && (
-              <Link
-                href="/admin/login"
-                onClick={() => setMobileOpen(false)}
-                className="px-4 py-3 min-h-[44px] rounded-xl text-base font-medium text-ink/60 hover:bg-blush/30 transition-colors"
-              >
-                Staff
-              </Link>
-            )}
+            <Link
+              href="/about"
+              onClick={() => setMobileOpen(false)}
+              className="px-4 py-3 rounded-lg text-[15px] font-medium text-market-text hover:bg-market-gray"
+            >
+              About
+            </Link>
           </nav>
         </div>
       </div>

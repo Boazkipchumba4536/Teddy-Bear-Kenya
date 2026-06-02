@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import StorefrontShell from "@/components/StorefrontShell";
 import ToastContainer from "@/components/ToastContainer";
 import CatalogProvider from "@/providers/CatalogProvider";
 import AuthProvider from "@/providers/AuthProvider";
 import { site } from "@/lib/site";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 const display = Playfair_Display({
   subsets: ["latin"],
@@ -38,8 +43,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
-      <body className="font-sans min-h-screen flex flex-col pb-16 md:pb-0 bg-cream">
+    <html lang="en" className={`${inter.variable} ${display.variable} ${sans.variable}`}>
+      <body className="font-sans min-h-screen flex flex-col pb-16 md:pb-0 bg-market-gray text-market-dark antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] bg-caramel text-white px-4 py-2 rounded-lg"
