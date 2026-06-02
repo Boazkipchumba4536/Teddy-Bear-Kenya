@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${display.variable} ${sans.variable}`}>
-      <body className="font-sans min-h-screen flex flex-col pb-16 md:pb-0 bg-market-gray text-market-dark antialiased">
+      <body className="font-sans min-h-screen flex flex-col pb-16 md:pb-0 bg-market-gray text-market-dark antialiased overflow-x-hidden">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] bg-caramel text-white px-4 py-2 rounded-lg"

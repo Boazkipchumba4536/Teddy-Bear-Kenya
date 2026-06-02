@@ -12,10 +12,10 @@ export default function CategoryTabBar() {
   if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <div className="bg-white border-b border-market-border overflow-hidden">
-      <div className="container-main">
+    <div className="bg-white border-b border-market-border overflow-x-hidden max-w-[100vw]">
+      <div className="container-main overflow-hidden">
         <nav
-          className="flex gap-1 overflow-x-auto scrollbar-hide py-0 -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="flex gap-1 overflow-x-auto scrollbar-hide py-0"
           aria-label="Shop categories"
         >
           {SHOP_CATEGORY_TABS.map((tab) => {

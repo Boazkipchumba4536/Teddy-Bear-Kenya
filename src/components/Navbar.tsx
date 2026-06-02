@@ -37,16 +37,25 @@ export default function Navbar() {
     setSearchQuery("");
   };
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileOpen]);
+
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white border-b border-market-border shadow-market">
-        <div className="container-main">
-          <div className="flex items-center gap-3 md:gap-4 h-14 md:h-16">
-            <Link href="/" className="flex items-center gap-2 shrink-0">
-              <span className="text-2xl" aria-hidden>
+      <header className="sticky top-0 z-50 bg-white border-b border-market-border shadow-market overflow-x-hidden">
+        <div className="container-main max-w-[100vw]">
+          <div className="flex items-center gap-2 md:gap-4 h-14 md:h-16 min-w-0">
+            <Link href="/" className="flex items-center gap-1.5 shrink min-w-0 max-w-[42%] sm:max-w-none">
+              <span className="text-xl sm:text-2xl shrink-0" aria-hidden>
                 🧸
               </span>
-              <span className="font-bold text-[20px] md:text-[22px] text-market-orange leading-none">
+              <span className="font-bold text-base sm:text-[20px] md:text-[22px] text-market-orange leading-none truncate">
                 {site.name}
               </span>
             </Link>
@@ -73,11 +82,11 @@ export default function Navbar() {
               </div>
             </form>
 
-            <div className="flex items-center gap-0.5 md:gap-1 ml-auto">
+            <div className="flex items-center shrink-0 gap-0 sm:gap-0.5 md:gap-1 ml-auto">
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className="md:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-market-gray rounded"
+                className="md:hidden p-2 w-10 h-10 flex items-center justify-center hover:bg-market-gray rounded shrink-0"
                 aria-label="Search"
               >
                 <Search className="w-5 h-5 text-market-dark" />
@@ -91,45 +100,40 @@ export default function Navbar() {
               </Link>
               <Link
                 href={user ? "/account" : "/login"}
-                className="flex flex-col items-center p-2 min-w-[44px] text-market-text hover:text-market-orange"
+                className="flex items-center justify-center p-2 w-10 h-10 shrink-0 text-market-text hover:text-market-orange"
                 aria-label="Account"
               >
                 <User className="w-5 h-5" />
-                <span className="text-[10px] font-medium hidden sm:block mt-0.5">
-                  {user ? "Account" : "Sign in"}
-                </span>
               </Link>
               <Link
                 href="/wishlist"
-                className="relative flex flex-col items-center p-2 min-w-[44px] text-market-text hover:text-market-orange"
+                className="relative hidden sm:flex items-center justify-center p-2 w-10 h-10 shrink-0 text-market-text hover:text-market-orange"
                 aria-label="Wishlist"
               >
                 <Heart className="w-5 h-5" />
                 {wishlistCount > 0 && (
-                  <span className="absolute top-1 right-1 w-4 h-4 bg-market-orange text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute top-0.5 right-0.5 w-4 h-4 bg-market-orange text-white text-[9px] font-bold rounded-full flex items-center justify-center">
                     {wishlistCount}
                   </span>
                 )}
-                <span className="text-[10px] font-medium hidden sm:block mt-0.5">Saved</span>
               </Link>
               <button
                 type="button"
                 onClick={toggleCart}
-                className="relative flex flex-col items-center p-2 min-w-[44px] text-market-text hover:text-market-orange"
+                className="relative flex items-center justify-center p-2 w-10 h-10 shrink-0 text-market-text hover:text-market-orange"
                 aria-label="Cart"
               >
                 <ShoppingBag className="w-5 h-5" />
                 {itemCount > 0 && (
-                  <span className="absolute top-1 right-1 min-w-[18px] h-[18px] bg-market-orange text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">
+                  <span className="absolute top-0.5 right-0.5 min-w-[18px] h-[18px] bg-market-orange text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">
                     {itemCount > 9 ? "9+" : itemCount}
                   </span>
                 )}
-                <span className="text-[10px] font-medium hidden sm:block mt-0.5">Cart</span>
               </button>
               <button
                 type="button"
                 onClick={() => setMobileOpen(true)}
-                className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className="lg:hidden p-2 w-10 h-10 flex items-center justify-center shrink-0 hover:bg-market-gray rounded"
                 aria-label="Menu"
               >
                 <Menu className="w-5 h-5" />
@@ -139,17 +143,21 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — overflow-hidden on shell stops off-screen panel from widening the page */}
       <div
-        className={`fixed inset-0 z-[60] lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] lg:hidden overflow-hidden transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
+        aria-hidden={!mobileOpen}
       >
         <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
         <div
-          className={`absolute top-0 right-0 h-full w-[min(320px,85vw)] bg-white shadow-elevated transition-transform duration-300 ${
+          className={`absolute top-0 right-0 h-full w-[min(300px,100vw)] max-w-full bg-white shadow-elevated transition-transform duration-300 ease-out overflow-y-auto overflow-x-hidden ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
+          role="dialog"
+          aria-modal={mobileOpen}
+          aria-label="Navigation menu"
         >
           <div className="flex items-center justify-between p-4 border-b border-market-border">
             <span className="font-bold text-market-orange">{site.name}</span>
@@ -192,6 +200,14 @@ export default function Navbar() {
               className="px-4 py-3 rounded-lg text-[15px] font-medium text-market-text hover:bg-market-gray"
             >
               About
+            </Link>
+            <Link
+              href="/wishlist"
+              onClick={() => setMobileOpen(false)}
+              className="px-4 py-3 rounded-lg text-[15px] font-medium text-market-text hover:bg-market-gray sm:hidden"
+            >
+              Wishlist
+              {wishlistCount > 0 ? ` (${wishlistCount})` : ""}
             </Link>
           </nav>
         </div>
