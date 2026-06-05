@@ -38,7 +38,7 @@ function StarRow({
         >
           <Star
             className={`w-5 h-5 ${
-              n <= value ? "fill-market-orange text-market-orange" : "text-gray-300"
+              n <= value ? "fill-caramel text-caramel" : "text-ink/20"
             }`}
           />
         </button>
@@ -87,22 +87,22 @@ export default function ProductReviews({ productId, slug }: ProductReviewsProps)
   };
 
   return (
-    <section className="mt-10 border-t border-market-border pt-8" id="reviews">
-      <h2 className="text-lg font-bold text-market-dark mb-4">Customer Reviews</h2>
+    <section className="mt-10 border-t border-caramel/10 pt-8" id="reviews">
+      <h2 className="font-display text-xl font-medium text-ink mb-4">Customer Reviews</h2>
 
       {loading ? (
-        <div className="flex items-center gap-2 text-market-muted py-8">
+        <div className="flex items-center gap-2 text-ink-muted py-8">
           <Loader2 className="w-5 h-5 animate-spin" />
           Loading reviews…
         </div>
       ) : (
         <>
           {summary && summary.count > 0 ? (
-            <div className="flex flex-wrap items-center gap-6 mb-6 p-4 bg-market-gray rounded-lg border border-market-border">
+            <div className="flex flex-wrap items-center gap-6 mb-6 p-5 bg-cream/50 rounded-2xl border border-caramel/10">
               <div className="text-center">
-                <p className="text-3xl font-bold text-market-orange">{summary.average}</p>
+                <p className="text-3xl font-display font-medium text-caramel">{summary.average}</p>
                 <StarRow value={Math.round(summary.average)} readonly />
-                <p className="text-xs text-market-muted mt-1">{summary.count} review(s)</p>
+                <p className="text-xs text-ink-light mt-1">{summary.count} review(s)</p>
               </div>
               <div className="flex-1 min-w-[200px] space-y-1">
                 {[5, 4, 3, 2, 1].map((star) => {
@@ -110,41 +110,41 @@ export default function ProductReviews({ productId, slug }: ProductReviewsProps)
                   const pct = summary.count ? (count / summary.count) * 100 : 0;
                   return (
                     <div key={star} className="flex items-center gap-2 text-xs">
-                      <span className="w-8 text-market-muted">{star} ★</span>
-                      <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <span className="w-8 text-ink-light">{star} ★</span>
+                      <div className="flex-1 h-2 bg-blush/40 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-market-orange rounded-full"
+                          className="h-full bg-caramel rounded-full"
                           style={{ width: `${pct}%` }}
                         />
                       </div>
-                      <span className="w-6 text-market-muted">{count}</span>
+                      <span className="w-6 text-ink-light">{count}</span>
                     </div>
                   );
                 })}
               </div>
             </div>
           ) : (
-            <p className="text-sm text-market-muted mb-6">No reviews yet. Be the first to rate this bear!</p>
+            <p className="text-sm text-ink-muted mb-6">No reviews yet. Be the first to rate this bear!</p>
           )}
 
           {user ? (
             <form
               onSubmit={onSubmit}
-              className="mb-8 p-4 bg-white border border-market-border rounded-lg"
+              className="mb-8 p-5 shop-panel"
             >
-              <p className="text-sm font-semibold text-market-dark mb-2">Write a review</p>
+              <p className="text-sm font-semibold text-ink mb-2">Write a review</p>
               <StarRow value={rating} onChange={setRating} />
               <textarea
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 rows={3}
-                className="market-input mt-3 resize-none"
+                className="input-field mt-3 resize-none"
                 placeholder="Share your experience with this teddy bear…"
                 required
               />
               {message && (
                 <p
-                  className={`text-sm mt-2 ${message.includes("Thank") ? "text-market-green" : "text-red-600"}`}
+                  className={`text-sm mt-2 ${message.includes("Thank") ? "text-mpesa" : "text-terracotta"}`}
                 >
                   {message}
                 </p>
@@ -152,14 +152,14 @@ export default function ProductReviews({ productId, slug }: ProductReviewsProps)
               <button
                 type="submit"
                 disabled={submitting}
-                className="mt-3 bg-market-orange text-white font-bold text-sm px-6 py-2.5 rounded hover:bg-market-orange-dark disabled:opacity-50"
+                className="mt-3 btn-primary min-h-0 disabled:opacity-50"
               >
                 {submitting ? "Submitting…" : "Submit Review"}
               </button>
             </form>
           ) : (
-            <p className="text-sm text-market-muted mb-8">
-              <Link href="/login" className="text-market-orange font-semibold hover:underline">
+            <p className="text-sm text-ink-muted mb-8">
+              <Link href="/login" className="text-caramel font-semibold hover:underline">
                 Sign in
               </Link>{" "}
               to leave a rating and review.
@@ -170,17 +170,17 @@ export default function ProductReviews({ productId, slug }: ProductReviewsProps)
             {reviews.map((r) => (
               <li
                 key={r.id}
-                className="border-b border-market-border pb-4 last:border-0"
+                className="border-b border-caramel/10 pb-4 last:border-0"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <p className="font-semibold text-sm text-market-dark">{r.authorName}</p>
-                  <span className="text-xs text-market-muted">
+                  <p className="font-semibold text-sm text-ink">{r.authorName}</p>
+                  <span className="text-xs text-ink-light">
                     {new Date(r.createdAt).toLocaleDateString("en-KE")}
                   </span>
                 </div>
                 <StarRow value={r.rating} readonly />
                 {r.comment && (
-                  <p className="text-sm text-market-text mt-2 leading-relaxed">{r.comment}</p>
+                  <p className="text-sm text-ink-muted mt-2 leading-relaxed">{r.comment}</p>
                 )}
               </li>
             ))}

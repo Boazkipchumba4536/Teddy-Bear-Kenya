@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
+import { createDebouncedLocalStorage } from "@/lib/debouncedStorage";
 import type { BearColor, BearSize, CartLineItem } from "@/types/product";
 import { site } from "@/lib/site";
 
@@ -9,7 +10,7 @@ interface CartState {
   isOpen: boolean;
   setOpen: (open: boolean) => void;
   toggleOpen: () => void;
-  addItem: (item: Omit<CartLineItem, "id">) => void;
+  addItem: (item: Omit<CartLineItem, "id">, options?: { openDrawer?: boolean }) => void;
   updateQuantity: (id: string, quantity: number) => void;
   removeItem: (id: string) => void;
   toggleGiftWrap: () => void;
@@ -24,6 +25,10 @@ function lineId(productId: string, size: BearSize, color: BearColor, isCustom?: 
   return `${productId}-${size}-${color}${isCustom ? "-custom" : ""}`;
 }
 
+/** Stable selector — avoids re-running itemCount() on unrelated cart fields. */
+export const selectCartItemCount = (s: CartState) =>
+  s.items.reduce((sum, i) => sum + i.quantity, 0);
+
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
@@ -34,8 +39,9 @@ export const useCartStore = create<CartState>()(
       setOpen: (open) => set({ isOpen: open }),
       toggleOpen: () => set((s) => ({ isOpen: !s.isOpen })),
 
-      addItem: (item) => {
+      addItem: (item, options) => {
         const id = lineId(item.productId, item.size, item.color, item.isCustom);
+        const openDrawer = options?.openDrawer ?? false;
         set((state) => {
           const existing = state.items.find((i) => i.id === id);
           if (existing) {
@@ -43,12 +49,12 @@ export const useCartStore = create<CartState>()(
               items: state.items.map((i) =>
                 i.id === id ? { ...i, quantity: i.quantity + item.quantity } : i
               ),
-              isOpen: true,
+              isOpen: openDrawer ? true : state.isOpen,
             };
           }
           return {
             items: [...state.items, { ...item, id }],
-            isOpen: true,
+            isOpen: openDrawer,
           };
         });
       },
@@ -87,6 +93,10 @@ export const useCartStore = create<CartState>()(
 
       itemCount: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
     }),
-    { name: "bearhug-cart" }
+    {
+      name: "bearhug-cart",
+      partialize: (state) => ({ items: state.items, giftWrap: state.giftWrap }),
+      storage: createJSONStorage(() => createDebouncedLocalStorage(800)),
+    }
   )
 );

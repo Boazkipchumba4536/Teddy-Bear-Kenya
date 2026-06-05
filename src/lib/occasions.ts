@@ -1,4 +1,5 @@
 import type { BearColor, BearSize, Occasion, Product } from "@/types/product";
+import { catalogImage } from "@/lib/productImages";
 
 export type OccasionCategory = {
   occasion: Occasion | "All";
@@ -13,49 +14,49 @@ export const OCCASION_CATEGORIES: OccasionCategory[] = [
     occasion: "All",
     title: "All Bears",
     subtitle: "Full collection",
-    image: "/images/image3.webp",
+    image: catalogImage(3),
     href: "/shop",
   },
   {
     occasion: "Valentine's",
     title: "Valentine's",
     subtitle: "Red & pink teddy bears",
-    image: "/images/image6.webp",
+    image: catalogImage(6),
     href: "/shop?occasion=Valentine's",
   },
   {
     occasion: "Birthday",
     title: "Birthday",
     subtitle: "Birthday teddy bears",
-    image: "/images/image2.webp",
+    image: catalogImage(2),
     href: "/shop?occasion=Birthday",
   },
   {
     occasion: "Anniversary",
     title: "Anniversary",
     subtitle: "Anniversary teddy bears",
-    image: "/images/image16.webp",
+    image: catalogImage(16),
     href: "/shop?occasion=Anniversary",
   },
   {
     occasion: "Baby Shower",
     title: "Baby Shower",
     subtitle: "Pastel baby shower bears",
-    image: "/images/image13.webp",
+    image: catalogImage(13),
     href: "/shop?occasion=Baby Shower",
   },
   {
     occasion: "Get Well",
     title: "Get Well",
     subtitle: "Comfort & get-well bears",
-    image: "/images/image8.webp",
+    image: catalogImage(8),
     href: "/shop?occasion=Get Well",
   },
   {
     occasion: "Just Because",
     title: "Just Because",
     subtitle: "Everyday teddy bears",
-    image: "/images/image15.webp",
+    image: catalogImage(15),
     href: "/shop?occasion=Just Because",
   },
 ];

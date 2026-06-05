@@ -1,0 +1,44 @@
+{
+  "at": "2026-06-04T12:13:36.958Z",
+  "groups": [
+    {
+      "name": "linda",
+      "keep": {
+        "id": "e39d8c18-67c4-410e-b9e5-8feb465dc10e",
+        "slug": "lts-steiff-linda-2"
+      },
+      "remove": [
+        {
+          "id": "f6ebbae7-ea9e-40e9-b7b1-6c372847f8db",
+          "slug": "lts-steiff-linda-1"
+        }
+      ]
+    },
+    {
+      "name": "lady dog",
+      "keep": {
+        "id": "2868f5bb-2825-45fd-8b83-c248c45ac0b8",
+        "slug": "lts-lady-dog"
+      },
+      "remove": [
+        {
+          "id": "c8845f90-1cdd-4bc7-810c-747a9587939d",
+          "slug": "lts-steiff-lady-dog"
+        }
+      ]
+    },
+    {
+      "name": "unicorn",
+      "keep": {
+        "id": "9d80b076-9b1f-4e1b-8f1b-2f47e02c335b",
+        "slug": "lts-unicorn"
+      },
+      "remove": [
+        {
+          "id": "98ecc6f9-3929-4086-b526-d4c4a65f7040",
+          "slug": "lts-unicorn-1"
+        }
+      ]
+    }
+  ]
+}

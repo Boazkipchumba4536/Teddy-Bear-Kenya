@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { headers } from "next/headers";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import StorefrontShell from "@/components/StorefrontShell";
 import ToastContainer from "@/components/ToastContainer";
 import CatalogProvider from "@/providers/CatalogProvider";
 import AuthProvider from "@/providers/AuthProvider";
+import { getCachedStorefrontCatalog } from "@/lib/cachedCatalog";
 import { site } from "@/lib/site";
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const display = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-display",
-});
-
-const sans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-outfit",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -41,18 +33,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = headers().get("x-pathname") ?? "";
+  const isAdminRoute = pathname.startsWith("/admin");
+  const initialCatalog = isAdminRoute ? undefined : await getCachedStorefrontCatalog();
+
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable} ${sans.variable}`}>
-      <body className="font-sans min-h-screen flex flex-col pb-16 md:pb-0 bg-market-gray text-market-dark antialiased overflow-x-hidden">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] bg-caramel text-white px-4 py-2 rounded-lg"
-        >
+    <html lang="en" className={outfit.variable}>
+      <body className="font-sans min-h-screen flex flex-col pb-16 md:pb-0 bg-surface text-ink antialiased overflow-x-hidden">
+        <a href="#main" className="skip-link">
           Skip to content
         </a>
         <AuthProvider>
-          <CatalogProvider>
+          <CatalogProvider initialCatalog={initialCatalog}>
             <StorefrontShell>{children}</StorefrontShell>
           </CatalogProvider>
         </AuthProvider>

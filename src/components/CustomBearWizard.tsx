@@ -6,6 +6,7 @@ import { useCartStore } from "@/store/cartStore";
 import { BEAR_SIZES, SIZE_PRICES } from "@/lib/products";
 import { formatKES } from "@/lib/format";
 import type { BearColor, BearSize } from "@/types/product";
+import { BEAR_COLORS, BEAR_COLOR_HEX } from "@/lib/bearColors";
 
 const BASE_STYLES = [
   { id: "classic", name: "Classic Bear", emoji: "🧸", priceMod: 0 },
@@ -13,12 +14,12 @@ const BASE_STYLES = [
   { id: "standing", name: "Standing Bear", emoji: "🐻", priceMod: 800 },
 ];
 
-const COLORS: { id: BearColor; hex: string }[] = [
-  { id: "Brown", hex: "#8B5E3C" },
-  { id: "White", hex: "#FFF8F0" },
-  { id: "Pink", hex: "#F5C5C5" },
-  { id: "Grey", hex: "#9E9E9E" },
-];
+const COLORS: { id: BearColor; hex: string }[] = BEAR_COLORS.filter(
+  (c) => c !== "Custom" && c !== "Multicolor"
+).map((id) => ({
+  id,
+  hex: BEAR_COLOR_HEX[id].startsWith("linear") ? "#9E9E9E" : BEAR_COLOR_HEX[id],
+}));
 
 const ACCESSORIES = [
   { id: "bow", name: "Ribbon Bow", price: 200 },
@@ -66,19 +67,22 @@ export default function CustomBearWizard() {
       .filter(Boolean)
       .join(" · ");
 
-    addItem({
-      productId: `custom-${Date.now()}`,
-      slug: "custom-bear",
-      name: `Custom ${base.name}${embroidery ? ` — "${embroidery}"` : ""}`,
-      image: "/images/image2.webp",
-      size,
-      color,
-      quantity: 1,
-      price: total,
-      isCustom: true,
-      customDetails: details,
-      personalMessage: message || undefined,
-    });
+    addItem(
+      {
+        productId: `custom-${Date.now()}`,
+        slug: "custom-bear",
+        name: `Custom ${base.name}${embroidery ? ` — "${embroidery}"` : ""}`,
+        image: "/images/image2.webp",
+        size,
+        color,
+        quantity: 1,
+        price: total,
+        isCustom: true,
+        customDetails: details,
+        personalMessage: message || undefined,
+      },
+      { openDrawer: true }
+    );
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };

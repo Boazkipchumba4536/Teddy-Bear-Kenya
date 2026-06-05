@@ -9,6 +9,13 @@ const supabaseHostname = (() => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  webpack: (config, { dev }) => {
+    // Avoid stale/missing chunk files on Windows during HMR (e.g. Cannot find module './8948.js')
+    if (dev) {
+      config.cache = { type: "memory" };
+    }
+    return config;
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: "6mb",
@@ -20,6 +27,21 @@ const nextConfig = {
         protocol: "https",
         hostname: "teddybearhaven.co.ke",
         pathname: "/wp-content/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.tamboteddies.com.au",
+        pathname: "/wp-content/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "*.myshopify.com",
+        pathname: "/**",
       },
       ...(supabaseHostname
         ? [
@@ -36,9 +58,11 @@ const nextConfig = {
         pathname: "/storage/v1/object/public/**",
       },
     ],
-    formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200],
-    imageSizes: [64, 96, 128, 256, 384],
+    formats: ["image/webp"],
+    dangerouslyAllowSVG: true,
+    deviceSizes: [640, 828, 1200],
+    imageSizes: [96, 256, 384],
+    minimumCacheTTL: 86400,
   },
 };
 

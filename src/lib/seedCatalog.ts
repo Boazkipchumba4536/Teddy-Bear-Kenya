@@ -35,7 +35,21 @@ const OCCASIONS: Occasion[] = [
 ];
 
 const SIZES: BearSize[] = ["S", "M", "L", "Giant"];
-const COLORS: BearColor[] = ["Brown", "White", "Pink", "Grey", "Custom"];
+const COLORS: BearColor[] = [
+  "Brown",
+  "White",
+  "Cream",
+  "Pink",
+  "Red",
+  "Blue",
+  "Purple",
+  "Green",
+  "Yellow",
+  "Grey",
+  "Black",
+  "Multicolor",
+  "Custom",
+];
 
 function slugify(text: string) {
   return text
@@ -93,6 +107,8 @@ export function generateSeedCatalog(targetCount = 100): Omit<Product, "id">[] {
     products.push({
       slug,
       name,
+      brand: "BearHug KE",
+      inStock: true,
       tagline: pick(TAGLINES, i),
       description: `The ${name} is a ${color.toLowerCase()} ${size}-size teddy bear crafted for Kenyan gift-givers. Ultra-soft plush, gift-ready packaging, and nationwide delivery from BearHug KE.`,
       careInstructions:

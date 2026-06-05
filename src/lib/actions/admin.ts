@@ -1,10 +1,17 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { CATALOG_CACHE_TAG } from "@/lib/cachedCatalog";
 import { randomUUID } from "crypto";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { mapProductToDb, mapSiteSettingsToDb } from "@/lib/supabase/mappers";
+import {
+  mapProduct,
+  mapProductList,
+  mapProductToDb,
+  mapSiteSettingsToDb,
+  type DbProductListRow,
+} from "@/lib/supabase/mappers";
 import type { SiteSettings } from "@/types/admin";
 import type { Product } from "@/types/product";
 import { DEFAULT_TESTIMONIALS } from "@/lib/products";
@@ -43,11 +50,168 @@ function safeFileName(name: string) {
   return `${base.slice(0, 40)}-${Date.now()}-${randomUUID().slice(0, 8)}.${ext}`;
 }
 
-function revalidateStore() {
-  revalidatePath("/", "layout");
+function revalidateStore(slug?: string) {
+  revalidateTag(CATALOG_CACHE_TAG);
   revalidatePath("/shop");
-  revalidatePath("/admin");
+  revalidatePath("/");
+  revalidatePath("/admin/products");
+  if (slug) {
+    revalidatePath(`/shop/${slug}`);
+    revalidatePath(`/product/${slug}`);
+  }
   revalidatePath("/sitemap.xml");
+}
+
+const ADMIN_LIST_COLUMNS =
+  "id, slug, name, brand, in_stock, price, size, image, badge, featured";
+
+const ADMIN_BULK_COLUMNS =
+  "id, slug, name, brand, in_stock, size, color, occasions";
+
+export type AdminProductListResult = {
+  items: Product[];
+  total: number;
+  page: number;
+  pageSize: number;
+};
+
+export async function adminCountProducts(): Promise<number> {
+  await requireAdmin();
+  const admin = createAdminClient();
+  const { count, error } = await admin
+    .from("products")
+    .select("id", { count: "exact", head: true });
+  if (error) throw new Error(error.message);
+  return count ?? 0;
+}
+
+function escapeIlike(q: string) {
+  return q.replace(/[%_,]/g, " ").trim();
+}
+
+/** Paginated admin table — loads 50 rows at a time instead of the full catalog. */
+export async function adminListProducts(opts?: {
+  page?: number;
+  pageSize?: number;
+  search?: string;
+}): Promise<AdminProductListResult> {
+  await requireAdmin();
+  const page = Math.max(1, opts?.page ?? 1);
+  const pageSize = Math.min(100, Math.max(10, opts?.pageSize ?? 50));
+  const from = (page - 1) * pageSize;
+  const to = from + pageSize - 1;
+  const admin = createAdminClient();
+
+  const run = (columns: string) => {
+    let q = admin
+      .from("products")
+      .select(columns, { count: "exact" })
+      .order("name", { ascending: true });
+    const term = escapeIlike(opts?.search ?? "");
+    if (term) {
+      const pattern = `%${term}%`;
+      q = q.or(`name.ilike.${pattern},slug.ilike.${pattern},brand.ilike.${pattern}`);
+    }
+    return q.range(from, to);
+  };
+
+  let res = await run(ADMIN_LIST_COLUMNS);
+  if (res.error?.message?.includes("does not exist")) {
+    res = await run(
+      "id, slug, name, tagline, price, size, color, image, badge, featured, created_at"
+    );
+  }
+
+  if (res.error) throw new Error(res.error.message);
+  const items = (res.data ?? []).map((row) =>
+    mapProductList({
+      ...(row as DbProductListRow),
+      tagline: "",
+      color: (row as { color?: string }).color ?? "Brown",
+      occasions: (row as { occasions?: string[] }).occasions ?? [],
+      brand: (row as { brand?: string }).brand ?? "",
+      in_stock: (row as { in_stock?: boolean }).in_stock ?? true,
+    })
+  );
+
+  return {
+    items,
+    total: res.count ?? items.length,
+    page,
+    pageSize,
+  };
+}
+
+/** Lightweight list for bulk recategorize (no images). */
+export async function adminFetchProductsForBulk(): Promise<Product[]> {
+  await requireAdmin();
+  const admin = createAdminClient();
+  let res = await admin
+    .from("products")
+    .select(ADMIN_BULK_COLUMNS)
+    .order("name", { ascending: true })
+    .limit(5000);
+
+  if (res.error?.message?.includes("does not exist")) {
+    res = await admin
+      .from("products")
+      .select("id, slug, name, tagline, price, size, color, occasions, image, badge, featured")
+      .order("name", { ascending: true })
+      .limit(5000);
+  }
+
+  if (res.error) throw new Error(res.error.message);
+  return (res.data ?? []).map((row) =>
+    mapProductList({
+      ...(row as DbProductListRow),
+      image: "",
+      tagline: "",
+      price: (row as { price?: number }).price ?? 0,
+      badge: null,
+      featured: false,
+      created_at: "",
+      brand: (row as { brand?: string }).brand ?? "",
+      in_stock: (row as { in_stock?: boolean }).in_stock ?? true,
+    })
+  );
+}
+
+/** @deprecated Prefer adminListProducts — kept for settings seed flows if needed */
+export async function adminFetchProductSummaries() {
+  const { items } = await adminListProducts({ page: 1, pageSize: 2000 });
+  return items;
+}
+
+export async function adminGetProduct(id: string): Promise<Product | null> {
+  await requireAdmin();
+  const admin = createAdminClient();
+  const { data, error } = await admin.from("products").select("*").eq("id", id).maybeSingle();
+  if (error || !data) return null;
+  return mapProduct(data);
+}
+
+export async function adminBulkUpdateProducts(
+  ids: string[],
+  patch: Partial<Pick<Product, "brand" | "inStock" | "size" | "color" | "occasions" | "featured">>
+) {
+  await requireAdmin();
+  if (!ids.length) return { updated: 0 };
+
+  const admin = createAdminClient();
+  const row: Record<string, unknown> = {};
+  if (patch.brand !== undefined) row.brand = patch.brand;
+  if (patch.inStock !== undefined) row.in_stock = patch.inStock;
+  if (patch.size !== undefined) row.size = patch.size;
+  if (patch.color !== undefined) row.color = patch.color;
+  if (patch.occasions !== undefined) row.occasions = patch.occasions;
+  if (patch.featured !== undefined) row.featured = patch.featured;
+
+  if (!Object.keys(row).length) return { updated: 0 };
+
+  const { error } = await admin.from("products").update(row).in("id", ids);
+  if (error) throw new Error(error.message);
+  revalidateStore();
+  return { updated: ids.length };
 }
 
 export async function adminCreateProduct(
@@ -60,7 +224,7 @@ export async function adminCreateProduct(
 
   const { data: created, error } = await admin.from("products").insert(row).select().single();
   if (error) throw new Error(error.message);
-  revalidateStore();
+  revalidateStore(slug);
   return created;
 }
 
@@ -127,10 +291,12 @@ export async function adminUpdateProduct(id: string, data: Partial<Product>) {
   if (data.images !== undefined) patch.images = data.images;
   if (data.badge !== undefined) patch.badge = data.badge ?? null;
   if (data.featured !== undefined) patch.featured = data.featured;
+  if (data.brand !== undefined) patch.brand = data.brand;
+  if (data.inStock !== undefined) patch.in_stock = data.inStock;
 
   const { error } = await admin.from("products").update(patch).eq("id", id);
   if (error) throw new Error(error.message);
-  revalidateStore();
+  revalidateStore(data.slug);
 }
 
 export async function adminDeleteProduct(id: string) {

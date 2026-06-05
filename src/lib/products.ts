@@ -1,5 +1,4 @@
 import type { BearColor, BearSize, Occasion, Product } from "@/types/product";
-import { filterByOccasionCategory } from "@/lib/occasions";
 import { assignUniquePrimaryImages, catalogImage } from "@/lib/productImages";
 
 const img = catalogImage;
@@ -15,7 +14,7 @@ export const OCCASIONS: (Occasion | "All")[] = [
 ];
 
 export const BEAR_SIZES: BearSize[] = ["S", "M", "L", "Giant"];
-export const BEAR_COLORS: BearColor[] = ["Brown", "White", "Pink", "Grey", "Custom"];
+export { BEAR_COLORS, BEAR_COLOR_HEX, normalizeBearColor } from "@/lib/bearColors";
 
 export const SIZE_PRICES: Record<BearSize, number> = {
   S: 1800,
@@ -24,7 +23,7 @@ export const SIZE_PRICES: Record<BearSize, number> = {
   Giant: 8500,
 };
 
-const rawProducts: Product[] = [
+const rawProducts = [
   {
     id: "1",
     slug: "honey-love-xl",
@@ -424,7 +423,16 @@ const rawProducts: Product[] = [
   },
 ];
 
-export const products: Product[] = assignUniquePrimaryImages(rawProducts);
+export const products: Product[] = assignUniquePrimaryImages(
+  rawProducts.map(
+    (p) =>
+      ({
+        brand: "BearHug KE",
+        inStock: true,
+        ...p,
+      }) as Product
+  )
+);
 
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
@@ -434,63 +442,14 @@ export function getFeaturedProducts(): Product[] {
   return products.filter((p) => p.featured);
 }
 
-export function getRelatedProducts(productList: Product[], slug: string, limit = 4): Product[] {
-  const current = productList.find((p) => p.slug === slug);
-  if (!current) return productList.slice(0, limit);
-  return productList
-    .filter((p) => p.slug !== slug && p.occasions.some((o) => current.occasions.includes(o)))
-    .slice(0, limit);
-}
+export { getRelatedProducts } from "@/lib/filterProducts";
 
 export function getPriceForSize(basePrice: number, size: BearSize): number {
   const ratio = SIZE_PRICES[size] / SIZE_PRICES.M;
   return Math.round((basePrice / SIZE_PRICES.M) * SIZE_PRICES[size] / ratio) || SIZE_PRICES[size];
 }
 
-export function filterProducts(
-  productList: Product[],
-  filters: {
-  occasion?: string;
-  sizes?: BearSize[];
-  colors?: BearColor[];
-  minPrice?: number;
-  maxPrice?: number;
-  sort?: string;
-}): Product[] {
-  let result = [...productList];
-
-  if (filters.occasion && filters.occasion !== "All") {
-    result = filterByOccasionCategory(result, filters.occasion);
-  }
-  if (filters.sizes?.length) {
-    result = result.filter((p) => filters.sizes!.includes(p.size));
-  }
-  if (filters.colors?.length) {
-    result = result.filter((p) => filters.colors!.includes(p.color));
-  }
-  if (filters.minPrice !== undefined) {
-    result = result.filter((p) => p.price >= filters.minPrice!);
-  }
-  if (filters.maxPrice !== undefined) {
-    result = result.filter((p) => p.price <= filters.maxPrice!);
-  }
-
-  switch (filters.sort) {
-    case "price-asc":
-      result.sort((a, b) => a.price - b.price);
-      break;
-    case "price-desc":
-      result.sort((a, b) => b.price - a.price);
-      break;
-    case "newest":
-      result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-      break;
-    default:
-      result.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
-  }
-
-  return result;
-}
+export { filterProducts } from "@/lib/filterProducts";
 
 export const DEFAULT_TESTIMONIALS = [
   {

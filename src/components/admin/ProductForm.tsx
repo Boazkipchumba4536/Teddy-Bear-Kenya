@@ -1,18 +1,22 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Product } from "@/types/product";
 import type { BearColor, BearSize, Occasion, ProductBadge } from "@/types/product";
-import { BEAR_COLORS, BEAR_SIZES, OCCASIONS } from "@/lib/products";
+import { BEAR_SIZES, OCCASIONS } from "@/lib/products";
+import { normalizeBearColor } from "@/lib/bearColors";
+import AdminColorPicker from "@/components/admin/AdminColorPicker";
+import { mergeBrandOptions, TEDDY_BRANDS } from "@/lib/brands";
 import { adminUploadProductImage } from "@/lib/actions/admin";
 import { toastError, toastSuccess } from "@/store/toastStore";
 import ProductImagePreview from "./ProductImagePreview";
-import { Loader2, Upload, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const occasionOptions = OCCASIONS.filter((o) => o !== "All") as Occasion[];
 
 interface ProductFormProps {
   initial?: Product;
+  brandOptions?: string[];
   onSubmit: (data: Omit<Product, "id" | "createdAt">) => void;
   onCancel: () => void;
   submitLabel?: string;
@@ -21,6 +25,8 @@ interface ProductFormProps {
 const emptyProduct = (): Omit<Product, "id" | "createdAt"> => ({
   slug: "",
   name: "",
+  brand: "BearHug KE",
+  inStock: true,
   tagline: "",
   description: "",
   careInstructions: "Spot clean with mild detergent. Air dry.",
@@ -36,6 +42,7 @@ const emptyProduct = (): Omit<Product, "id" | "createdAt"> => ({
 
 export default function ProductForm({
   initial,
+  brandOptions = [],
   onSubmit,
   onCancel,
   submitLabel = "Save Product",
@@ -43,7 +50,15 @@ export default function ProductForm({
   const [form, setForm] = useState<Omit<Product, "id" | "createdAt">>(
     initial ?? emptyProduct()
   );
-  const [uploading, setUploading] = useState(false);
+  const brands = useMemo(
+    () =>
+      mergeBrandOptions([
+        ...brandOptions,
+        initial?.brand ?? "",
+        form.brand,
+      ]),
+    [brandOptions, initial?.brand, form.brand]
+  );
   const [uploadError, setUploadError] = useState("");
   const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -51,7 +66,7 @@ export default function ProductForm({
   useEffect(() => {
     if (initial) {
       const { id: _id, createdAt: _c, ...rest } = initial;
-      setForm(rest);
+      setForm({ ...rest, color: normalizeBearColor(rest.color) });
       setUploadedUrl(null);
     }
   }, [initial]);
@@ -69,26 +84,22 @@ export default function ProductForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanedImages = form.images.map((img) => img.trim()).filter(Boolean);
-    const primaryImage = form.image.trim() || cleanedImages[0];
-    const images = cleanedImages.length ? cleanedImages : primaryImage ? [primaryImage] : [];
+    const primaryImage = form.image.trim() || form.images.map((img) => img.trim()).find(Boolean) || "";
     if (!primaryImage) {
       toastError("Add a primary image URL or upload a file first.");
       return;
     }
-    onSubmit({ ...form, image: primaryImage, images });
+    onSubmit({ ...form, image: primaryImage, images: [primaryImage] });
   };
 
   const uploadFile = async (file: File) => {
-    setUploading(true);
     setUploadError("");
     setUploadedUrl(null);
     try {
       const data = new FormData();
       data.set("file", file);
       const uploaded = await adminUploadProductImage(data);
-      const nextImages = [uploaded.url, ...form.images.filter((img) => img !== uploaded.url)];
-      setForm((prev) => ({ ...prev, image: uploaded.url, images: nextImages }));
+      setForm((prev) => ({ ...prev, image: uploaded.url, images: [uploaded.url] }));
       setUploadedUrl(uploaded.url);
       if (fileInputRef.current) fileInputRef.current.value = "";
       toastSuccess("Image uploaded — click Save Product to store it in the catalog.");
@@ -96,8 +107,6 @@ export default function ProductForm({
       const msg = error instanceof Error ? error.message : "Upload failed";
       setUploadError(msg);
       toastError(msg);
-    } finally {
-      setUploading(false);
     }
   };
 
@@ -106,10 +115,8 @@ export default function ProductForm({
     if (file) void uploadFile(file);
   };
 
-  const previewImages = [form.image, ...form.images]
-    .filter(Boolean)
-    .filter((img, index, arr) => arr.indexOf(img) === index)
-    .slice(0, 6);
+  const previewImage =
+    form.image.trim() || form.images.map((img) => img.trim()).find(Boolean) || "";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-2xl p-6 shadow-card">
@@ -152,6 +159,32 @@ export default function ProductForm({
           />
         </div>
         <div>
+          <label className="text-sm font-medium mb-1 block">Brand</label>
+          <input
+            list="product-brand-options"
+            value={form.brand}
+            onChange={(e) => update("brand", e.target.value)}
+            className="input-field"
+            placeholder="e.g. Tambo Teddies"
+          />
+          <datalist id="product-brand-options">
+            {brands.map((b) => (
+              <option key={b} value={b} />
+            ))}
+          </datalist>
+        </div>
+        <div className="flex items-end">
+          <label className="flex items-center gap-2 cursor-pointer pb-2">
+            <input
+              type="checkbox"
+              checked={form.inStock}
+              onChange={(e) => update("inStock", e.target.checked)}
+              className="w-4 h-4 accent-caramel"
+            />
+            <span className="text-sm font-medium">In stock</span>
+          </label>
+        </div>
+        <div>
           <label className="text-sm font-medium mb-1 block">Size</label>
           <select
             value={form.size}
@@ -165,20 +198,7 @@ export default function ProductForm({
             ))}
           </select>
         </div>
-        <div>
-          <label className="text-sm font-medium mb-1 block">Color</label>
-          <select
-            value={form.color}
-            onChange={(e) => update("color", e.target.value as BearColor)}
-            className="input-field"
-          >
-            {BEAR_COLORS.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
-        </div>
+        <AdminColorPicker value={form.color} onChange={(c) => update("color", c)} />
         <div>
           <label className="text-sm font-medium mb-1 block">Badge</label>
           <select
@@ -227,15 +247,8 @@ export default function ProductForm({
                 type="file"
                 accept="image/jpeg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp,.gif"
                 onChange={onFileChange}
-                disabled={uploading}
                 className="input-field py-2 flex-1 min-w-[200px]"
               />
-              {uploading && (
-                <span className="inline-flex items-center gap-2 text-sm text-caramel">
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Uploading…
-                </span>
-              )}
             </div>
           </div>
 
@@ -253,39 +266,11 @@ export default function ProductForm({
             />
           </div>
 
-          <div>
-            <label className="text-xs font-medium mb-1 block">Gallery URLs (one per line)</label>
-            <textarea
-              rows={3}
-              value={form.images.join("\n")}
-              onChange={(e) =>
-                update(
-                  "images",
-                  e.target.value
-                    .split("\n")
-                    .map((line) => line.trim())
-                    .filter(Boolean)
-                )
-              }
-              className="input-field resize-y font-mono text-xs"
-              placeholder="https://..."
-            />
-          </div>
-
-          {previewImages.length > 0 && (
+          {previewImage && (
             <div>
               <p className="text-xs font-medium mb-2">Preview</p>
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                {previewImages.map((img) => (
-                  <div
-                    key={img}
-                    className={`relative aspect-square rounded-lg overflow-hidden border-2 ${
-                      img === form.image ? "border-caramel" : "border-caramel/10"
-                    } bg-cream`}
-                  >
-                    <ProductImagePreview src={img} alt="Product preview" />
-                  </div>
-                ))}
+              <div className="relative aspect-square max-w-[200px] rounded-lg overflow-hidden border-2 border-caramel bg-cream">
+                <ProductImagePreview src={previewImage} alt="Product preview" />
               </div>
             </div>
           )}
@@ -344,10 +329,17 @@ export default function ProductForm({
       </div>
 
       <div className="flex gap-3 pt-2">
-        <button type="submit" className="btn-primary bg-caramel" disabled={uploading}>
+        <button
+          type="submit"
+          className="btn-primary bg-caramel active:scale-[0.98] transition-transform"
+        >
           {submitLabel}
         </button>
-        <button type="button" onClick={onCancel} className="btn-outline" disabled={uploading}>
+        <button
+          type="button"
+          onClick={onCancel}
+          className="btn-outline active:scale-[0.98] transition-transform"
+        >
           Cancel
         </button>
       </div>

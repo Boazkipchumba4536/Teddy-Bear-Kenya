@@ -4,19 +4,21 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import {
   BEAR_SIZES,
-  BEAR_COLORS,
   OCCASIONS,
 } from "@/lib/products";
+import { BEAR_COLORS, bearColorSwatchStyle } from "@/lib/bearColors";
 import { getSizeLabel } from "@/lib/sizeCategories";
 import type { BearColor, BearSize } from "@/types/product";
 
 interface ShopSidebarProps {
   occasion: string;
+  brand: string;
+  brandOptions: [string, number][];
+  onBrand: (v: string) => void;
   sizes: BearSize[];
   colors: BearColor[];
   minPrice: number;
   maxPrice: number;
-  minRating: number;
   expressOnly: boolean;
   priceMin: number;
   priceMax: number;
@@ -25,7 +27,6 @@ interface ShopSidebarProps {
   onToggleColor: (c: BearColor) => void;
   onMinPrice: (v: number) => void;
   onMaxPrice: (v: number) => void;
-  onMinRating: (v: number) => void;
   onExpressOnly: (v: boolean) => void;
   onApplyPrice: () => void;
 }
@@ -42,19 +43,17 @@ function FilterSection({
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className="border-b border-market-border py-4 first:pt-0">
+    <div className="border-b border-caramel/10 py-4 first:pt-0">
       <button
         type="button"
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between text-left"
       >
-        <span className="text-[11px] font-bold uppercase tracking-wider text-market-dark">
-          {title}
-        </span>
+        <span className="shop-label">{title}</span>
         {open ? (
-          <ChevronUp className="w-4 h-4 text-market-muted" />
+          <ChevronUp className="w-4 h-4 text-ink-light" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-market-muted" />
+          <ChevronDown className="w-4 h-4 text-ink-light" />
         )}
       </button>
       <div
@@ -71,11 +70,13 @@ function FilterSection({
 export default function ShopSidebar(props: ShopSidebarProps) {
   const {
     occasion,
+    brand,
+    brandOptions,
+    onBrand,
     sizes,
     colors,
     minPrice,
     maxPrice,
-    minRating,
     expressOnly,
     priceMin,
     priceMax,
@@ -84,20 +85,44 @@ export default function ShopSidebar(props: ShopSidebarProps) {
     onToggleColor,
     onMinPrice,
     onMaxPrice,
-    onMinRating,
     onExpressOnly,
     onApplyPrice,
   } = props;
 
-  const ratingOptions = [
-    { value: 4, label: "4★ & above" },
-    { value: 3, label: "3★ & above" },
-    { value: 2, label: "2★ & above" },
-    { value: 1, label: "1★ & above" },
-  ];
-
   return (
     <aside className="w-full">
+      {brandOptions.length > 0 && (
+        <FilterSection title="Brand">
+          <ul className="space-y-2 max-h-48 overflow-y-auto">
+            <li>
+              <button
+                type="button"
+                onClick={() => onBrand("")}
+                className={`text-sm hover:text-caramel transition-colors ${
+                  !brand ? "text-caramel font-semibold" : "text-ink-muted"
+                }`}
+              >
+                All brands
+              </button>
+            </li>
+            {brandOptions.map(([name, count]) => (
+              <li key={name}>
+                <button
+                  type="button"
+                  onClick={() => onBrand(name)}
+                  className={`text-sm hover:text-caramel transition-colors text-left ${
+                    brand === name ? "text-caramel font-semibold" : "text-ink-muted"
+                  }`}
+                >
+                  {name}
+                  <span className="text-ink-light ml-1">({count})</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </FilterSection>
+      )}
+
       <FilterSection title="Category">
         <ul className="space-y-2">
           {OCCASIONS.filter((o) => o !== "All").map((o) => (
@@ -105,8 +130,8 @@ export default function ShopSidebar(props: ShopSidebarProps) {
               <button
                 type="button"
                 onClick={() => onOccasion(o)}
-                className={`text-[13px] hover:text-market-orange transition-colors ${
-                  occasion === o ? "text-market-orange font-semibold" : "text-market-text"
+                className={`text-sm hover:text-caramel transition-colors ${
+                  occasion === o ? "text-caramel font-semibold" : "text-ink-muted"
                 }`}
               >
                 {o}
@@ -117,8 +142,8 @@ export default function ShopSidebar(props: ShopSidebarProps) {
             <button
               type="button"
               onClick={() => onOccasion("All")}
-              className={`text-[13px] hover:text-market-orange ${
-                occasion === "All" ? "text-market-orange font-semibold" : "text-market-text"
+              className={`text-sm hover:text-caramel ${
+                occasion === "All" ? "text-caramel font-semibold" : "text-ink-muted"
               }`}
             >
               All Teddy Bears
@@ -133,9 +158,9 @@ export default function ShopSidebar(props: ShopSidebarProps) {
             type="checkbox"
             checked={expressOnly}
             onChange={(e) => onExpressOnly(e.target.checked)}
-            className="w-4 h-4 accent-market-orange rounded"
+            className="w-4 h-4 accent-caramel rounded"
           />
-          <span className="text-[13px] text-market-text flex items-center gap-1">
+          <span className="text-sm text-ink-muted flex items-center gap-1">
             ⚡ Express eligible only
           </span>
         </label>
@@ -144,12 +169,16 @@ export default function ShopSidebar(props: ShopSidebarProps) {
       <FilterSection title="Colour">
         <div className="space-y-2 max-h-36 overflow-y-auto">
           {BEAR_COLORS.map((c) => (
-            <label key={c} className="flex items-center gap-2 cursor-pointer text-[13px]">
+            <label key={c} className="flex items-center gap-2 cursor-pointer text-sm text-ink-muted">
               <input
                 type="checkbox"
                 checked={colors.includes(c)}
                 onChange={() => onToggleColor(c)}
-                className="w-4 h-4 accent-market-orange"
+                className="w-4 h-4 accent-caramel rounded"
+              />
+              <span
+                className="w-4 h-4 rounded-full border border-ink/15 shrink-0"
+                style={bearColorSwatchStyle(c)}
               />
               {c}
             </label>
@@ -164,14 +193,14 @@ export default function ShopSidebar(props: ShopSidebarProps) {
               type="number"
               value={minPrice}
               onChange={(e) => onMinPrice(Number(e.target.value))}
-              className="market-input flex-1 text-sm py-2"
+              className="shop-select flex-1 text-sm py-2 min-h-0"
               placeholder="Min"
             />
             <input
               type="number"
               value={maxPrice}
               onChange={(e) => onMaxPrice(Number(e.target.value))}
-              className="market-input flex-1 text-sm py-2"
+              className="shop-select flex-1 text-sm py-2 min-h-0"
               placeholder="Max"
             />
           </div>
@@ -182,38 +211,11 @@ export default function ShopSidebar(props: ShopSidebarProps) {
             step={100}
             value={maxPrice}
             onChange={(e) => onMaxPrice(Number(e.target.value))}
-            className="w-full accent-market-orange"
+            className="w-full accent-caramel"
           />
-          <button type="button" onClick={onApplyPrice} className="market-btn-outline w-full text-sm py-2">
+          <button type="button" onClick={onApplyPrice} className="btn-outline w-full text-sm py-2 min-h-0">
             Apply
           </button>
-        </div>
-      </FilterSection>
-
-      <FilterSection title="Product Rating">
-        <div className="space-y-2">
-          {ratingOptions.map(({ value, label }) => (
-            <label key={value} className="flex items-center gap-2 cursor-pointer text-[13px]">
-              <input
-                type="radio"
-                name="rating"
-                checked={minRating === value}
-                onChange={() => onMinRating(value)}
-                className="accent-market-orange"
-              />
-              <span className="text-market-orange text-sm">★★★★</span>
-              <span className="text-market-muted">{label}</span>
-            </label>
-          ))}
-          {minRating > 0 && (
-            <button
-              type="button"
-              onClick={() => onMinRating(0)}
-              className="text-xs text-market-orange hover:underline"
-            >
-              Any rating
-            </button>
-          )}
         </div>
       </FilterSection>
 
@@ -224,14 +226,14 @@ export default function ShopSidebar(props: ShopSidebarProps) {
               key={s}
               type="button"
               onClick={() => onToggleSize(s)}
-              className={`w-full text-left px-3 py-2 text-[13px] rounded border transition-colors ${
+              className={`w-full text-left px-3 py-2.5 text-sm rounded-xl border transition-all duration-200 ${
                 sizes.includes(s)
-                  ? "bg-market-orange text-white border-market-orange"
-                  : "bg-white text-market-text border-market-border hover:border-market-orange"
+                  ? "bg-caramel text-white border-caramel shadow-soft"
+                  : "bg-white text-ink-muted border-caramel/15 hover:border-caramel/40"
               }`}
             >
               <span className="font-semibold">{getSizeLabel(s)}</span>
-              <span className={`ml-1.5 text-[11px] ${sizes.includes(s) ? "text-white/90" : "text-market-muted"}`}>
+              <span className={`ml-1.5 text-[11px] ${sizes.includes(s) ? "text-white/90" : "text-ink-light"}`}>
                 ({s})
               </span>
             </button>

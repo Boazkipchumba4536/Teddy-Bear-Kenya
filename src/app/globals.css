@@ -3,49 +3,359 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-accent: #be123c;
+    --color-accent-dark: #9f1239;
+    --color-surface: #f6f7fb;
+    --color-ink: #0b1220;
+    --color-ink-muted: #5b6478;
+    --radius-card: 1rem;
+    --radius-pill: 9999px;
+    --shadow-card: 0 1px 3px rgba(11, 18, 32, 0.06), 0 8px 24px -8px rgba(11, 18, 32, 0.1);
+    --shadow-elevated: 0 24px 48px -12px rgba(11, 18, 32, 0.18);
+    --header-offset: 4rem;
+  }
+
   html {
     scroll-behavior: smooth;
   }
-  body {
-    @apply bg-cream text-ink antialiased;
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
+
+  body {
+    @apply bg-surface text-ink antialiased;
+  }
+
   ::selection {
     @apply bg-blush text-ink;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-ink tracking-tight font-semibold;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  img {
+    @apply max-w-full h-auto;
   }
 }
 
 @layer components {
   .container-main {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] bg-accent text-white px-4 py-2 rounded-lg text-sm font-semibold;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-caramel px-6 py-3 min-h-[44px] text-sm font-semibold text-white transition-all duration-300 hover:bg-caramel-dark hover:shadow-elevated focus:outline-none focus:ring-2 focus:ring-caramel/30 focus:ring-offset-2 disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 min-h-[44px] text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-dark hover:shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-caramel bg-transparent px-6 py-3 min-h-[44px] text-sm font-semibold text-caramel transition-all duration-300 hover:bg-caramel/5;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-ink/15 bg-white px-6 py-3 min-h-[44px] text-sm font-semibold text-ink transition-all duration-200 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ink/10 bg-white px-6 py-3 min-h-[44px] text-sm font-semibold text-ink-muted transition-all duration-200 hover:border-ink/20 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/15 focus-visible:ring-offset-2;
   }
 
   .btn-mpesa {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-mpesa px-6 py-3 min-h-[44px] text-sm font-semibold text-white transition-all duration-300 hover:bg-mpesa-dark animate-pulseMpesa focus:outline-none focus:ring-2 focus:ring-mpesa/30 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-mpesa px-6 py-3 min-h-[44px] text-sm font-semibold text-white transition-all duration-200 hover:bg-mpesa-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mpesa/30 focus-visible:ring-offset-2 disabled:opacity-50;
+  }
+
+  .btn-primary:active:not(:disabled),
+  .btn-outline:active:not(:disabled),
+  .btn-ghost:active:not(:disabled),
+  .btn-mpesa:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  button,
+  [type="button"],
+  [type="submit"],
+  a.btn-primary,
+  a.btn-outline {
+    touch-action: manipulation;
+  }
+
+  .route-progress {
+    transform: scaleX(0);
+  }
+
+  .route-progress-active {
+    animation: route-progress-fill 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes route-progress-fill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
   }
 
   .input-field {
-    @apply w-full rounded-xl border border-ink/10 bg-white px-4 py-3 min-h-[44px] text-ink placeholder:text-ink-light focus:border-caramel/40 focus:outline-none focus:ring-4 focus:ring-caramel/5 transition;
+    @apply w-full rounded-lg border border-ink/10 bg-white px-4 py-3 min-h-[44px] text-ink placeholder:text-ink-light focus:border-accent/50 focus:outline-none focus:ring-4 focus:ring-accent/10 transition;
   }
 
   .glass-nav {
-    @apply bg-cream/85 backdrop-blur-xl border-b border-caramel/10;
+    @apply bg-white/90 backdrop-blur-xl border-b border-ink/5;
   }
 
-  .paw-pattern {
-    background-image: radial-gradient(circle at 20% 80%, rgba(139, 94, 60, 0.04) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(245, 197, 197, 0.08) 0%, transparent 50%);
+  .section-eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.24em] text-violet;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-ink tracking-tight leading-[1.1];
+  }
+
+  .section-desc {
+    @apply text-ink-muted text-sm md:text-base leading-relaxed;
+  }
+
+  .section-link {
+    @apply text-sm font-semibold text-accent hover:text-accent-dark transition-colors inline-flex items-center gap-1;
   }
 
   .section-pad {
     @apply py-14 md:py-20;
+  }
+
+  .page-enter {
+    animation: fadeIn 0.45s ease-out forwards;
+  }
+
+  /* Hero — full-bleed banner */
+  .hero-banner {
+    @apply relative min-h-[min(88vh,720px)] flex items-end overflow-hidden;
+  }
+
+  .hero-banner-bg {
+    @apply absolute inset-0;
+  }
+
+  .hero-banner-overlay {
+    background: linear-gradient(
+      105deg,
+      rgba(11, 18, 32, 0.88) 0%,
+      rgba(11, 18, 32, 0.55) 45%,
+      rgba(11, 18, 32, 0.2) 100%
+    );
+  }
+
+  .hero-stat {
+    @apply rounded-xl bg-white/10 backdrop-blur-md border border-white/15 px-4 py-3;
+  }
+
+  @keyframes review-marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .review-marquee-track {
+    animation: review-marquee 55s linear infinite;
+    width: max-content;
+  }
+
+  .review-marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .review-marquee-track {
+      animation: none;
+    }
+  }
+
+  /* Shop */
+  .shop-page {
+    @apply min-h-screen bg-surface;
+  }
+
+  .shop-page-header {
+    @apply bg-white border-b border-ink/5;
+  }
+
+  .shop-breadcrumb {
+    @apply text-xs text-ink-light;
+  }
+
+  .shop-breadcrumb a {
+    @apply hover:text-accent;
+  }
+
+  .shop-panel {
+    @apply bg-white rounded-xl border border-ink/5 shadow-card;
+  }
+
+  .shop-label {
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-violet;
+  }
+
+  .shop-chip {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-ink/10 bg-white px-3 py-1.5 text-xs font-semibold text-ink-muted transition-all duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25;
+  }
+
+  .shop-chip-active {
+    @apply border-accent bg-accent text-white hover:text-white hover:border-accent shadow-soft;
+  }
+
+  .shop-select {
+    @apply rounded-lg border border-ink/10 bg-white px-4 py-2.5 min-h-[44px] text-sm text-ink focus:border-accent/50 focus:outline-none focus:ring-4 focus:ring-accent/10 transition cursor-pointer;
+  }
+
+  .shop-filter-tag {
+    @apply inline-flex items-center gap-1 bg-blush text-accent text-xs font-semibold px-3 py-1.5 rounded-lg border border-accent/10 hover:bg-blush-dark transition-colors;
+  }
+
+  .shop-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5;
+  }
+
+  .product-grid-home {
+    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5;
+  }
+
+  .shop-card {
+    @apply flex flex-col h-full bg-white rounded-xl border border-ink/5 shadow-card overflow-hidden transition-all duration-300 hover:shadow-elevated hover:-translate-y-0.5;
+  }
+
+  .product-card {
+    @apply flex flex-col h-full bg-white rounded-xl border border-ink/5 overflow-hidden transition-all duration-300 hover:shadow-elevated hover:-translate-y-0.5;
+  }
+
+  .product-card-media,
+  .shop-card-media {
+    @apply relative aspect-[3/4] bg-surface-dark overflow-hidden;
+  }
+
+  .shop-add-cart {
+    @apply w-full py-2.5 rounded-lg text-sm font-semibold border-0 bg-ink text-white transition-all duration-200 hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .shop-add-cart.is-added {
+    @apply bg-mpesa hover:bg-mpesa-dark;
+  }
+
+  .shop-page-btn {
+    @apply inline-flex items-center justify-center h-10 min-w-[40px] px-3 rounded-lg border border-ink/10 bg-white text-sm font-medium text-ink-muted transition-all duration-200 hover:border-accent/30 hover:text-accent disabled:opacity-40 disabled:pointer-events-none focus-visible:ring-2 focus-visible:ring-accent/25;
+  }
+
+  .shop-page-btn.is-active {
+    @apply bg-accent text-white border-accent hover:text-white shadow-soft;
+  }
+
+  .shop-option {
+    @apply px-4 py-2.5 text-sm font-semibold rounded-lg border border-ink/10 text-ink-muted transition-all duration-200 hover:border-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/25;
+  }
+
+  .shop-option-active {
+    @apply border-accent bg-accent text-white shadow-soft;
+  }
+
+  .shop-qty {
+    @apply inline-flex items-center border border-ink/10 rounded-lg overflow-hidden bg-white;
+  }
+
+  .shop-qty-btn {
+    @apply w-11 h-11 flex items-center justify-center text-ink-muted hover:bg-surface hover:text-accent transition-colors;
+  }
+
+  .shop-accordion-btn {
+    @apply flex w-full items-center justify-between py-4 text-left font-semibold text-ink border-b border-ink/5;
+  }
+
+  .shop-accordion-panel {
+    @apply pb-4 text-sm text-ink-muted leading-relaxed;
+  }
+
+  .image-frame {
+    @apply relative aspect-square rounded-xl overflow-hidden bg-surface-dark border border-ink/5 shadow-card;
+  }
+
+  .image-thumb {
+    @apply relative aspect-square rounded-lg border-2 overflow-hidden bg-white transition-colors;
+  }
+
+  .image-thumb-active {
+    @apply border-accent ring-2 ring-accent/20;
+  }
+
+  .image-thumb-idle {
+    @apply border-ink/10 hover:border-accent/30;
+  }
+
+  .shop-tab {
+    @apply shrink-0 px-4 py-3 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap;
+  }
+
+  .shop-tab-active {
+    @apply text-accent border-accent;
+  }
+
+  .shop-tab-idle {
+    @apply text-ink-muted border-transparent hover:text-accent hover:border-accent/30;
+  }
+
+  .shop-drawer-overlay {
+    @apply absolute inset-0 bg-ink/50 backdrop-blur-[2px];
+  }
+
+  .shop-drawer-panel {
+    @apply absolute bottom-0 inset-x-0 bg-white rounded-t-3xl max-h-[85vh] overflow-y-auto shadow-elevated;
+  }
+
+  .market-input {
+    @apply shop-select;
+  }
+
+  .market-btn-outline {
+    @apply shop-chip;
+  }
+
+  .market-add-cart {
+    @apply shop-add-cart;
+  }
+
+  .market-page-btn {
+    @apply shop-page-btn;
+  }
+
+  .border-market-border {
+    @apply border-ink/10;
+  }
+
+  .border-market-orange {
+    @apply border-accent;
   }
 
   .toast-enter {
@@ -56,54 +366,37 @@
     background-size: 200% 100%;
     background-image: linear-gradient(
       90deg,
-      rgba(139, 94, 60, 0.06) 0%,
-      rgba(245, 197, 197, 0.35) 50%,
-      rgba(139, 94, 60, 0.06) 100%
+      rgba(11, 18, 32, 0.04) 0%,
+      rgba(190, 18, 60, 0.08) 50%,
+      rgba(11, 18, 32, 0.04) 100%
     );
     animation: shimmer 1.6s ease-in-out infinite;
-  }
-
-  .page-enter {
-    animation: fadeIn 0.45s ease-out forwards;
-  }
-
-  .btn-primary:active:not(:disabled),
-  .btn-outline:active:not(:disabled),
-  .btn-mpesa:active:not(:disabled) {
-    transform: scale(0.98);
-  }
-
-  /* Jumia-style marketplace (shop listing) */
-  .market-input {
-    @apply w-full rounded border border-market-border bg-white px-3 py-2 text-market-dark text-[13px] focus:border-market-orange focus:outline-none focus:ring-1 focus:ring-market-orange/30;
-  }
-
-  .market-btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded border-2 border-market-orange bg-white px-4 py-2 text-[13px] font-bold text-market-orange transition-colors duration-200 hover:bg-market-orange hover:text-white;
-  }
-
-  .market-add-cart {
-    @apply w-full py-2.5 text-[13px] font-bold rounded border-2 border-market-orange bg-white text-market-orange transition-all duration-200 hover:bg-market-orange hover:text-white;
-  }
-
-  .market-add-cart.is-added {
-    @apply bg-market-green border-market-green text-white;
-  }
-
-  .market-page-btn {
-    @apply inline-flex items-center justify-center h-9 px-2 rounded border border-market-border bg-white text-market-text text-sm font-medium hover:border-market-orange disabled:opacity-40 disabled:pointer-events-none transition-colors;
-  }
-
-  .market-page-btn.is-active {
-    @apply bg-market-orange text-white border-market-orange;
   }
 
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  .scrollbar-premium {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(11, 18, 32, 0.2) transparent;
+  }
+
+  .scrollbar-premium::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .scrollbar-premium::-webkit-scrollbar-thumb {
+    @apply bg-ink/20 rounded-full;
+  }
+
+  .catalog-count-badge {
+    @apply inline-flex items-center rounded-full bg-violet/10 text-violet text-xs font-bold px-3 py-1;
   }
 }
 
@@ -124,5 +417,25 @@
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }

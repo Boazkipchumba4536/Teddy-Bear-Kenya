@@ -35,7 +35,7 @@ export default function ProductImageZoom({
     <div>
       <div
         ref={containerRef}
-        className="relative aspect-square rounded-lg overflow-hidden bg-white border border-market-border cursor-zoom-in"
+        className="image-frame cursor-zoom-in"
         onMouseEnter={() => setZooming(true)}
         onMouseLeave={() => setZooming(false)}
         onMouseMove={handleMove}
@@ -69,8 +69,8 @@ export default function ProductImageZoom({
               key={`${img}-${i}`}
               type="button"
               onClick={() => setActiveSrc(img)}
-              className={`relative aspect-square rounded border-2 overflow-hidden bg-white transition-colors ${
-                activeSrc === img ? "border-market-orange" : "border-market-border"
+              className={`image-thumb ${
+                activeSrc === img ? "image-thumb-active" : "image-thumb-idle"
               }`}
             >
               <Image src={img} alt="" fill sizes="80px" quality={75} className="object-contain p-1" />

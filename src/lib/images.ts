@@ -1,13 +1,30 @@
 /**
- * Images loaded directly from teddybearhaven.co.ke CDN.
- * Product cards use WordPress thumbnails (~300px) for fast loads; hero/detail use larger sizes.
+ * Images from teddybearhaven.co.ke CDN.
+ * WordPress only serves registered sizes (150, 300, 768, 1024) — not arbitrary dimensions.
  */
 
 const CDN = "https://teddybearhaven.co.ke/wp-content/uploads";
 
 export const IMAGE_FALLBACK = "/images/fallback.svg";
 
-export const HERO_IMAGE = `${CDN}/2024/12/Teddy-Bear-Kenya-Woman-with-Big-Teddy-Bears.webp`;
+/** Full-bleed hero — giant pink & white collection shot (legacy CDN) */
+export const HERO_IMAGE = `${CDN}/2025/01/Buy-Big-Teddy-Bear-Dolls-online-130cm-Giant-Teddy-Bear-in-Pink-and-White-front.jpg`;
+
+/** Homepage hero carousel (local) */
+export const HERO_CAROUSEL_IMAGES = [
+  "/images/category-giant.webp",
+  "/images/category-personalised.webp",
+  "/images/image8.webp",
+] as const;
+
+export const ABOUT_IMAGE = "/images/image8.webp";
+
+/** “Build a bear” section carousel (local) */
+export const CUSTOM_BEAR_CAROUSEL_IMAGES = [
+  "/images/image3.webp",
+  "/images/image14.webp",
+  "/images/image16.webp",
+] as const;
 export const LOGO_IMAGE = `${CDN}/2025/10/cropped-cropped-cropped-teddybearhaven_logo2-e1759596208230.jpeg`;
 
 export const PRODUCT_COUNT = 16;
@@ -43,13 +60,14 @@ export const TESTIMONIAL_IMAGES = [1, 2, 3, 4, 5, 6, 7].map(
 );
 
 export type ImageVariant = "thumb" | "card" | "banner" | "detail" | "hero";
+export type DisplayImageSize = "thumb" | "card" | "detail" | "full";
 
-const WP_SIZES: Record<ImageVariant, number> = {
+/** WordPress-registered widths that exist on the CDN. */
+const WP_WIDTHS: Record<DisplayImageSize, number | null> = {
   thumb: 150,
   card: 300,
-  banner: 768,
   detail: 768,
-  hero: 1024,
+  full: null,
 };
 
 export const IMAGE_SIZES = {
@@ -67,10 +85,37 @@ export function isRemoteImage(src: string): boolean {
   return src.startsWith("http://") || src.startsWith("https://");
 }
 
-/** WordPress auto-generated thumbnail (e.g. photo-300x300.jpg) */
-export function wpThumbnail(url: string, px: number): string {
-  return url.replace(/(\.[a-z]+)$/i, `-${px}x${px}$1`);
+/** Build a WordPress sized URL (only uses sizes that exist: 150, 300, 768, 1024). */
+export function optimizedImageUrl(url: string, size: DisplayImageSize): string {
+  const trimmed = url?.trim();
+  if (!trimmed || trimmed === IMAGE_FALLBACK || trimmed.includes("fallback")) {
+    return IMAGE_FALLBACK;
+  }
+  if (!isRemoteImage(trimmed)) return trimmed;
+
+  const px = WP_WIDTHS[size];
+  if (px === null) return trimmed;
+  if (/-\d+x\d+\.[a-z]+$/i.test(trimmed)) return trimmed;
+  // This CDN has sized JPG/JPEG only; sized .webp paths 404.
+  if (/\.webp$/i.test(trimmed)) return trimmed;
+
+  return trimmed.replace(/(\.[a-z]+)$/i, `-${px}x${px}$1`);
 }
+
+/** @deprecated Use optimizedImageUrl — maps arbitrary px to nearest WP size. */
+export function wpThumbnail(url: string, px: number): string {
+  const allowed: DisplayImageSize[] =
+    px <= 175 ? ["thumb"] : px <= 534 ? ["card"] : px <= 896 ? ["detail"] : ["full"];
+  return optimizedImageUrl(url, allowed[0]);
+}
+
+const WP_SIZES: Record<ImageVariant, DisplayImageSize> = {
+  thumb: "thumb",
+  card: "card",
+  banner: "detail",
+  detail: "detail",
+  hero: "full",
+};
 
 export function imageForProduct(productId: string | number): string {
   return PRODUCT_IMAGES[String(productId)] ?? IMAGE_FALLBACK;
@@ -81,12 +126,10 @@ export function imageSrcCandidates(
   variant: ImageVariant = "card"
 ): string[] {
   if (isRemoteImage(basePath)) {
-    const px = WP_SIZES[variant];
-    const thumb = wpThumbnail(basePath, px);
-    if (variant === "hero" || variant === "detail" || variant === "banner") {
-      return [thumb, basePath];
-    }
-    return [thumb, wpThumbnail(basePath, 768), basePath];
+    const size = WP_SIZES[variant];
+    const sized = optimizedImageUrl(basePath, size);
+    if (size === "full") return [basePath];
+    return [sized, basePath];
   }
 
   const withoutExt = basePath.replace(/\.(jpe?g|png|webp|svg)$/i, "");

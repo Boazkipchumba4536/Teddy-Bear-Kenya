@@ -1,54 +1,53 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useMemo, useState } from "react";
+import {
+  getProductImageCandidates,
+} from "@/lib/productDisplayImage";
+import { IMAGE_FALLBACK } from "@/lib/images";
 
 interface ProductImageGalleryProps {
   images: string[];
   alt: string;
+  productId: string;
+  slug?: string;
   priority?: boolean;
 }
 
+/** Storefront: single main product image only. */
 export default function ProductImageGallery({
   images,
   alt,
+  productId,
+  slug,
   priority = false,
 }: ProductImageGalleryProps) {
-  const [selected, setSelected] = useState(0);
-  const list = images.length ? images : ["/images/fallback.svg"];
+  const mainUrl = useMemo(() => {
+    const primary = images.map((s) => s?.trim()).find(Boolean);
+    return primary || IMAGE_FALLBACK;
+  }, [images]);
+
+  const mainCandidates = useMemo(
+    () => getProductImageCandidates({ id: productId, slug, image: mainUrl }, "detail"),
+    [mainUrl, productId, slug]
+  );
+  const [mainIndex, setMainIndex] = useState(0);
+  const mainSrc = mainCandidates[Math.min(mainIndex, mainCandidates.length - 1)] ?? IMAGE_FALLBACK;
 
   return (
     <div>
-      <div className="relative aspect-square rounded-lg overflow-hidden bg-white border border-market-border group cursor-zoom-in">
-        <Image
-          src={list[selected]}
+      <div className="image-frame group cursor-zoom-in">
+        <img
+          src={mainSrc}
           alt={alt}
-          fill
-          priority={priority}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          quality={85}
-          className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.35] origin-center"
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-300 ease-out group-hover:scale-[1.08] origin-center"
+          onError={() => {
+            if (mainIndex + 1 < mainCandidates.length) setMainIndex((i) => i + 1);
+          }}
         />
-        <span className="absolute bottom-3 right-3 text-[11px] bg-black/50 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-          Hover to zoom
-        </span>
       </div>
-      {list.length > 1 && (
-        <div className="grid grid-cols-4 gap-2 mt-3">
-          {list.slice(0, 4).map((img, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setSelected(i)}
-              className={`relative aspect-square rounded border-2 overflow-hidden bg-white transition-colors ${
-                selected === i ? "border-market-orange" : "border-market-border hover:border-market-orange/50"
-              }`}
-            >
-              <Image src={img} alt="" fill sizes="80px" quality={75} className="object-contain p-1" />
-            </button>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

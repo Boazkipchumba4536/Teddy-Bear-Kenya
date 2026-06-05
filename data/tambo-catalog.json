@@ -1,0 +1,2691 @@
+{
+  "fetchedAt": "2026-06-04T07:35:11.421Z",
+  "sourceUrl": "https://www.tamboteddies.com.au/australian-teddy-bears/",
+  "apiBase": "https://www.tamboteddies.com.au/wp-json/wc/store/v1/products",
+  "categoryFilter": null,
+  "brand": "Tambo Teddies",
+  "totalFetched": 101,
+  "totalIncluded": 100,
+  "totalSkipped": 1,
+  "products": [
+    {
+      "sourceSlug": "spotty-lambo-2",
+      "name": "Spotty Lambo",
+      "brand": "Tambo Teddies",
+      "priceAud": 185,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Monthly Report"
+      ],
+      "description": "Tambo Teddies Spotty Lambos are crafted from Dorper X Merino skins, each with its own unique spotty pattern. Left undyed, each piece showcases its spots and tonal variations, ensuring no two lambos are ever the same. Luxuriously soft to the touch with an organic, timeless character, this natural lambo brings warmth, texture, and individuality. Spotty Tambo Lambo stands approximately 30 cm tall. Caring for your spotty lambo. Quality tested to meet safety standards.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/Spotty-Lambo-5.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/Spotty-Lambo-5.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/Spotty-Lambo-5.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/Spotty-Lambo-4.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/Spotty-Lambo-3.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/Spotty-Lambo-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/Spotty-Lambo-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Spotty-Lambo.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Spotty-Lambo-Styled.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/spotty-lambo-2/"
+    },
+    {
+      "sourceSlug": "stockman-family-bundle",
+      "name": "Stockman Family Bundle",
+      "brand": "Tambo Teddies",
+      "priceAud": 625,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "bundles",
+        "specials-bundles",
+        "teddy-bears"
+      ],
+      "tags": [],
+      "description": "Bring home the perfect outback pair with our exclusive Mr &amp; Mrs Stockman Bundle . Handcrafted in Australia, these charming sheepskin teddy bears capture the heart and spirit of the Australian bush. Made from premium Australian sheepskin, this special bundle offers exceptional value on two of our most beloved bears. Don’t miss this opportunity to own the iconic couple together!",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/05/IMG_5271.jpeg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/05/IMG_5271.jpeg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/stockman-family-bundle/"
+    },
+    {
+      "sourceSlug": "basil-teddy-bear-small-maroon",
+      "name": "Basil Teddy Bear / Small / Maroon",
+      "brand": "Tambo Teddies",
+      "priceAud": 155,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "specials-bundles",
+        "teddy-bears"
+      ],
+      "tags": [
+        "Basil",
+        "Monthly Report"
+      ],
+      "description": "Basil Teddy Bear Handmade locally from natural Australian sheepskin, our Maroon Basil Teddy Bear has been specially created to celebrate the spirit of State of Origin. Proudly crafted in Queensland’s iconic maroon colour, this gorgeous teddy is the perfect keepsake for passionate Origin fans. Caring for your Tambo Teddy Basil Bear.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/05/e7e62c46-22d7-4926-939d-75689e9af8c0.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/05/e7e62c46-22d7-4926-939d-75689e9af8c0.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/05/b307cca1-eb5e-4cab-bcb2-cacb526be420.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/basil-teddy-bear-small-maroon/"
+    },
+    {
+      "sourceSlug": "tambo-lambo-baa",
+      "name": "BAA BAA Lambo",
+      "brand": "Tambo Teddies",
+      "priceAud": 150,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "baby-gifts",
+        "sheepskin-animals",
+        "teddy-bears"
+      ],
+      "tags": [
+        "B2B",
+        "Baby Gifts",
+        "Cream",
+        "lambo",
+        "Monthly Report"
+      ],
+      "description": "Introducing Tambo Lambo Baa. This cute and cuddly lamb features a textured coat of curly wool and Baa growler. Tambo Lambo will be an appealing soft toy in your Tambo Teddy collection. Made from a woollen sliver-knit fabric, Tambo Lambo is light weight and flexible. A sliver-knit fabric has the base fabric knitted from a fibrillated backing yarn and the pile is formed from sliver fibres of wool knitted into the base fabric to project on the outside side of the fabric. Tambo Lambo stands approximately 30 cm tall and comes in a range of dainty fabric ears suitable for boys or girls. BAA is movement activated (no batteries). Caring for your Tambo Lambo.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/05/5f8df1ca-91f3-4a14-9737-4cde358651f9-scaled.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/05/5f8df1ca-91f3-4a14-9737-4cde358651f9-scaled.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/05/49c7a5ca-7423-4b44-b99b-6ebe4c3e2c92-scaled.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-lambo-baa/"
+    },
+    {
+      "sourceSlug": "heart-cushion",
+      "name": "Heart Cushion",
+      "brand": "Tambo Teddies",
+      "priceAud": 55,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [
+        "Baby Gifts",
+        "Bickie Bear",
+        "Monthly Report"
+      ],
+      "description": "Our Australian hand crafted heart cushion is a beautiful, soft, slightly stuffed cushion. Our heart cushions are approximately 35cm long, 36cm at the widest point and up to 7cm thick.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/04/16df7b0b-bedb-47b6-8c60-c7f3fa8d57b3.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/04/16df7b0b-bedb-47b6-8c60-c7f3fa8d57b3.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/04/IMG20260409124241-scaled-e1777274748841.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/04/IMG20260409124233-scaled-e1777445669415.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/heart-cushion/"
+    },
+    {
+      "sourceSlug": "basil-bear-with-suede-paws-small-honey",
+      "name": "Milestone Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 220,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "B2B",
+        "Basil",
+        "Large",
+        "Monthly Report",
+        "Suede Paw"
+      ],
+      "description": "Tambo Teddy Milestone Bear We’re so excited to introduce something truly special — our Milestone Bear Series. Launching every year on March 19th , this new series will mark the anniversary of the day Tammy and Alison took on Tambo Teddies — a moment that changed everything. Each year, we’ll release a suede paw Basil bear , featuring: The year embroidered on one paw Tambo Teddies on the other Our very first release for 2026 is a beautiful small honey suede paw Basil (30cm approx) , finished with rich chocolate embroidery — a timeless keepsake to celebrate this milestone. These bears are designed to be collected, cherished, and to tell the story of our journey year by year 💛 Caring for your Tambo Teddy Basil Bear.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/03/IMG20260319162737-scaled-e1773907522361.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/03/IMG20260319162737-scaled-e1773907522361.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/03/b9d7e8a1-4bd4-4945-892d-c5f38937788c.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/basil-bear-with-suede-paws-small-honey/"
+    },
+    {
+      "sourceSlug": "happy-paws",
+      "name": "Happy Paws",
+      "brand": "Tambo Teddies",
+      "priceAud": 175,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Small",
+        "Toby"
+      ],
+      "description": "The Limited Edition Suede Paw Toby Teddy Bear is a true enchanter, featuring his signature large flat nose, chubby physique, and beautifully soft Silver Fox coloured wool. With the added detail of suede paws , chosen individually for each bear, this Toby offers a personalised touch that makes every piece feel extra special. Toby Happy Paws is 30cm tall (approx). Caring for your Tambo Teddy Toby Bear.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/d29ae3f4-ae65-4f3d-8b91-867e9aa64e95.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/d29ae3f4-ae65-4f3d-8b91-867e9aa64e95.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/ca2e1975-dc89-4882-a2b3-1cbe56aa6648.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/7c467da1-823f-4f6f-b833-1cca899a9727.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/160eba63-10e4-43d1-ab53-519624dc8a9f.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/happy-paws/"
+    },
+    {
+      "sourceSlug": "the-most-magnificent-pot-of-gold",
+      "name": "The Most Magnificent Pot of Gold",
+      "brand": "Tambo Teddies",
+      "priceAud": 29.95,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards"
+      ],
+      "tags": [],
+      "description": "The Most Magnificent Pot of Gold is a beautiful celebration of wonder, kindness, and the magic that lives in everyday moments. Written by children’s author Kiralee Sanderson of The Busy Little Bookshelf, this enchanting story invites little readers on a journey where imagination shines brighter than gold and the true treasure is found in connection, courage, and heart. Kiralee holds a special place in the Tambo Teddies story. A former director of the company, she stepped away a few years ago to embrace motherhood and other dreams like writing children’s books! We’re incredibly proud to now share her storytelling with our Tambo Teddies community. Perfect for cosy read-aloud moments and thoughtful little gift bundles, The Most Magnificent Pot of Gold is a keepsake story that families will return to again and again.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/aa5591d6-c482-46dc-9c91-88985d91a819.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/aa5591d6-c482-46dc-9c91-88985d91a819.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/the-most-magnificent-pot-of-gold/"
+    },
+    {
+      "sourceSlug": "baby-neutral-gift-pack-with-sheepie",
+      "name": "Baby Neutral Gift Pack with Sheepie",
+      "brand": "Tambo Teddies",
+      "priceAud": 200,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": false,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "baby-gifts",
+        "bundles",
+        "specials-bundles"
+      ],
+      "tags": [
+        "Baby Gifts"
+      ],
+      "description": "Cream Sheepskin Bickie Bear Cream Romper White 0-3 months Neutral Baby Card Caring for your sheepskin Caring for your Bickie Bear",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/8f77be3c-2b1a-4a08-a02e-070e872826cc.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/02/8f77be3c-2b1a-4a08-a02e-070e872826cc.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/baby-neutral-gift-pack-with-sheepie/"
+    },
+    {
+      "sourceSlug": "baby-neutral-gift-pack",
+      "name": "Baby Neutral Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 95,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "baby-gifts",
+        "bundles",
+        "specials-bundles"
+      ],
+      "tags": [
+        "Baby Gifts"
+      ],
+      "description": "Bickie Bear Honey Romper Blue 0-3 months Baby Boy Card",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2026/01/9943173c-dd4f-4292-81b4-0148de3d6042.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/01/9943173c-dd4f-4292-81b4-0148de3d6042.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/baby-neutral-gift-pack/"
+    },
+    {
+      "sourceSlug": "puffy-bickie",
+      "name": "Puffy Bickie Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 85,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "baby-gifts",
+        "teddy-bears"
+      ],
+      "tags": [
+        "Baby Gifts",
+        "Bickie Bear",
+        "Monthly Report"
+      ],
+      "description": "Softly stuffed and irresistibly cuddly, our Australian Made Puffy is the sweetest Bickie Bear in the Tambo Teddies family. Designed to be gentle on little hands, Puffy Bickie Bear comes in the softest camel, honey, latte, cream, mid-grey, plum, pink or silverfox sheepskin and makes the perfect gift for babies. Whether it’s snuggle time, nap time, or bedtime, Puffy is always there — a comforting companion and the best bedtime friend for your little one. Puffy Bickies are approximately 25cm long, 20cm at the widest point and up to 7cm thick.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Puffy-Honey.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Puffy-Honey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Photo-16-12-2025-4-07-50-pm-1-scaled-e1767056165751.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Stacked-Puffy-Bickie-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/SF-Puffy-SF-writing.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Plum-Puffy-Plum-writing.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Pink-Puffy-Pink-writing.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/MG-Puffy-MG-Writing.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Latte-Puffy-Latte-writing.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Honey-Puffy-Honey-Writing.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Cream-Puffy-Cream-Writing.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/12/Camel-Puffy-Camel-writing.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/puffy-bickie/"
+    },
+    {
+      "sourceSlug": "whip",
+      "name": "Whip",
+      "brand": "Tambo Teddies",
+      "priceAud": 40,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Whip"
+      ],
+      "description": "Hand plaited whip. It works!",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/09/c2b2c404-78ba-4a14-8a37-304040fc4f3b.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/09/c2b2c404-78ba-4a14-8a37-304040fc4f3b.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/whip/"
+    },
+    {
+      "sourceSlug": "bear-hug-club",
+      "name": "Tambo Teddies Bear Hug Club",
+      "brand": "Tambo Teddies",
+      "priceAud": 45,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards",
+        "subscription"
+      ],
+      "tags": [
+        "Club",
+        "subscription"
+      ],
+      "description": "Our Bear Hug Club is a cosy corner of the Tambo Teddies world where our most cherished teddy lovers come together. As a member of the Bear Hug Club, you’re not just part of a community &#8211; you’re part of the family. You’ll be the first to know when something exciting is coming, get exclusive treats, and enjoy the warm fuzzy feeling that only a teddy can bring. For member benefits and information click HERE . &nbsp;",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/07/TAMBO-TEDDIES_NOV23_SOCIAL-9.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/07/TAMBO-TEDDIES_NOV23_SOCIAL-9.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/bear-hug-club/"
+    },
+    {
+      "sourceSlug": "matilda-way-outback-mate",
+      "name": "Matilda Way Outback Mate",
+      "brand": "Tambo Teddies",
+      "priceAud": 290,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "specials-bundles",
+        "teddy-bears"
+      ],
+      "tags": [],
+      "description": "Little Aussie Ringer Along the Matilda Way book.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/06/43002c3d-ceb4-40b7-8bf3-9f3b8bc7a1f3.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/06/43002c3d-ceb4-40b7-8bf3-9f3b8bc7a1f3.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/matilda-way-outback-mate/"
+    },
+    {
+      "sourceSlug": "jointed-bear-large",
+      "name": "Tambo Tilly",
+      "brand": "Tambo Teddies",
+      "priceAud": 300,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": false,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Banjo",
+        "Monthly Report"
+      ],
+      "description": "Meet Tambo Tilly – Our Large Jointed Teddy Bear Introducing Tambo Tilly, a delightful addition to the Tambo Teddies family. Lovingly handcrafted from premium Australian woollen sheepskin, Tambo Tilly is designed to be a cherished companion for years to come. Standing at approximately 45 cm tall, Tambo Tilly features fully jointed limbs, allowing for gentle movement and posing—perfect for imaginative play or display. Her soft, sheepskin texture and timeless design make her an ideal gift for both children and collectors alike. Each Tambo Tilly bear is unique, proudly bearing an individual name and identification number, reflecting the heritage of the Tambo region. This personal touch ensures that no two bears are exactly alike, making your Tambo Tilly truly one-of-a-kind.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/06/f801aed8-df4e-44d3-a242-2f1cfb2b149e.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/06/f801aed8-df4e-44d3-a242-2f1cfb2b149e.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/06/f801aed8-df4e-44d3-a242-2f1cfb2b149e.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/06/26ec4846-ae9a-4ae9-b8cf-4be98ef4c49f.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/jointed-bear-large/"
+    },
+    {
+      "sourceSlug": "mulberry-mate",
+      "name": "Mulberry Mate",
+      "brand": "Tambo Teddies",
+      "priceAud": 220,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Basil",
+        "Embroidery Inhouse",
+        "Monthly Report",
+        "Suede Paw"
+      ],
+      "description": "​ Introducing our Mulberry Mate , a charming addition to the Tambo Teddies family . Standing approximately 30cm tall, Mulberry Mate features a rich mulberry-coloured coat complemented by suede paws, one of which is adorned with the iconic Tambo Teddies logo. Each bear is uniquely numbered, reflecting its individual personality and the artisanal craftsmanship involved in its creation. Perfect as a heartfelt gift or a treasured keepsake, Mulberry Mate embodies the warmth and heritage of Australian-made quality.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/04/Mulberry-Bear.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/04/Mulberry-Bear.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/mulberry-mate/"
+    },
+    {
+      "sourceSlug": "personalised-tambo-teddy",
+      "name": "Personalised Tambo Teddy",
+      "brand": "Tambo Teddies",
+      "priceAud": 205,
+      "priceAudMax": 235,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Basil",
+        "Embroidery",
+        "Monthly Report"
+      ],
+      "description": "Make your Tambo Teddy truly one-of-a-kind with our Personalised Basil Tambo Teddy option! Perfect for special occasions, treasured gifts, or simply to create a lifelong keepsake, we offer custom embroidery of names or meaningful words on our suede paw Basil teddy’s feet. Add a personal touch by choosing a name or date to be expertly stitched onto your bear’s paws. How to Personalise: Select the colour and size of your teddy, colour of suede. Choose your ribbon colour. (Boy/Girl/Neut) &#8211; ribbon colour will match embroidery. Add your details &#8211; name and date. Paw 1 &#8211; NAME, Paw 2 &#8211; DATE &#8211; looking at the bear, reading left to right. Let us take care of the rest! Create memories stitched with love. Personalise your Tambo Teddy today!",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/Mid-Grey-Basil-Personalised.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/Mid-Grey-Basil-Personalised.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/Paw-1-and-Paw-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/04/Latte-Ballantines-Sand-Suede.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/04/Blue-Blacklight-Sand-Suede.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/04/Honey-Serif-2-Dark-Brown-Suede.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/04/Pink-Blacklight-Sand-Suede.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/04/Cream-Serif-2-Tan-Suede.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/04/Camel-Ballantines-Tan-Suede.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Honey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Camel.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Silver-Fox.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Pink.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Basil-Latte.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Mid-Grey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/Cream.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/personalised-tambo-teddy/"
+    },
+    {
+      "sourceSlug": "pigs",
+      "name": "Little Piggy",
+      "brand": "Tambo Teddies",
+      "priceAud": 165,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Piglet"
+      ],
+      "description": "This Little Piggy Has Joined the Tambo Teddies Farmyard Family! Say hello to our adorable Sheepskin Piglet, made from 100% Australian sheepskin and available in three colors. Complete with a curly suede tail, this cuddly companion is perfect for snuggles and playtime. Standing approximately 20cm tall and measuring 32cm from snout to tail, this piglet is the perfect addition to any Tambo Teddies collection. Bring a touch of outback charm into your home with this delightful farmyard friend! Caring for your Little Piggy. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/a7639a24-d021-4b20-8164-df7ed427c444.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/a7639a24-d021-4b20-8164-df7ed427c444.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/Feral-5.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/Feral-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/Feral-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/Feral-4.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/a52e55ba-2cb5-4c72-a6c3-293e8a3bd9c3.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/a7639a24-d021-4b20-8164-df7ed427c444.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/799c6666-45eb-4087-a741-88f41b539e36-1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/pigs/"
+    },
+    {
+      "sourceSlug": "bunny",
+      "name": "Bunny",
+      "brand": "Tambo Teddies",
+      "priceAud": 60,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "baby-gifts",
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Bunny",
+        "Monthly Report"
+      ],
+      "description": "​ Introducing our delightful Tambo Teddies Bunny—crafted from soft sliver-knit sheepskin and adorned with charming fabric inserts in checked blue, red, and pink. Bunny is 35 cm in height. This cuddly companion is the perfect hopping-good Easter gift, ready to bring joy and warmth to your celebrations.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/ffe2e701-647a-45fe-9da3-a0aedf83f985.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/ffe2e701-647a-45fe-9da3-a0aedf83f985.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/364524b5-974c-447e-adf2-2e0c54d9ca2f.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/03/62259daf-db88-49e8-9425-e5b9730a4961.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/bunny/"
+    },
+    {
+      "sourceSlug": "kangaroo",
+      "name": "Kangaroo",
+      "brand": "Tambo Teddies",
+      "priceAud": 175,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Kangaroo"
+      ],
+      "description": "Say hello to the newest member of the Tambo Teddies family – our adorable Kangaroo ! Lovingly handcrafted, this charming little roo is made from natural sheepskin, ensuring it&#8217;s as soft and cuddly as it is durable. With its cute little ears, sweet face, and a perfect size for snuggling (approximately 30cm tall), this kangaroo is the ideal companion for kids and adults alike. Each Tambo Teddies Kangaroo is made with care and designed to last a lifetime. Bring home a piece of Australia’s heritage and add this hopping cutie to your collection today!",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2025/01/941d465f-42ac-4d35-8174-04d97fe5273d.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/01/941d465f-42ac-4d35-8174-04d97fe5273d.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2025/01/6723ad99-970f-4957-a8f6-eb3fb04f685b.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/kangaroo/"
+    },
+    {
+      "sourceSlug": "along-the-matilda-way",
+      "name": "Along the Matilda Way",
+      "brand": "Tambo Teddies",
+      "priceAud": 25,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards"
+      ],
+      "tags": [
+        "Matilda Way",
+        "Monthly Report"
+      ],
+      "description": "Join the Stockman family as they embark on an exciting journey along the Matilda Way, exploring the wonders of their own backyard—Outback Queensland. Starting in Cunnamulla and travelling to Karumba, the family uncovers fascinating facts and enjoys fun activities in the towns along their adventure-filled route. Suitable for ages 4-10 years.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/MatildaWayBook.gif",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/MatildaWayBook.gif"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/along-the-matilda-way/"
+    },
+    {
+      "sourceSlug": "humpty-dumpty-bear",
+      "name": "Humpty Dumpty Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 220,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Basil",
+        "HumptyDumpty",
+        "Monthly Report",
+        "Small"
+      ],
+      "description": "These bears aren’t just cuddly companions; they’re symbols of care and compassion. Made from the finest sheepskin with our signature quality, each bear brings warmth, comfort, and a meaningful contribution to a wonderful cause. Take home a Special Humpty Dumpty Foundation Logo Bear today and join us in making a difference! Available in latte, honey, camel, mid-grey and silver fox. Ribbon colours are chosen to match the HDF logo.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/bad494c3-0a1a-4613-9772-c75a2f3c32e4.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/bad494c3-0a1a-4613-9772-c75a2f3c32e4.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/2a3282e0-b601-4ddf-8d97-c714be668860.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/HD3a.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/humpty-dumpty-bear/"
+    },
+    {
+      "sourceSlug": "mini-koala",
+      "name": "Mini Koala",
+      "brand": "Tambo Teddies",
+      "priceAud": 125,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [],
+      "description": "Meet our adorable Mini Koala &#8211; small in size but big on charm! With his distinctively fluffy ears and irresistible appeal, he&#8217;s the epitome of Australian character. Available in two delightful colors &#8211; silver fox and mid-grey &#8211; our Mini Koala is the perfect bush babe for babies or a thoughtful touch of Australia for friends and family overseas. Standing at approximately 20cm tall, our Mini Koala is petite in stature but grand in cuteness. Unlike our bears, our koalas aren&#8217;t named or numbered, allowing each one to be as unique as the Aussie landscape they represent. Caring for your Mini Koala. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/1452313e-d38e-47fa-8add-673b5747edc0.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/1452313e-d38e-47fa-8add-673b5747edc0.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Silver-Fox.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/mini-koala/"
+    },
+    {
+      "sourceSlug": "tambo-teddies-logo-bear",
+      "name": "Tambo Teddies Logo Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 230,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Basil",
+        "Large",
+        "Logo Bear",
+        "Monthly Report"
+      ],
+      "description": "Introducing our beloved Logo Bears! These large Basil bears (45cm), with their iconic large suede paw and signature Tambo Teddies branding, capture the heart and heritage of our collection. Now available in a gorgeous range of colors—Honey, Camel, Silverfox, and Latte—there’s a perfect bear for every taste! Handcrafted with love, each bear brings the charm of Tambo right into your arms. Get your paws on one of these unique treasures today and take home a true piece of outback tradition. Caring for your Logo Bear. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/Latte.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/Latte.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Honey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Camel.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Latte.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Logo-Cream.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Silver-Fox-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Logo-Mid-Grey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/e9a8c320-1482-4a2b-b74d-243db7888ee3.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/278bc553-ea00-4aaa-87ef-a81b9640d2e1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/SF-Feet.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/Camel-Feet.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/Camel-Feet-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Logo-Cream-feet.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddies-logo-bear/"
+    },
+    {
+      "sourceSlug": "toby-teddy-softie-spotty",
+      "name": "Toby Teddy Softie / Spotty",
+      "brand": "Tambo Teddies",
+      "priceAud": 185,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Small",
+        "Softie",
+        "Toby"
+      ],
+      "description": "Our Toby Teddy Softie is the softest, cuddliest teddy bear you can ever own. Made from the softest Australian sheepskin, these gorgeous cuddly bears come in honey only. Lightly stuffed, they are very pliable and easily mould to fit into your arms for a snuggle. The Toby Teddy Softie is handmade locally in Tambo, when you visit us in Tambo Teddies you can watch one of these little woolly friends come to life. This gorgeous Tambo Teddy is 30cm tall. Toby&#8217;s eyes are safety standard and firmly applied with an applicator. Every bear is unique with his own individual name and number; made from natural sheepskin, no two bears are ever the same. Caring for your Tambo Teddy Bear.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2024/02/ef286303-7279-44b9-adc7-5239ebbab6db.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/02/ef286303-7279-44b9-adc7-5239ebbab6db.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/toby-teddy-softie-spotty/"
+    },
+    {
+      "sourceSlug": "bens-hens",
+      "name": "Ben&#8217;s Hens",
+      "brand": "Tambo Teddies",
+      "priceAud": 110,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Chicken",
+        "Monthly Report"
+      ],
+      "description": "Introducing Ben&#8217;s Hens – we&#8217;re egg-cited to introduce you to our latest flock-tastic creation: Ben&#8217;s Hens! These cluck-tastic, sheepskin chickens are more than just your average barnyard pals – they&#8217;re a kaleidoscope of colour, ready to peck their way into your heart and home! 🎨🐓 Whether you&#8217;re nesting indoors or sprucing up your coop, Ben&#8217;s Hens are the perfect sunny-side-up addition to any space. Ben’s Hens are 22cm to the top of the comb, and 27 cm from the beak to the tail. Don&#8217;t be chicken, join the egg-stravaganza and let Ben&#8217;s Hens add a pop of color and a whole lot of charm to your nest!",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/ace75224-1527-4f2f-a55e-146436326749.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/ace75224-1527-4f2f-a55e-146436326749.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/dbbe1c66-3f6e-4c8b-9012-30462e4aff7e.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Mint-Hen-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Indigo-Hen.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Fuchsia-Hen.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Teal-Hen.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Red-Hen.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Purple-Hen.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Orange-Hen.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Lemon-Hen.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/Pink-Hen-1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/bens-hens/"
+    },
+    {
+      "sourceSlug": "dusty-bear-honey",
+      "name": "Dusty Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 200,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "B2B",
+        "Dusty",
+        "Monthly Report"
+      ],
+      "description": "Meet our newest family member, Dusty ! Now available in beautiful Latte (new), Silverfox, Honey, and Camel tones, Dusty is a truly unique, high-quality teddy crafted from the finest sheepskin. With jointed, movable arms, legs, and head, Dusty can strike a range of adorable poses—from waving hello and giving warm hugs to sitting perfectly for display. Handmade with precision and care, Dusty brings a touch of nostalgia and charm, making this delightful bear a must-have addition to any collection. Dusty isn’t just a teddy; he’s a companion like no other, ready to bring warmth and joy to any home. Dusty is 32cm when standing and 22cm when seated. Caring for Dusty. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/0eb7f5a6-8f4c-4e9b-bb4d-e62c56a33691.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/0eb7f5a6-8f4c-4e9b-bb4d-e62c56a33691.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/Dusty-SF-and-Camel.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/Dusty-Camel.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/11/Dusty-Silver-Fox.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/Latte-Dusty.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/dusty-bear-honey/"
+    },
+    {
+      "sourceSlug": "dog-chew-toy",
+      "name": "Dog Chew Toy",
+      "brand": "Tambo Teddies",
+      "priceAud": 30,
+      "priceAudMax": 45,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [],
+      "description": "Introducing the ultimate leather and sheepskin dog chew toy – unleash the fun! Is your furry friend always on the lookout for a durable and entertaining playtime companion? Look no further! Our leather and sheepskin dog chew toy is the perfect solution to satisfy your dog&#8217;s natural instincts while providing hours of joy and exercise. Available in large (65cm) and small (40cm). &nbsp;",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/a6e5d688-41a9-48ce-af4d-b4a1c1711a80.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/a6e5d688-41a9-48ce-af4d-b4a1c1711a80.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/86c0a30e-9c39-4dfd-aa4a-46274b8e9854.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/Dog-Toy-Large-and-Small.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/dog-chew-toy/"
+    },
+    {
+      "sourceSlug": "merino-lambo-2",
+      "name": "Sheepskin Lambo",
+      "brand": "Tambo Teddies",
+      "priceAud": 175,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Monthly Report"
+      ],
+      "description": "Experience the comfort, softness, and charm of the Tambo Teddy Merino Sheepskin Lamb. Crafted with love and care from the finest Australian Merino sheepskin from Outback Queensland. Merino sheepskin is known for its exceptional softness, natural breathability, and luxurious texture. Born in Tambo, blue-ribbon sheep country, this adorable lamb, with perky ears and a cute, round face, will melt your heart and captivate the imagination of children and adults alike. Merino Lambo stands approximately 30 cm tall. Caring for your Merino Lambo. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/954880f8-05a8-4086-acff-fcec947535c3.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/09/954880f8-05a8-4086-acff-fcec947535c3.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/Merino-1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/merino-lambo-2/"
+    },
+    {
+      "sourceSlug": "memory-cards",
+      "name": "Memory Cards",
+      "brand": "Tambo Teddies",
+      "priceAud": 12.5,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Introducing Tambo Teddies Memory Card Game &#8211; a delightful and engaging game that combines the joy of teddy bears with the challenge of memory testing. Join our lovable Tambo Teddies on a fun-filled adventure as you sharpen your cognitive skills and exercise your memory prowess.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/07/c2e8d9bc-53cc-4cd4-a791-d3066c8be63b.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/07/c2e8d9bc-53cc-4cd4-a791-d3066c8be63b.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/memory-cards/"
+    },
+    {
+      "sourceSlug": "clancy-teddy-bear-cream",
+      "name": "Clancy Teddy Bear / Cream",
+      "brand": "Tambo Teddies",
+      "priceAud": 145,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Clancy",
+        "Monthly Report"
+      ],
+      "description": "&nbsp;",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/06/5125bab2-f5b3-4306-b195-0582873625a9.png",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/06/5125bab2-f5b3-4306-b195-0582873625a9.png",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/06/2.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/clancy-teddy-bear-cream/"
+    },
+    {
+      "sourceSlug": "toby-teddy-softie-sale",
+      "name": "Toby Teddy Fun",
+      "brand": "Tambo Teddies",
+      "priceAud": 155,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "B2B",
+        "Monthly Report",
+        "Small",
+        "Softie",
+        "Toby"
+      ],
+      "description": "The Toby Teddy Softie is handmade locally in Tambo and Toowoomba, when you visit us in Tambo Teddies you can watch one of these little woolly friends come to life. This gorgeous Tambo Teddy is 30cm tall. Toby&#8217;s eyes are safety standard and firmly applied with an applicator. Every bear is unique with his own individual name and number; made from natural sheepskin, no two bears are ever the same. Caring for your Tambo Teddy Bear.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Navy-and-Pink.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Navy-and-Pink.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Pink-and-Navy.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/toby-teddy-softie-sale/"
+    },
+    {
+      "sourceSlug": "toby-teddy-softie-2",
+      "name": "Toby Teddy Softie",
+      "brand": "Tambo Teddies",
+      "priceAud": 160,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "B2B",
+        "Monthly Report",
+        "Small",
+        "Softie",
+        "Toby"
+      ],
+      "description": "Our Toby Teddy Softie is the softest, cuddliest teddy bear you can ever own. Made from the softest Australian sheepskin, these gorgeous cuddly bears come in a range of colours; cream, honey, camel, latte, mid-grey, silverfox and plum. Lightly stuffed, they are very pliable and easily mould to fit into your arms for a snuggle. The Toby Teddy Softie is handmade locally in Tambo, when you visit us in Tambo Teddies you can watch one of these little woolly friends come to life. This gorgeous Tambo Teddy is 30cm tall. Toby&#8217;s eyes are safety standard and firmly applied with an applicator. Every bear is unique with his own individual name and number; made from natural sheepskin, no two bears are ever the same. Caring for your Tambo Teddy Bear. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/10/TAMBO-TEDDIES-_-FEB23_-SOCIAL-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/10/TAMBO-TEDDIES-_-FEB23_-SOCIAL-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Mid-Grey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Pink.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Latte.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Honey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Cream.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Camel.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Silver-Fox.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Plum.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/toby-teddy-softie-2/"
+    },
+    {
+      "sourceSlug": "stewart-bear-and-book-gift-pack",
+      "name": "Stewart Bear and Book Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 155,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "bundles",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Stewart Bear and Stockman Family&#8217;s New Zealand Holiday gift pack. Perfect partnership for bedtime! Caring for your Stewart sheepskin teddy. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/456caa3a-11ad-4ef6-a93e-28227cf49729.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/456caa3a-11ad-4ef6-a93e-28227cf49729.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/stewart-bear-and-book-gift-pack/"
+    },
+    {
+      "sourceSlug": "peter-possum-and-book-gift-pack",
+      "name": "Peter Possum and Book Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 125,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "bundles",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Bring storytime to life with the delightful Peter Possum Puppet and his accompanying book, Peter Possum&#8217;s Musical Band ! Whether it’s for playtime, bedtime, or as a special gift, this puppet-and-book duo is sure to delight children and adults alike, making storytime unforgettable! Caring for your Peter Possum Puppet.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/647f8bc5-1b10-42f3-a709-e6396a86ea11.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/647f8bc5-1b10-42f3-a709-e6396a86ea11.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/peter-possum-and-book-gift-pack/"
+    },
+    {
+      "sourceSlug": "wombat-large",
+      "name": "Wombat",
+      "brand": "Tambo Teddies",
+      "priceAud": 135,
+      "priceAudMax": 175,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Wombat"
+      ],
+      "description": "The Tambo Teddies ‘Wombat’ is available in 2 sizes and three colours; camel, chocolate and honey. Large 35 cm long and 25 cm tall and small 30 cm long and 20cm tall. Caring for your Sheepskin Wombat. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/cd1e896a-55ab-44ca-b76d-059930290eaf.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/cd1e896a-55ab-44ca-b76d-059930290eaf.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/wombat-large/"
+    },
+    {
+      "sourceSlug": "sheepskin-lambo",
+      "name": "Dorper Lambo",
+      "brand": "Tambo Teddies",
+      "priceAud": 175,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "lambo",
+        "Monthly Report"
+      ],
+      "description": "Tambo Lambo Dorpers are made from soft sheepskin. Dorpers have a cream body and a chocolate head, just like the &#8216;real&#8217; sheep. Our Dorpers stand approximately 30cm tall. Full of fun, these little lambs are ready to bounce out of the gate and head home with you. Caring for your Dorper Lambo . Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/813963cc-9af9-46cb-8278-1838112bf8e8.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/813963cc-9af9-46cb-8278-1838112bf8e8.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/03/dorper.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/sheepskin-lambo/"
+    },
+    {
+      "sourceSlug": "tambo-teddies-activity-pack",
+      "name": "Tambo Teddies Activity Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 15,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards",
+        "specials-bundles"
+      ],
+      "tags": [
+        "Activity Pack",
+        "Monthly Report"
+      ],
+      "description": "Tambo Teddies Activity Pack",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/02/d9b6bcc5-feda-440a-b567-66178b389d09.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/02/d9b6bcc5-feda-440a-b567-66178b389d09.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddies-activity-pack/"
+    },
+    {
+      "sourceSlug": "stewart-bear",
+      "name": "Stewart Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 150,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [],
+      "description": "Stewart &#8211; Our Kiwi Cousin. Stewart Bear is created in the likeness of a very old heirloom bear called &#8216;John&#8217; and owned by the Stewart family from New Zealand. Available in short camel or a deep-rich cream skin, Stewart is approximately 30 cm tall. Caring for your Tambo Teddies Stewart Bear . Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Stew-2-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Stew-2-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/dad38da0-f371-452d-806e-b5d7c4b8f008.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/fb9e878d-d3ce-4984-896a-ad4891e51d24.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Stewart-Bear.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/stewart-bear/"
+    },
+    {
+      "sourceSlug": "goliath-fluffty",
+      "name": "Goliath Fluffy",
+      "brand": "Tambo Teddies",
+      "priceAud": 575,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Goliath",
+        "Monthly Report"
+      ],
+      "description": "Goliath is a giant of a teddy bear, nearly .75 metre high in sitting position. Made from the soft, caramel-tipped fluffy natural Australian sheepskins and stuffed lightly, our fluffy Goliath the gentle giant is VERY soft and cuddly. A special bear for a special occasion, this over-sized Tambo Teddy is the perfect gift. Caring for your Tambo Teddy Goliath Bear. Quality tested to meet safety standards.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/e6bc77c6-de36-4036-b391-0f9324972835-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/e6bc77c6-de36-4036-b391-0f9324972835-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/e6bc77c6-de36-4036-b391-0f9324972835.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/goliath-fluffty/"
+    },
+    {
+      "sourceSlug": "christmas-toby-teddy-bear",
+      "name": "Christmas Toby Teddy Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 160,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "specials-bundles",
+        "teddy-bears"
+      ],
+      "tags": [],
+      "description": "Toby Tambo Teddy Bear is quite an enchanter with his large flat nose and chubby physique. This teddy comes in a small range of Christmas colours &#8211; red, green and white &#8211; colour placement will vary. The Toby Tambo Teddy is proudly hand made from quality Australian wool. Every bear is an individual with his own unique identification number, no two bears are ever the same! Caring for your Tambo Teddy Toby Bear .",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/11/50850976-6c25-4981-a451-13373476280a-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/11/50850976-6c25-4981-a451-13373476280a-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/11/145ca3cf-8576-4e79-aa1b-863f0f55dbe6.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/christmas-toby-teddy-bear/"
+    },
+    {
+      "sourceSlug": "echidna-fluffy",
+      "name": "Echidna Fluffy",
+      "brand": "Tambo Teddies",
+      "priceAud": 55,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Echidna",
+        "Monthly Report"
+      ],
+      "description": "Fluffy echidnas are the teenage &#8216;punks&#8217; of the Tambo Teddy soft toy family, with spiky hair, cheeky faces and a ton of attitude. Colours currently available: white with brown tips, white with black tips, silky black and hairy brown. Caring for your fluffy echidna. &nbsp;",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/TAMBO-TEDDIES-JAN23-SOCIAL-17.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/TAMBO-TEDDIES-JAN23-SOCIAL-17.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/a3724051-d4f6-4c29-b8cb-b2adb4a5decb-scaled.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/aaeba8e7-36c3-4967-8ed2-b9e97ccac522-scaled.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/37e92911-8f75-45f6-a564-6ca2c47c3523-scaled.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/echidna-fluffy/"
+    },
+    {
+      "sourceSlug": "baby-girl-gift-pack",
+      "name": "Baby Girl Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 95,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "baby-gifts",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "The perfect baby birth gift, ideal for a baby shower or as the first pressie for a newborn baby girl. Gift pack value &#8211; $108.00 Bickie Bear Cream Romper Pink 0-3 months Baby Girl Card Caring for your Bickie Bear . Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/New-Baby-Combo-Girl-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/New-Baby-Combo-Girl-1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/baby-girl-gift-pack/"
+    },
+    {
+      "sourceSlug": "baby-boy-gift-pack",
+      "name": "Baby Boy Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 95,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "baby-gifts",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "The perfect baby birth gift, ideal for a baby shower or as the first pressie for a newborn baby boy. Gift pack value &#8211; $108.00 Bickie Bear Honey Romper Blue 0-3 months Baby Boy Card Caring for your Bickie Bear",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/New-Baby-Combo-Boy.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/New-Baby-Combo-Boy.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/baby-boy-gift-pack/"
+    },
+    {
+      "sourceSlug": "basilbookgiftpack",
+      "name": "Basil Book Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 160,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "bundles",
+        "specials-bundles"
+      ],
+      "tags": [
+        "adventures",
+        "Basil",
+        "books",
+        "Christmas",
+        "gift pack",
+        "Tambo",
+        "tambo teddy",
+        "teddybear",
+        "wool"
+      ],
+      "description": "Tambo Teddy Basil Bear is the best bedtime companion. Grab a Basil gift pack &#8211; value $171.00. Snuggle up and enjoy a Tambo Teddies adventure with your very own Tambo Teddy Bear. Gift pack consists of a small honey Basil and &#8216;The Shearers&#8217; Tambo Teddy story book. Caring for your Toby Tambo . Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Basil-Book-P.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Basil-Book-P.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/basilbookgiftpack/"
+    },
+    {
+      "sourceSlug": "christmas-card-pack",
+      "name": "Christmas Card Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 15,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Pack of ten Christmas cards, two different designs. Card pack value &#8211; $20.00 5 x Happy Tambo Christmas Card 5 x Merry Christmas Card",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/f1de51a8-9fa1-46b3-8027-db3c554f5cf6.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/f1de51a8-9fa1-46b3-8027-db3c554f5cf6.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/christmas-card-pack/"
+    },
+    {
+      "sourceSlug": "dress-clothing-pack",
+      "name": "Dress Clothing Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 10,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "bundles",
+        "specials-bundles",
+        "teddy-bear-clothes"
+      ],
+      "tags": [],
+      "description": "Three cool cotton dresses to fit a large Basil Tambo Teddy. Pack value: $60.00 Pack consists of a navy floral, yellow floral and a pink and white spot dress.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/cb3380e6-a393-4a06-bedc-fcd6dce8e22c.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/cb3380e6-a393-4a06-bedc-fcd6dce8e22c.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/dress-clothing-pack/"
+    },
+    {
+      "sourceSlug": "teddyadventures-bookset",
+      "name": "Teddy Adventures &#8211; Book Set",
+      "brand": "Tambo Teddies",
+      "priceAud": 54,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards",
+        "specials-bundles"
+      ],
+      "tags": [
+        "special",
+        "stories",
+        "Tambo",
+        "tamboteddy",
+        "teddybear"
+      ],
+      "description": "Set in the heart of the outback, join Basil and Toby with their friends the Stockman family as they embark on a few Tambo Teddies Adventures exploring different aspects of country living. These colourful short stories are great for bedtime reading and are the perfect little gift. Suitable for children from 3-8 years. Buy the complete set of four books for only $54 (usually $64), order the collection now!",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Books-set.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Books-set.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7612.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7613.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7615.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/IMAG0633.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Bookset-2.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/teddyadventures-bookset/"
+    },
+    {
+      "sourceSlug": "tobyteddyandbookgiftpack",
+      "name": "Toby Teddy and Book Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 160,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "bundles",
+        "specials-bundles"
+      ],
+      "tags": [
+        "books",
+        "Christmas",
+        "handmade",
+        "sheepskin",
+        "stories",
+        "teddybear",
+        "toby bear",
+        "wool"
+      ],
+      "description": "Toby Tambo Teddy gift pack &#8211; value $171.00. A beautiful, soft neutral patchwork Toby Teddy together with the &#8216;Big Muster&#8217; Tambo Teddy Tale. Perfect partnership for bedtime! Caring for your Toby Tambo . Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Toby-Book-P.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Toby-Book-P.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tobyteddyandbookgiftpack/"
+    },
+    {
+      "sourceSlug": "book-puzzle-gift-pack",
+      "name": "Book Puzzle Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 25,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Read Little Aussie&#8217;s camping adventure and follow his animal discovery with the matching puzzle. Send this gift with an Echidna Crossing card. Gift pack value &#8211; $32.00 Tambo Teddies Adventures / Little Aussie Ringers Camping Adventure Tambo Teddies Puzzle",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/09/86cedbad-4792-4641-931b-0326cec04e80.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/09/86cedbad-4792-4641-931b-0326cec04e80.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/book-puzzle-gift-pack/"
+    },
+    {
+      "sourceSlug": "little-aussie-ringer-gift-pack",
+      "name": "Little Aussie Ringer Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 290,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": false,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Little Aussie Ringer&#8217;s complete pack, Bear, book and puzzle. Join Little Aussie Ringer on his camping adventure. Pack Value &#8211; $307.00 Little Aussie Ringer Tambo Teddy Adventures Little Aussie Ringers Camping Adventure Tambo Teddies Puzzle Caring for your Little Aussie Ringer. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/09/836bc190-4909-4dcb-8d1a-8ed4def22dd9.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/09/836bc190-4909-4dcb-8d1a-8ed4def22dd9.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/little-aussie-ringer-gift-pack/"
+    },
+    {
+      "sourceSlug": "travel-gift-pack",
+      "name": "Travel Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 85,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "The best gift for travelers, everything they need to hit the road. Gift pack value &#8211; $105.00 Tambo Teddies Picnic Rug Seat Belt Covers Silver Fox Stubby Cooler Cream Tambo Teddies Keyring",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/367e3e8c-fe55-427e-bd90-06c06aeed565.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/367e3e8c-fe55-427e-bd90-06c06aeed565.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/ded67d6e-0df4-4ea3-a067-a53bffc36cab.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/travel-gift-pack/"
+    },
+    {
+      "sourceSlug": "bear-as-a-bone-and-hat-large-clothing-pack",
+      "name": "Bear-as-a-bone and Hat Large Clothing Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 60,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "clothing",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Dress your bear up, just like our Mr Stockman, keep the sun off ready for a day in the paddock. Pack value &#8211; $75.00 Bear-as-a-Bone Large Teddy Bear Hat",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/b1534faa-efce-4eda-bb94-b54462451eba.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/b1534faa-efce-4eda-bb94-b54462451eba.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/bear-as-a-bone-and-hat-large-clothing-pack/"
+    },
+    {
+      "sourceSlug": "bear-as-a-bone-and-hat-small-clothing-pack",
+      "name": "Bear-as-a-bone and Hat Small Clothing Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 55,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "specials-bundles",
+        "teddy-bear-clothes"
+      ],
+      "tags": [],
+      "description": "Dress your small Basil or Toby bear up in a bear-as-a-bone coat and an &#8216;akubra&#8217; hat. Ready for a day in the paddock. Pack value: $70.00 Bear-as-a-Bone Small Teddy Bear Hat",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/eca15069-31e7-41c3-8088-df8b028313a7.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/eca15069-31e7-41c3-8088-df8b028313a7.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/bear-as-a-bone-and-hat-small-clothing-pack/"
+    },
+    {
+      "sourceSlug": "koala-bickie-puppet",
+      "name": "Koala Bickie Puppet",
+      "brand": "Tambo Teddies",
+      "priceAud": 65,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "puppets"
+      ],
+      "tags": [
+        "Monthly Report",
+        "puppet"
+      ],
+      "description": "Add a touch of Australian charm to playtime with the Koala Bickie Puppet from Tambo Teddies! Fun-loving and vibrantly colored, this adorable koala puppet with stand out fluffy ears is expertly crafted from premium Australian sheepskin, offering a soft and durable companion for imaginative adventures. Perfect for puppet shows, storytelling, or as a unique gift, the Koala Bickie Puppet is sure to bring endless joy and a delightful Aussie twist to any occasion! Caring for your Koala Bickie Puppet. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/04/Koala-Bickie-Puppet.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/04/Koala-Bickie-Puppet.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/koala-bickie-puppet/"
+    },
+    {
+      "sourceSlug": "bickie-puppet",
+      "name": "Bickie Puppet",
+      "brand": "Tambo Teddies",
+      "priceAud": 65,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "puppets"
+      ],
+      "tags": [
+        "Monthly Report",
+        "puppet"
+      ],
+      "description": "Whether it’s for a lively puppet show, a unique gift, or a treasured keepsake, these cheerful characters are ready to bring joy and laughter to any occasion! Caring for your Bickie Puppet. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/Bickie-Puppets.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/Bickie-Puppets.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/Teal.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/Fuchsia.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/Mint.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/Navy.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/Orange.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/Purple.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/red.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/bickie-puppet/"
+    },
+    {
+      "sourceSlug": "digger-the-dog",
+      "name": "Digger the Dog",
+      "brand": "Tambo Teddies",
+      "priceAud": 175,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "B2B",
+        "Dog",
+        "Monthly Report"
+      ],
+      "description": "Meet Digger &#8211; our bright eyed border collie styled sheep dog. Available in black, chocolate, honey or brindle. He comes with a smart collar and registration tag. We have so many Tambo Lambos jumping around the store we decided we needed to create our very own sheepdog to muster them up. Keep your eye on Digger &#8211; he is a brave boy and might just take off up the back paddock and chase something a little bit bigger! Caring for your Digger Dog . Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/Digger-4.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/Digger-4.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/04/Brown-Dog.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/04/Honey-Digger.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/04/Digger-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/10/Black-Digger-Dog.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/10/Brindle-Digger-Dog.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/digger-the-dog/"
+    },
+    {
+      "sourceSlug": "huonpinesachet",
+      "name": "Huon Pine Sachet",
+      "brand": "Tambo Teddies",
+      "priceAud": 15.95,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [],
+      "description": "Protect the investment you have made in your clothes. Stop odours and holes caused by fabric eating pests. Perfect for linen and clothing cupboards, sports bags, blanket or toys boxes. A bag this size will protect an enclosed space of 1m2. It will absorb odours and moisture and repel silverfish, moths, fleas and mites 100% chemical free and all-natural. CERTIFIED BIODEGRADABLE PLASTIC INNER BAG USED.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Huon-sachet.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Huon-sachet.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/huonpinesachet/"
+    },
+    {
+      "sourceSlug": "huonpinespray",
+      "name": "Huon Pine Mist",
+      "brand": "Tambo Teddies",
+      "priceAud": 18.95,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [],
+      "description": "Transform your home with LINII® Huon Pine Mist, a long-lasting, calming, and soothing spray inspired by the temperate rainforests of Southwest Tasmania. This versatile mist is perfect for refreshing personal spaces, including linen, bedding, clothing, and carpets, while also offering natural protection against silverfish, moths, fleas, and mites. Its unique formula combines Huon Pine Hydrosol with a proprietary blend of essential oils, providing both a delightful aroma and effective pest deterrence. Designed for use in and around cupboards, hard surfaces, and fabrics, its rich oil content ensures lasting protection for your family and home. Each 100ml bottle delivers over 200 sprays, making it a practical addition to your household routine.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Huon-mist.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Huon-mist.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/huonpinespray/"
+    },
+    {
+      "sourceSlug": "tom-thumb-teddy-bear",
+      "name": "Tom Thumb Teddy Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 120,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "B2B",
+        "Baby Gifts",
+        "Monthly Report",
+        "Tom Thumb"
+      ],
+      "description": "Our little Tom Thumbs are back! Created from the softest sheepskins, these guys are a little gem. A little over 20cm tall, they are the ultimate little bear who makes the best childhood friend. Available in shorter skins in a wide range of colours. Tom&#8217;s eyes are safety standard and firmly applied with an applicator. Caring for your Tom Thumb. Quality tested to meet safety standards Spotty Toms can be cream, black, brown and taupe spots, patterns vary.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/Camel-Tom-Thumb.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/Camel-Tom-Thumb.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/Honey-Tom-Thumb-Honey-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/Spotty-Tom-Thumb-Spotty.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/Camel-Tom-Thumb-Camel.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/Chocolate-Tom-Thumb-Chocolate.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/12/Teal-Tom-Thumb-Teal.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Tom-Thumb-Purple.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Tom-Thumb-Plum.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Tom-Thumb-Navy.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Tom-Thumb-Cream.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Tom-Thumbs-Group.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Tom-Thumb-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Tom-Thumb-3.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/Tom-Thumb-Red.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tom-thumb-teddy-bear/"
+    },
+    {
+      "sourceSlug": "rompers",
+      "name": "Rompers",
+      "brand": "Tambo Teddies",
+      "priceAud": 25,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "baby-gifts",
+        "clothing",
+        "specials-bundles"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Rompers"
+      ],
+      "description": "Show how much you love them with our Tambo Teddies romper suits. Available in white, soft pink and a beautiful blue. Made from 100% cotton, Tambo Teddies rompers come in three sizes; 000 (0-3 mths), 00 (3-6 mths) and 0 (6 &#8211; 12 mths). A great gift for those littles ones in your life.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/10/Rompers.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/10/Rompers.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/rompers/"
+    },
+    {
+      "sourceSlug": "sheepskin-hot-water-bottle-cover",
+      "name": "Sheepskin Hot Water Bottle Cover",
+      "brand": "Tambo Teddies",
+      "priceAud": 110,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [
+        "Hot Water bottle Cover"
+      ],
+      "description": "Tambo Teddies sheepskin hot water bottle covers are soft, cuddly and very cosy. Made from the best Australian and New Zealand sheepskins, these &#8216;teddy bears&#8217; will keep you warm during the cold winter nights. In summer time &#8211; they are great for storing your PJs. Hot water bottle is not included. Caring for your Tambo Teddies Sheepskin .",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/08/TAMBO-TEDDIES-JAN23-SOCIAL-14.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/08/TAMBO-TEDDIES-JAN23-SOCIAL-14.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/08/c24d411b401e67f84427a84d5f830589790ec0b0.jpeg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/sheepskin-hot-water-bottle-cover/"
+    },
+    {
+      "sourceSlug": "spotty-sheepskin-rugs",
+      "name": "Spotty Sheepskin Rugs",
+      "brand": "Tambo Teddies",
+      "priceAud": 160,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": false,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares",
+        "sheepskins"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Spotty Sheepskin Rugs"
+      ],
+      "description": "Tambo Teddies natural long wool Australian and New Zealand sheepskins. Unshorn skins come in a wide range of spotty browns and creams. Lush and luxurious, every skin is different. Perfect decorator items for the floor or as a couch throw. Ideal for warming up your camping chair. Approximately 100 cm long x 65 cm wide. Caring for your Tambo Teddies Sheepskin .",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/10/skins.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/10/skins.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/10/IMG20211015115813-copy.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/08/d1e217e11cdfa3564c836b34a96fc608dfe39e10.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/10/skins-6.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/spotty-sheepskin-rugs/"
+    },
+    {
+      "sourceSlug": "belt",
+      "name": "Belt",
+      "brand": "Tambo Teddies",
+      "priceAud": 20,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "Belt"
+      ],
+      "description": "Plaited faux leather belt to accompany our Mr Stockman shorts or Mrs Stockman skirts. An outback outfit essential.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/3853ff4a2f8d65bffd85a2952f8de888d97c4cf2-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/3853ff4a2f8d65bffd85a2952f8de888d97c4cf2-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/6697fc300e6e80330d4e47ef3c6b55d18cb6ce88-1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/belt/"
+    },
+    {
+      "sourceSlug": "mrsstockmanskirt",
+      "name": "Mrs Stockman Skirt",
+      "brand": "Tambo Teddies",
+      "priceAud": 25,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [],
+      "description": "Moleskin Skirt for large basils. Dress up your teddy with our moleskin skirts. Made to fit our large basils. Belt sold separately.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/6697fc300e6e80330d4e47ef3c6b55d18cb6ce88.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/6697fc300e6e80330d4e47ef3c6b55d18cb6ce88.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/mrsstockmanskirt/"
+    },
+    {
+      "sourceSlug": "mrs-stockman-shirt-and-knickers-set",
+      "name": "Mrs Stockman Shirt and Knickers Set",
+      "brand": "Tambo Teddies",
+      "priceAud": 35,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Mrs Stockman Shirt and Knickers Set"
+      ],
+      "description": "Beautiful shirt and knicker set for our large Basils. Mrs Stockman Shirt and Knicker sets come in five different fabrics– pink gingham check, pink floral, green floral and two blues floral options. Your teddy will feel beautiful dressed in one of our shirt and knicker sets. Pair with our ‘moleskin’ skirts and plaited belt. Shirts and knickers fit our large Basil bears only.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/Pink-floral.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/Pink-floral.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/3ce4c70a9eef459de9066356428b4cbabf981f81.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/752_7294.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/752_7293.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/blue-daisy.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/Pink-floral.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/mrs-stockman-shirt-and-knickers-set/"
+    },
+    {
+      "sourceSlug": "tambo-teddies-gift-vouchers",
+      "name": "Tambo Teddies Gift Vouchers",
+      "brand": "Tambo Teddies",
+      "priceAud": 50,
+      "priceAudMax": 250,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [],
+      "description": "Can&#8217;t decide on the perfect gift? Give the gift of choice with a Tambo Teddies gift voucher. Let them choose for themselves and find one of our beautiful teddies. A gift of choice is sure to put a smile on your special someone&#8217;s face.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/06/logo-bubble.png",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/06/logo-bubble.png"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddies-gift-vouchers/"
+    },
+    {
+      "sourceSlug": "littleaussieringerteddy",
+      "name": "Little Aussie Ringer Teddy",
+      "brand": "Tambo Teddies",
+      "priceAud": 275,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "outback teddy",
+        "Ringer",
+        "teddy bear"
+      ],
+      "description": "The Little Aussie Ringer Tambo Teddy is a really unique Aussie teddy bear. He is dressed in his Bear-as-a-Bone and leather hat and carries his swag and leather stock whip with him everywhere he goes. He is a unique Australian product that would make the perfect gift. Little Aussie is 30cm tall approximately, his eyes are safety standard and firmly applied with an applicator. He is hand made from high quality Australian wool. Caring for your Tambo Teddy. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/TAMBO-TEDDIES-JAN23-SOCIAL-8.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/TAMBO-TEDDIES-JAN23-SOCIAL-8.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/TAMBO-TEDDIES-JAN23-SOCIAL-8.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/06/bd69469a15af0b165429bad3aecab3873047cd6b.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Ringer.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/littleaussieringerteddy/"
+    },
+    {
+      "sourceSlug": "echidnapuzzlebookgiftpack",
+      "name": "Echidna Puzzle Book Gift Pack",
+      "brand": "Tambo Teddies",
+      "priceAud": 65,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards",
+        "specials-bundles"
+      ],
+      "tags": [
+        "books",
+        "Christmas",
+        "gift pack",
+        "handmade",
+        "sheepskin",
+        "stories",
+        "tamboteddy",
+        "teddybear",
+        "wool"
+      ],
+      "description": "Our Tambo Teddies Echidna gift pack has been put together especially for Christmas. Have fun with our Echidna, puzzle and book combo. Best present ever! Pack value: $72.00 *Echidna colour selected at random. Puzzle not suitable for children under 3 years",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Puzzle-pack.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Puzzle-pack.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/echidnapuzzlebookgiftpack/"
+    },
+    {
+      "sourceSlug": "mrsstockman",
+      "name": "Mrs Stockman",
+      "brand": "Tambo Teddies",
+      "priceAud": 275,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Australian made",
+        "Mrs Stockman",
+        "outback teddy"
+      ],
+      "description": "One of our famous teddy bears, Mrs Stockman comes dressed in a leather hat, country-style collared shirt and matching knickers, moleskin skirt and plaited leather belt. Our &#8216;Mrs Stockman&#8217; would make the perfect gift for your loved one. Lovingly sewn using high quality Australian wool, Mrs Stockman, is a large sized Tambo Teddy Bear (45cm tall) from the Basil family. Mrs Stockman&#8217;s eyes are safety standard and firmly applied with an applicator. Mrs Stockman is a unique Australian product. Caring for your Tambo Teddy. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/TAMBO-TEDDIES-JAN23-SOCIAL-7.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/01/TAMBO-TEDDIES-JAN23-SOCIAL-7.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/02/7f6638be16740113cdfc8a2a843c746a0545c772.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/02/blue-daisy-Mrs-Stockman.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/02/Pink-floral-Mrs-Stockman.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/mrsstockman/"
+    },
+    {
+      "sourceSlug": "mrstockman",
+      "name": "Mr Stockman",
+      "brand": "Tambo Teddies",
+      "priceAud": 350,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Australian made",
+        "Mr",
+        "Stockman"
+      ],
+      "description": "This large iconic and famous teddy bear comes dressed in a Bear-as-a-Bone, leather hat, checked shirt, moleskin pants and plaited leather belt. True Blue Stockman Basil also carries his swag and leather stock whip. Mr Stockman Basil Teddy Bear is the very top of the Tambo Teddies range. 45cm tall (approximately) and crafted from the softest sheepskin in cream or honey colour. This one of a kind teddy bear would make a great gift for your loved one. Mr Stockman&#8217;s eyes are safety standard and firmly applied with an applicator. The Stockman Tambo Teddy, skillfully made from pure Australian wool, 100% hand made in the Outback. Caring for your Tambo Teddy. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/02/Mr-Stockman.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/02/Mr-Stockman.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/02/4b6ceee17968ea02168d6682a55e87e2b91488b2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/09/Mr-Stockman.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/01/MR.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/02/Mr-Stockman-Red.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/mrstockman/"
+    },
+    {
+      "sourceSlug": "goliath",
+      "name": "Goliath",
+      "brand": "Tambo Teddies",
+      "priceAud": 450,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Goliath"
+      ],
+      "description": "Goliath is a giant of a teddy bear, nearly 0.75 metre high in sitting position. Made from the softest cream natural Australian sheepskins and stuffed lightly, Goliath the gentle giant is VERY soft and cuddly. A special bear for a special occasion, this over-sized Tambo Teddy is the perfect gift. Goliath Tambo Teddies all have a unique number, starting at one, along with an individual giant of a name. Caring for your Tambo Teddy Goliath Bear. Quality tested to meet safety standards.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/01/Goliath.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/01/Goliath.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/01/3210005ad0521116e0e6de0ff641168efe701aad.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/goliath/"
+    },
+    {
+      "sourceSlug": "tambo-teddies-cards-2",
+      "name": "Tambo Teddies Cards",
+      "brand": "Tambo Teddies",
+      "priceAud": 4,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "books-puzzles-games-cards"
+      ],
+      "tags": [
+        "Christmas",
+        "Monthly Report",
+        "TT Cards"
+      ],
+      "description": "Add a personal note with our Tambo Teddies greeting cards. All cards are 4 x 6 and come with envelope.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/37b693e60d5b308015de2045a10649975fb55747-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/37b693e60d5b308015de2045a10649975fb55747-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/96438e8bd9f25932337514611d2a24b3e6b5020d-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/d1170f79439eaa780dd18dad0610ee97bf9e7481-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/dfc1f7800ac0b78918a53234b088053a51a82740-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/5b881884f2e0adb79bd749eef00cba661cacd19b-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/5198ffd9e5833fcea913c28c38b5de97a81300ce-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/5a609b7840f4f84c0432b04d3f4af68bda8c7a04-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/Untitled-design-17.png",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2026/01/Neutral-Baby-Card.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddies-cards-2/"
+    },
+    {
+      "sourceSlug": "basil-bear-with-suede-paws-2",
+      "name": "Basil Bear with Suede Paws",
+      "brand": "Tambo Teddies",
+      "priceAud": 175,
+      "priceAudMax": 205,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "B2B",
+        "Basil",
+        "Large",
+        "Monthly Report",
+        "Suede Paw"
+      ],
+      "description": "Basil Teddy Bear Tambo Teddies Basil Bear with Suede paws have been added to our Basil family, enriching both personality and individuality. The Basil Bear with suede paws is a handsome teddy bear, handmade locally in Tambo from natural Australian wool. The small basil is 30cm tall while the large bear is 45 cm (approximately), and these gorgeous bear come in a range of colours. Suede options include sand, tan and dark brown. Basil&#8217;s eyes are safety standard and firmly applied with an applicator. Caring for your Tambo Teddy Basil Bear. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/Suede-Paw-Basil-Honey-for-Front-image.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/Suede-Paw-Basil-Honey-for-Front-image.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Honey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2024/03/Latte.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Camel.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Silver-Fox.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Pink.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/11/Mid-Grey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/12/Cream.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/752_7262.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/752_7265.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/basil-bear-with-suede-paws-2/"
+    },
+    {
+      "sourceSlug": "mrstockmanshirt",
+      "name": "Mr Stockman Shirt",
+      "brand": "Tambo Teddies",
+      "priceAud": 25,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "Check Shirt",
+        "Mr Stockman Shirt",
+        "shirt"
+      ],
+      "description": "Mr Stockman shirts come in a fresh red/white or blue/white check. Your Teddy will look all the smarter dressed up in country work shirt. Pair the shirt with a pair of &#8216;moleskin&#8217; shorts andplaited belt. Shirts fit large basil bears only.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/a8399399d6e934660ad415e6907f946fa349d33a.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/a8399399d6e934660ad415e6907f946fa349d33a.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/mrstockmanshirt/"
+    },
+    {
+      "sourceSlug": "teddybearswag",
+      "name": "Teddy Bear Swag",
+      "brand": "Tambo Teddies",
+      "priceAud": 35,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "swag",
+        "swag roll",
+        "teddy bear swag"
+      ],
+      "description": "Does your teddy need somewhere to sleep at night? The Tambo Teddy bear swag is perfect for a camp out under the stars! Tambo Teddy swags unroll and fold out to make a camp bed for your teddy. Swags are 45 cm long by 35 cm wide.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/594d7bb74930300b0b65174907b34a8449f146d6.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/594d7bb74930300b0b65174907b34a8449f146d6.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/teddybearswag/"
+    },
+    {
+      "sourceSlug": "bear-as-a-bone",
+      "name": "Bear as a Bone",
+      "brand": "Tambo Teddies",
+      "priceAud": 35,
+      "priceAudMax": 40,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "bear as a bone",
+        "coat"
+      ],
+      "description": "Bear as a Bone &#8211; to keep your teddy dry!! Designed like an oil skin rain coat, Tambo Teddies Bear-as-a-Bones are made from a lighter fabric so Ted can wear them in all weather. Dress your small Basil bear as an Outback Ringer, combine the coat with a hat, swag and a whip. Or style up your large Basil as a Mr Stockman, dress him in a shirt, shorts, hat, swag and whip.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/87dda089651022734f15e35fb68aedfd335ddaf1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/87dda089651022734f15e35fb68aedfd335ddaf1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/bear-as-a-bone/"
+    },
+    {
+      "sourceSlug": "basil-teddy-bear",
+      "name": "Basil Teddy Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 155,
+      "priceAudMax": 185,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bears"
+      ],
+      "tags": [
+        "Basil",
+        "Large",
+        "Monthly Report"
+      ],
+      "description": "Basil Teddy Bear The Basil Teddy Bear is handmade locally in Tambo from natural Australian wool. When you visit us in Tambo Teddies you can watch one of these little woolly friends come to life. This gorgeous Tambo Teddy comes in a range of colours, the small basil is 30cm tall while the large bear is 45 cm (approximately). Basil&#8217;s eyes are safety standard and firmly applied with an applicator. Every bear is unique with his own individual name and number; made from natural sheepskin, no two bears are ever the same. Caring for your Tambo Teddy Basil Bear. &nbsp; &nbsp;",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/sm-basils.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/06/sm-basils.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Camel.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Basil-Latte.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Basil-Mid-Grey.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Honey-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Cream-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Blue-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Basil-Purple.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Basil-Pink.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Silver-Fox-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/11/Plum.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/basil-teddy-bear/"
+    },
+    {
+      "sourceSlug": "mrstockmanshorts",
+      "name": "Mr Stockman Shorts",
+      "brand": "Tambo Teddies",
+      "priceAud": 25,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "Moleskin pants",
+        "Shorts",
+        "Stockman Shorts"
+      ],
+      "description": "Moleskin pants for Mr Stockman. Your teddy will look smart in a pair of moleskin shorts. Made to fit our large bears. Belt sold separately.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/3853ff4a2f8d65bffd85a2952f8de888d97c4cf2.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/3853ff4a2f8d65bffd85a2952f8de888d97c4cf2.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/mrstockmanshorts/"
+    },
+    {
+      "sourceSlug": "tambo-lambo",
+      "name": "Tambo Lambo",
+      "brand": "Tambo Teddies",
+      "priceAud": 130,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "baby-gifts",
+        "sheepskin-animals"
+      ],
+      "tags": [],
+      "description": "Introducing Tambo Lambo. This cute and cuddly lamb features a textured coat of curly wool and pretty fabric ears. Tambo Lambo will be an appealing soft toy in your Tambo Teddy collection. Made from a woollen sliver-knit fabric, Tambo Lambo is light weight and flexible. A sliver-knit fabric has the base fabric knitted from a fibrillated backing yarn and the pile is formed from sliver fibres of wool knitted into the base fabric to project on the outside side of the fabric. Tambo Lambo stands approximately 30 cm tall and comes in a range of dainty fabric ears suitable for boys or girls. Please note ear fabric detail may differ from image. Caring for your Tambo Lambo.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/03/tambo-teddies-2048-04.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/03/tambo-teddies-2048-04.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/10/Lamb-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/10/Lamb-3.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-lambo/"
+    },
+    {
+      "sourceSlug": "tambo-teddies-puzzle",
+      "name": "Tambo Teddies Puzzle",
+      "brand": "Tambo Teddies",
+      "priceAud": 16,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "books-puzzles-games-cards",
+        "specials-bundles"
+      ],
+      "tags": [
+        "adventures",
+        "books",
+        "stories",
+        "swag",
+        "Tambo"
+      ],
+      "description": "Have fun with our Tambo Teddies peg puzzle. Join Little Aussie as he tackles camping in the Outback. Meet Peter Possum, Ernie Echidna and friends who live in the Bush, a great addition to Little Aussie&#8217;s story. Made from an original Tambo Teddy design. *Not suitable for children under 3 years.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/11/Puzzle-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/11/Puzzle-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/11/Puzzle.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddies-puzzle/"
+    },
+    {
+      "sourceSlug": "tambo-teddy-tutu",
+      "name": "Tambo Teddy Tutu",
+      "brand": "Tambo Teddies",
+      "priceAud": 40,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "Australian made",
+        "dress",
+        "handmade",
+        "teddybear",
+        "tutu"
+      ],
+      "description": "There is nothing more adorable or feminine than a Tambo Teddy in a tutu. Available in a range of colours, pink, purple and blue, you can dress you favourite bear in a whorl of prettiness. Handcrafted on the Gold Coast, Australia, by Heavenly Tutus , these delightful tulle skirts are a &#8216;must-have&#8217; teddy bear accessory. Tutus fit both large (45 cm) and small (30 cm) Basil and Toby bears.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/10/TAMBO-TEDDIES-_-FEB23_-SOCIAL-5.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/10/TAMBO-TEDDIES-_-FEB23_-SOCIAL-5.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/10/Purple.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/10/Pink.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/10/Blue.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddy-tutu/"
+    },
+    {
+      "sourceSlug": "tambo-teddy-caps",
+      "name": "Tambo Teddy Caps",
+      "brand": "Tambo Teddies",
+      "priceAud": 20,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Our Tambo Teddy caps feature our three-teddy bear logo and come in a two-toned grey colour. One size fits all design.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/cap-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/cap-1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddy-caps/"
+    },
+    {
+      "sourceSlug": "tambo-teddies-sheepskins",
+      "name": "Tambo Teddies Sheepskins",
+      "brand": "Tambo Teddies",
+      "priceAud": 195,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-gifts-homewares",
+        "sheepskins"
+      ],
+      "tags": [
+        "Australian made",
+        "sheepskin",
+        "Tambo",
+        "tamboteddy",
+        "therapeutic",
+        "wool"
+      ],
+      "description": "Tambo Teddies Sheepskins are ideal for the elderly or anyone who is confined to bed for a long period. Sheepskins are a natural product, the dense resilient and springy wool fibres provide total support and comfort for the body. Wool fibres create a natural cushion that moves with the body, eliminating irritating pressure points by distributing the weight over a large area. 130 cm long by 60 cm wide. Caring for your Tambo Teddies Sheepskin .",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/10/skins-5.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/10/skins-5.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Bed-1-1-of-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Theraputic-Rug.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Theraputic-Rug-2.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddies-sheepskins/"
+    },
+    {
+      "sourceSlug": "peter-possum",
+      "name": "Peter Possum",
+      "brand": "Tambo Teddies",
+      "priceAud": 120,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "puppets",
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Peter Possum"
+      ],
+      "description": "Our Peter is a rather shy character, but once he gets to know you, he is full of fun and surprises. Although Possums prefer tree-dwelling, Peter the Possum is quite happy seeking out any nook and cranny around the house where he can curl up and sleep the day away. Being nocturnal, he enjoys coming out to play anytime—and as a puppet, he absolutely loves putting on a show! Peter Possum has been crafted from soft camel skin and has a soft cream belly, beady eyes and an inquisitive nose. Peter&#8217;s eyes and noses are safety standard and firmly applied with an applicator. Peter loves being a part of the Tambo Teddy family and would love to be a part of yours too. Caring for your Peter Possum .",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/TAMBO-TEDDIES-_-FEB23_-SOCIAL-7.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/TAMBO-TEDDIES-_-FEB23_-SOCIAL-7.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Tambo-Teddies-Jan22-2775-2-scaled.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Tambo-Teddies-Jan22-2660-scaled.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/TAMBO-TEDDIES-_-FEB23_-SOCIAL-15.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/peter-possum/"
+    },
+    {
+      "sourceSlug": "tambo-teddies-adventure-books",
+      "name": "Tambo Teddies Adventure Books",
+      "brand": "Tambo Teddies",
+      "priceAud": 16,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "books-puzzles-games-cards",
+        "specials-bundles"
+      ],
+      "tags": [
+        "adventures",
+        "books",
+        "stories",
+        "tamboteddy",
+        "teddybear"
+      ],
+      "description": "Set in the heart of the outback, join Basil and Toby with their friends the Stockman family as they embark on a few Tambo Teddies Adventures exploring different aspects of country living. These colourful short stories are great for bedtime reading and are the perfect little gift. The four original stories allow you to join Ted as undertakes the muster and shearing on the farm, before he heads into town to the rodeo for some fun. Little Aussie gets adventurous and embarks on a camping adventure. Two new titles have joined the library! Join the Stockman family as they journey to New Zealand to have a holiday with Stewart Bear or get musical and sing along with Peter Possum&#8217;s band.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Books.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Books.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7613.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7615.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7616.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7612.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Bookset-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/04/NZ-Holiday.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/04/Peter-Possum.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddies-adventure-books/"
+    },
+    {
+      "sourceSlug": "tambo-teddy-water-bottles",
+      "name": "Tambo Teddy Water Bottles",
+      "brand": "Tambo Teddies",
+      "priceAud": 24.95,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Quench your thirst with Tambo Teddies double-walled water bottles, the ultimate solution to keeping your drinks refreshingly cool all day long. Crafted with high-quality materials and designed with convenience in mind, our water bottles are the perfect companion for your daily adventures. The double-walled construction of our water bottles ensures that your drink remains cool and refreshing, no matter the temperature outside. Whether you&#8217;re going on a hike, hitting the gym, or simply spending the day outdoors, our water bottles will keep your drink at the perfect temperature all day long.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Water-Bottle-2.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Water-Bottle-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Water-Bottle.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddy-water-bottles/"
+    },
+    {
+      "sourceSlug": "tambo-teddy-tea-towels",
+      "name": "Tambo Teddy Tea Towels",
+      "brand": "Tambo Teddies",
+      "priceAud": 18,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-gifts-homewares",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "Looking for a unique outback keepsake? Our Tambo Teddy Tea Towels feature the name of every property in the district! Made from 100% cotton and available in two stylish color combos— red/grey and blue/grey —they&#8217;re both practical and packed with Tambo charm. Add a piece of Tambo heritage to your home today!",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Maroon.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Maroon.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Blue-3.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddy-tea-towels/"
+    },
+    {
+      "sourceSlug": "tamboteddypicnicblankets",
+      "name": "Tambo Teddy Picnic Blankets",
+      "brand": "Tambo Teddies",
+      "priceAud": 35,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "A great Tambo Teddy product- featuring all the Tambo district property names our bears are named after. Specially designed Tambo Teddy picnic rugs are made from a soft cloth with a PVC backing. The rugs fold up into a compact package with a carry handle, ideal for impromptu picnics. 1.5 x 1.2m",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2021/06/65abf241fbd68db82a4cf7c717394b472d6dce38.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/06/65abf241fbd68db82a4cf7c717394b472d6dce38.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/06/307bc9cbbcb61a0419ed3297e83121d2f0e86a0e-scaled.jpeg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/06/e7cafe85506a6776b4d9b29324620bf160082af0.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tamboteddypicnicblankets/"
+    },
+    {
+      "sourceSlug": "tambo-teddy-bucket-hats",
+      "name": "Tambo Teddy Bucket Hats",
+      "brand": "Tambo Teddies",
+      "priceAud": 20,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares",
+        "specials-bundles"
+      ],
+      "tags": [],
+      "description": "The Tambo Teddy hat provides great shade hat for any outdoor fun. Teddy hats are available in a festive bright red with an embroidered logo. One size fits all &#8211; from toddlers through to smaller adult sized heads.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Bucket-hat-1.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Bucket-hat-1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/tambo-teddy-bucket-hats/"
+    },
+    {
+      "sourceSlug": "stubby-coolers",
+      "name": "Stubby Coolers",
+      "brand": "Tambo Teddies",
+      "priceAud": 20,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [],
+      "description": "Keep your drinks hot or cold with our 100% handmade woollen stubby coolers. Wool is the best insulator and Tambo Teddy stubby coolers are soft and flexible and make an ideal present. Variety of colours available. Enquire about our stubby coolers for Corporate Gifting.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Stubby-Coolers-2.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Stubby-Coolers-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Stubby-Coolers.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/stubby-coolers/"
+    },
+    {
+      "sourceSlug": "seat-belt-covers",
+      "name": "Seat Belt Covers",
+      "brand": "Tambo Teddies",
+      "priceAud": 45,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [
+        "B2B",
+        "Monthly Report",
+        "Seat Belt Covers"
+      ],
+      "description": "Luxurious handmade Tambo Teddy woollen seat belt covers for driving comfort. A driving accessory that makes the perfect gift. Seat belt covers come in a wide range of colours, from all colours in the rainbow to muted and natural tones. Match the interior or exterior of your car.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Honey-Seatbelt.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Honey-Seatbelt.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/500_9865.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/500_9867.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/500_9868.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2021/07/500_9861.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/seat-belt-covers/"
+    },
+    {
+      "sourceSlug": "baby-sheep-skin-rugs",
+      "name": "Baby Sheepskin Rugs",
+      "brand": "Tambo Teddies",
+      "priceAud": 130,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "baby-gifts",
+        "sheepskin-gifts-homewares",
+        "sheepskins"
+      ],
+      "tags": [
+        "Baby Sheep Skin Rugs",
+        "Monthly Report"
+      ],
+      "description": "Tambo Teddies sheepskin rugs, affectionately known as &#8220;sheepies,&#8221; are perfect for babies. These soft and soothing sheepies come in cream, pink, lemon, or blue, making them the ultimate baby gift. Measuring approximately 90cm in length and 65cm in width, they provide a luxurious, cozy and comforting experience for the little ones. Caring for your Sheepie.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/10/skins-3.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/10/skins-3.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7618-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7619-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7620-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Cream-Sheepie-2.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/baby-sheep-skin-rugs/"
+    },
+    {
+      "sourceSlug": "slippers",
+      "name": "Slippers",
+      "brand": "Tambo Teddies",
+      "priceAud": 135,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-gifts-homewares"
+      ],
+      "tags": [
+        "Australian made",
+        "handmade",
+        "sheepskin",
+        "slippers",
+        "Tambo",
+        "wool"
+      ],
+      "description": "100% Australian sheepskin slippers, soft and warm to keep your toes cosy. Available in a limited range of colours. Caring for your Tambo Teddies Slippers.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2020/10/Bamboo-Slippers.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/10/Bamboo-Slippers.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/slippers/"
+    },
+    {
+      "sourceSlug": "echidna",
+      "name": "Echidna",
+      "brand": "Tambo Teddies",
+      "priceAud": 40,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals"
+      ],
+      "tags": [
+        "Echidna",
+        "Monthly Report"
+      ],
+      "description": "Introducing Tambo Teddies ‘Echidna’, the best baby gift idea. In contrast to his spiny family, this little replica (13 cm high) is hand made from soft Australian Wool. A cute and cuddly locally handmade Tambo souvenir. Crafted in a range of colours, our Echidna&#8217;s eyes are safety standard and firmly applied with an applicator. Caring for your Tambo Teddy Echidna.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Echidnas.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Echidnas.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9727.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9738.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9739.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9740.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9741.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9742.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9743.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9744.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9746.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9748.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9751.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_9753.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/echidna.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/echidna-1.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/echidna/"
+    },
+    {
+      "sourceSlug": "koala",
+      "name": "Koala",
+      "brand": "Tambo Teddies",
+      "priceAud": 160,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "sheepskin-animals",
+        "teddy-bears"
+      ],
+      "tags": [
+        "Australian animal",
+        "Australian made",
+        "Koala"
+      ],
+      "description": "The Tambo Teddies Koala is large and scrumptious, a real Aussie character. With his distinctive fluffy ears he is a real charmer. He comes in three colours; silverfox, mid-grey and bamboo. A bush babe for babies or a little bit of Australia for friends and family overseas. Approximately 25-30 cm tall. Not being a &#8216;bear&#8217;, our koalas are not named or numbered. Caring for your Tambo Teddy Koala . Quality tested to meet safety standards &nbsp;",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Koala-scaled.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/10/Koala-scaled.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Silver-Fox-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Mid-Grey-2-1.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/10/Bamboo-Koala.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/koala/"
+    },
+    {
+      "sourceSlug": "koala-bickie",
+      "name": "Koala Bickie",
+      "brand": "Tambo Teddies",
+      "priceAud": 85,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "baby-gifts",
+        "sheepskin-animals"
+      ],
+      "tags": [],
+      "description": "The Tambo Teddy Koala Bickie is ideal for new born babies as it is soft, light weight and flat in formation. Tambo Teddies Koala Bickie is locally made, hand stitched using Australian wool. Koala Bickie&#8217;s eyes are safety standard and firmly applied with an applicator. Caring for your Tambo Teddy Koala Bickie. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/Koala-Bickie-retake.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/03/Koala-Bickie-retake.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/DSC_7598.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/10/Silver-Fox-Koala-Bickie.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2020/10/Bamboo-Koala-Bickie.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/koala-bickie/"
+    },
+    {
+      "sourceSlug": "bickie-bear",
+      "name": "Bickie Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 80,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "baby-gifts",
+        "specials-bundles",
+        "teddy-bears"
+      ],
+      "tags": [
+        "Bickie Bear",
+        "Monthly Report"
+      ],
+      "description": "Our handcrafted Australian ‘Bickie Bear’ is a beautifully soft, flat-style teddy bear, designed with love and care. Made from premium natural materials, Tambo Teddy Bickie Bears are both durable and gentle, making them an ideal keepsake for little ones. Available in a variety of delightful colors, these bears are perfect for snuggling and make a thoughtful, timeless gift for babies, sure to be treasured for years to come. Bickie bears are approximately 25cm long, 20cm at the widest point and 3.5 cm thick. Caring for your Bickie Bear Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Bickies.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Bickies.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Honey-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Cream-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Blue-4.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Pink-2.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Mid-Grey-3.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Silver-Fox-Bickie.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Latte-Bickie.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Plum-Bickie.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/bickie-bear/"
+    },
+    {
+      "sourceSlug": "toby-teddy-bear",
+      "name": "Toby Teddy Bear",
+      "brand": "Tambo Teddies",
+      "priceAud": 155,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "variable",
+      "hasOptions": true,
+      "categories": [
+        "specials-bundles",
+        "teddy-bears"
+      ],
+      "tags": [
+        "Monthly Report",
+        "Small",
+        "Toby"
+      ],
+      "description": "Toby Tambo Teddy Bear is quite an enchanter with his large flat nose and chubby physique. Toby bears stand approximately 30cm tall and come in a small range of multi coloured patch work options, every bear is an individual. Toby&#8217;s eyes are safety standard and firmly applied with an applicator. The Toby Tambo Teddy is proudly hand made from high quality Australian wool. Every bear is an individual with his own unique identification number, no two bears are ever the same! Caring for your Tambo Teddy Toby Bear. Quality tested to meet safety standards",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2022/03/TAMBO-TEDDIES-27-scaled.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2022/03/TAMBO-TEDDIES-27-scaled.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Patchwork-Purple.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2023/05/Toby-Patchwork-Green.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Latte-Patchwork.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Blue-Patchwork.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Pink-Patchwork.jpg",
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Patchwork-Red.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/toby-teddy-bear/"
+    },
+    {
+      "sourceSlug": "teddy-bear-hat",
+      "name": "Teddy Bear Hat",
+      "brand": "Tambo Teddies",
+      "priceAud": 35,
+      "priceAudMax": null,
+      "currency": "AUD",
+      "inStock": true,
+      "productType": "simple",
+      "hasOptions": false,
+      "categories": [
+        "teddy-bear-clothes"
+      ],
+      "tags": [
+        "akubra",
+        "Hat",
+        "Teddy Bear Hat"
+      ],
+      "description": "Want your Tambo Teddy to stand out? Add a Teddy Bear Hat to your favourite teddy. Our &#8216;Bush Baby&#8217; teddy bear hats are made in Australia, from genuine leather and feature a chin strap and &#8216;Aussie Bush&#8217; badge.",
+      "imageUrl": "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Teddy-Bear-Hat.jpg",
+      "imageUrls": [
+        "https://www.tamboteddies.com.au/wp-content/uploads/2019/02/Teddy-Bear-Hat.jpg"
+      ],
+      "permalink": "https://www.tamboteddies.com.au/product/teddy-bear-hat/"
+    }
+  ]
+}

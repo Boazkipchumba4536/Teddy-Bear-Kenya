@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useCatalogStore, defaultSiteSettings } from "@/store/catalogStore";
 import { adminSeedCatalog, adminUpdateSiteSettings } from "@/lib/actions/admin";
-import { refreshCatalog } from "@/lib/refreshCatalog";
+import { refreshCatalog, refreshFullCatalog } from "@/lib/refreshCatalog";
 import { toastError, toastSuccess } from "@/store/toastStore";
 import type { SiteSettings } from "@/types/admin";
 
@@ -44,7 +44,7 @@ export default function AdminSettingsPage() {
     setSeedMessage("");
     try {
       const result = await adminSeedCatalog();
-      await refreshCatalog();
+      await refreshFullCatalog();
       const msg = result.message ?? (result.ok ? "Catalog seeded." : "Seed skipped.");
       setSeedMessage(msg);
       if (result.ok) toastSuccess(msg);

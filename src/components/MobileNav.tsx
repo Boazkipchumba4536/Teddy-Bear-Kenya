@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, ShoppingBag, ShoppingCart } from "lucide-react";
-import { useCartStore } from "@/store/cartStore";
+import { selectCartItemCount, useCartStore } from "@/store/cartStore";
 
 const tabs = [
   { href: "/", label: "Home", icon: Home },
@@ -13,11 +13,11 @@ const tabs = [
 
 export default function MobileNav() {
   const pathname = usePathname();
-  const itemCount = useCartStore((s) => s.itemCount());
+  const itemCount = useCartStore(selectCartItemCount);
   const toggleCart = useCartStore((s) => s.toggleOpen);
 
   return (
-    <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-cream/95 backdrop-blur-xl border-t border-caramel/10 safe-bottom">
+    <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-ivory/95 backdrop-blur-xl border-t border-caramel/10 safe-bottom shadow-soft">
       <div className="flex items-center justify-around h-16">
         {tabs.map(({ href, label, icon: Icon, isCart }) => {
           const active = pathname === href || (href === "/shop" && pathname.startsWith("/shop"));

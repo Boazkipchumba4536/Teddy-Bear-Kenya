@@ -1,6 +1,10 @@
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import ShopClient from "@/components/ShopClient";
 import PageLoader from "@/components/PageLoader";
+
+const ShopClient = dynamic(() => import("@/components/ShopClient"), {
+  loading: () => <PageLoader label="Opening the shop…" compact />,
+});
 
 export const metadata = {
   title: "Shop Bears | BearHug KE",

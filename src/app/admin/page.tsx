@@ -11,7 +11,9 @@ import type { Order } from "@/types/order";
 import type { User } from "@/types/order";
 
 export default function AdminDashboard() {
-  const products = useCatalogStore((s) => s.products);
+  const productCount = useCatalogStore((s) =>
+    s.products.length > 0 ? s.products.length : s.catalogProductCount
+  );
   const [orders, setOrders] = useState<Order[]>([]);
   const [customers, setCustomers] = useState<User[]>([]);
 
@@ -24,7 +26,7 @@ export default function AdminDashboard() {
   const pendingOrders = orders.filter((o) => o.status !== "delivered").length;
 
   const stats = [
-    { label: "Total Products", value: products.length, icon: Package, href: "/admin/products" },
+    { label: "Total Products", value: productCount, icon: Package, href: "/admin/products" },
     { label: "Total Orders", value: orders.length, icon: ShoppingCart, href: "/admin/orders" },
     { label: "Pending Orders", value: pendingOrders, icon: TrendingUp, href: "/admin/orders" },
     { label: "Customers", value: customers.length, icon: Users, href: "/admin/customers" },

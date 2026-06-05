@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Heart, MapPin, Truck, Shield } from "lucide-react";
+import { ABOUT_IMAGE } from "@/lib/images";
 import { site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -51,16 +52,23 @@ export default function AboutPage() {
               <Link href="/shop" className="btn-primary bg-caramel">
                 Shop all bears
               </Link>
-              <a href={whatsappLink("Hi BearHug KE! I'd like to know more about your bears.")} className="btn-outline border-cream/30 text-cream hover:bg-cream/10">
+              <a
+                href={whatsappLink("Hi BearHug KE! I'd like to know more about your bears.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] text-white px-6 py-3 min-h-[44px] text-sm font-semibold hover:bg-[#20bd5a] transition-colors shadow-lg"
+              >
                 Chat on WhatsApp
               </a>
             </div>
           </div>
           <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-elevated">
             <Image
-              src="/images/hero.webp"
+              src={ABOUT_IMAGE}
               alt="BearHug KE teddy bears"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={75}
               className="object-cover"
               priority
             />

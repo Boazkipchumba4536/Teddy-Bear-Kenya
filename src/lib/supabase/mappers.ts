@@ -3,15 +3,52 @@ import type { Order, PaymentMethod } from "@/types/order";
 import type { BearColor, BearSize, CartLineItem, Occasion, Product, ProductBadge } from "@/types/product";
 import type { DbOrder, DbProduct, DbSiteSettings, DbTestimonial } from "./types";
 
+export type DbProductListRow = Pick<
+  DbProduct,
+  | "id"
+  | "slug"
+  | "name"
+  | "tagline"
+  | "price"
+  | "size"
+  | "color"
+  | "occasions"
+  | "image"
+  | "badge"
+  | "featured"
+  | "created_at"
+> & {
+  brand?: string | null;
+  in_stock?: boolean | null;
+};
+
+export function mapProductList(row: DbProductListRow): Product {
+  return mapProduct({
+    ...row,
+    brand: row.brand ?? "",
+    in_stock: row.in_stock ?? true,
+    images: row.image ? [row.image] : [],
+    description: "",
+    care_instructions: "",
+    delivery_info: "",
+  });
+}
+
 export function mapProduct(row: DbProduct): Product {
   return {
     id: row.id,
     slug: row.slug,
     name: row.name,
+    brand:
+      row.brand ||
+      (row.tagline?.replace(/ collection.*$/i, "").trim() ?? ""),
+    inStock:
+      row.in_stock ??
+      !row.tagline?.toLowerCase().includes("out of stock"),
     tagline: row.tagline,
-    description: row.description,
-    careInstructions: row.care_instructions,
-    deliveryInfo: row.delivery_info,
+    description: row.description ?? "",
+    careInstructions: row.care_instructions ?? "",
+    deliveryInfo: row.delivery_info ?? "",
     price: row.price,
     size: row.size as BearSize,
     color: row.color as BearColor,
@@ -31,6 +68,8 @@ export function mapProductToDb(
     ...(data.id ? { id: data.id } : {}),
     slug: data.slug,
     name: data.name,
+    brand: data.brand ?? "",
+    in_stock: data.inStock ?? true,
     tagline: data.tagline,
     description: data.description,
     care_instructions: data.careInstructions,

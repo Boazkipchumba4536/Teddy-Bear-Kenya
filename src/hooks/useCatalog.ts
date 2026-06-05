@@ -1,29 +1,39 @@
+import { useMemo } from "react";
 import { useCatalogStore } from "@/store/catalogStore";
-import { filterProducts as filterProductsLib } from "@/lib/products";
+import { filterProducts as filterProductsLib } from "@/lib/filterProducts";
 import type { BearColor, BearSize, Product } from "@/types/product";
+import {
+  useCatalogLoadedWithSeed,
+  useProductsWithSeed,
+  useSiteSettingsWithSeed,
+  useTestimonialsWithSeed,
+} from "@/providers/catalogContext";
 
 export function useProducts() {
-  return useCatalogStore((s) => s.products);
+  return useProductsWithSeed();
 }
 
 export function useCatalogLoaded() {
-  return useCatalogStore((s) => s.loaded);
+  return useCatalogLoadedWithSeed();
 }
 
 export function useCatalogLoading() {
-  return useCatalogStore((s) => s.loading);
+  const loaded = useCatalogLoadedWithSeed();
+  const loading = useCatalogStore((s) => s.loading);
+  return !loaded && loading;
 }
 
 export function useTestimonials() {
-  return useCatalogStore((s) => s.testimonials);
+  return useTestimonialsWithSeed();
 }
 
 export function useSiteSettings() {
-  return useCatalogStore((s) => s.settings);
+  return useSiteSettingsWithSeed();
 }
 
 export function useProductBySlug(slug: string): Product | undefined {
-  return useCatalogStore((s) => s.products.find((p) => p.slug === slug));
+  const products = useProductsWithSeed();
+  return products.find((p) => p.slug === slug);
 }
 
 export function useFilteredProducts(filters: {
@@ -34,6 +44,18 @@ export function useFilteredProducts(filters: {
   maxPrice?: number;
   sort?: string;
 }) {
+  const { occasion, sizes, colors, minPrice, maxPrice, sort } = filters;
   const products = useProducts();
-  return filterProductsLib(products, filters);
+  return useMemo(
+    () =>
+      filterProductsLib(products, {
+        occasion,
+        sizes,
+        colors,
+        minPrice,
+        maxPrice,
+        sort,
+      }),
+    [products, occasion, sizes, colors, minPrice, maxPrice, sort]
+  );
 }

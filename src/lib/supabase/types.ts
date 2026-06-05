@@ -2,6 +2,8 @@ export interface DbProduct {
   id: string;
   slug: string;
   name: string;
+  brand: string;
+  in_stock: boolean;
   tagline: string;
   description: string;
   care_instructions: string;

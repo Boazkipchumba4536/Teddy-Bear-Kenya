@@ -12,7 +12,7 @@ export default function ProductGridSkeleton({
   const gridClass =
     columns === "home"
       ? "grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
-      : "grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6";
+      : "shop-grid md:grid-cols-3";
 
   return (
     <div className={gridClass} aria-hidden>

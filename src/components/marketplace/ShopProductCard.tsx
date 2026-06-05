@@ -1,71 +1,87 @@
 "use client";
 
-import { useState } from "react";
+import { memo, useState, startTransition } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { Heart, Zap, BadgeCheck } from "lucide-react";
+import { Heart } from "lucide-react";
+import OptimizedProductImage from "@/components/OptimizedProductImage";
 import type { Product } from "@/types/product";
 import { formatKES } from "@/lib/format";
-import { getProductMarketMeta } from "@/lib/marketplace";
 import { useCartStore } from "@/store/cartStore";
-import { useWishlistStore } from "@/store/wishlistStore";
+import { toastSuccess } from "@/store/toastStore";
+import { useIsWishlisted, useWishlistStore } from "@/store/wishlistStore";
 
 interface ShopProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export default function ShopProductCard({ product }: ShopProductCardProps) {
+function displayBrand(product: Product) {
+  if (product.brand) return product.brand;
+  if (product.tagline.endsWith(" collection")) {
+    return product.tagline.replace(/ collection.*$/i, "");
+  }
+  return "";
+}
+
+function ShopProductCard({ product, priority = false }: ShopProductCardProps) {
   const [added, setAdded] = useState(false);
-  const meta = getProductMarketMeta(product);
   const addItem = useCartStore((s) => s.addItem);
   const toggleWishlist = useWishlistStore((s) => s.toggle);
-  const isWishlisted = useWishlistStore((s) => s.has(product.id));
+  const isWishlisted = useIsWishlisted(product.id);
+  const brand = displayBrand(product);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addItem({
-      productId: product.id,
-      slug: product.slug,
-      name: product.name,
-      image: product.image,
-      size: product.size,
-      color: product.color,
-      quantity: 1,
-      price: product.price,
+    if (!product.inStock) return;
+    startTransition(() => {
+      setAdded(true);
+      addItem(
+        {
+          productId: product.id,
+          slug: product.slug,
+          name: product.name,
+          image: product.image,
+          size: product.size,
+          color: product.color,
+          quantity: 1,
+          price: product.price,
+        },
+        { openDrawer: false }
+      );
     });
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1500);
+    toastSuccess("Added to cart");
+    setTimeout(() => setAdded(false), 1200);
   };
 
   return (
-    <article className="market-card group flex flex-col h-full bg-white rounded border border-market-border shadow-market hover:-translate-y-0.5 hover:shadow-market-hover transition-all duration-200">
+    <article className="shop-card group">
       <Link href={`/shop/${product.slug}`} className="block flex-1 flex flex-col">
-        <div className="relative aspect-square bg-white p-3 overflow-hidden group/image">
-          <Image
+        <div className="shop-card-media">
+          <OptimizedProductImage
+            productId={product.id}
+            slug={product.slug}
             src={product.image}
             alt={product.name}
-            fill
-            sizes="(max-width: 640px) 50vw, 25vw"
-            quality={80}
-            className="object-contain p-2 transition-transform duration-500 ease-out group-hover/image:scale-125"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              if (!target.src.includes("fallback")) target.src = "/images/fallback.svg";
-            }}
+            variant="card"
+            priority={priority}
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           />
 
-          <div className="absolute top-2 left-2 flex flex-col gap-1">
-            {meta.officialStore && (
-              <span className="flex items-center gap-0.5 bg-[#0066cc] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm w-fit">
-                <BadgeCheck className="w-3 h-3" />
-                Official
+          <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+            {product.badge && (
+              <span className="bg-caramel text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                {product.badge}
               </span>
             )}
-            {meta.express && (
-              <span className="flex items-center gap-0.5 bg-market-orange/10 text-market-orange text-[10px] font-bold px-1.5 py-0.5 rounded-sm border border-market-orange/30 w-fit">
-                <Zap className="w-3 h-3 fill-current" />
-                Express
+            {!product.inStock && (
+              <span className="bg-ink/75 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                Out of stock
+              </span>
+            )}
+            {brand && (
+              <span className="bg-white/95 backdrop-blur-sm text-ink text-[10px] font-medium px-2.5 py-1 rounded-full border border-caramel/10">
+                {brand}
               </span>
             )}
           </div>
@@ -77,53 +93,44 @@ export default function ShopProductCard({ product }: ShopProductCardProps) {
               e.stopPropagation();
               toggleWishlist(product.id);
             }}
-            className="absolute top-2 right-2 w-8 h-8 rounded-full bg-white border border-market-border flex items-center justify-center shadow-sm hover:scale-110 transition-transform"
+            className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm border border-caramel/10 flex items-center justify-center shadow-soft hover:scale-105 transition-transform"
             aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
           >
             <Heart
               className={`w-4 h-4 transition-colors ${
-                isWishlisted ? "fill-market-red text-market-red" : "text-market-muted"
+                isWishlisted ? "fill-terracotta text-terracotta" : "text-ink-muted"
               }`}
             />
           </button>
         </div>
 
-        <div className="px-3 pb-2 flex-1 flex flex-col">
-          <h3 className="text-[13px] text-market-text leading-snug line-clamp-2 min-h-[2.5rem] group-hover:text-market-orange transition-colors">
+        <div className="p-4 flex-1 flex flex-col">
+          <h3 className="font-medium text-ink text-sm leading-snug line-clamp-2 min-h-[2.5rem] group-hover:text-caramel transition-colors">
             {product.name}
           </h3>
-
-          <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-            <span className="text-base font-bold text-market-orange">{formatKES(product.price)}</span>
-            <span className="text-[13px] text-market-muted line-through">
-              {formatKES(meta.originalPrice)}
+          <div className="mt-2 flex items-center justify-between gap-2">
+            <span className="font-display text-lg font-medium text-caramel">
+              {formatKES(product.price)}
             </span>
-            <span className="text-[11px] font-bold text-white bg-market-green px-1.5 py-0.5 rounded-sm">
-              -{meta.discountPercent}%
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-ink-light bg-blush/40 px-2 py-0.5 rounded-full">
+              {product.size}
             </span>
           </div>
-
-          {meta.showRating && (
-            <div className="mt-1.5 flex items-center gap-1 text-[12px]">
-              <span className="text-market-orange tracking-tight" aria-hidden>
-                {"★".repeat(Math.floor(meta.rating))}
-                {meta.rating % 1 >= 0.5 ? "½" : ""}
-              </span>
-              <span className="text-market-muted">({meta.reviewCount})</span>
-            </div>
-          )}
         </div>
       </Link>
 
-      <div className="px-3 pb-3 mt-auto">
+      <div className="px-4 pb-4 mt-auto">
         <button
           type="button"
           onClick={handleAddToCart}
-          className={`market-add-cart w-full ${added ? "is-added" : ""}`}
+          disabled={!product.inStock}
+          className={`shop-add-cart ${added ? "is-added" : ""}`}
         >
-          {added ? "✓ Added to Cart" : "Add to Cart"}
+          {!product.inStock ? "Out of stock" : added ? "Added to cart" : "Add to cart"}
         </button>
       </div>
     </article>
   );
 }
+
+export default memo(ShopProductCard);

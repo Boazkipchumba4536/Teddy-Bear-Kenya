@@ -1,7 +1,7 @@
 /**
  * Seeds Supabase with ~100 products, testimonials, settings, and an admin user.
  * Run: node scripts/seed-supabase.mjs
- * Requires .env.local with NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY
+ * Requires .env or .env.local with NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY
  */
 
 import { readFileSync, existsSync } from "fs";
@@ -12,17 +12,25 @@ import { createClient } from "@supabase/supabase-js";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
 
-function loadEnv() {
-  const path = resolve(root, ".env.local");
-  if (!existsSync(path)) {
-    console.error("Missing .env.local");
-    process.exit(1);
-  }
-  const lines = readFileSync(path, "utf8").split("\n");
+function parseEnvFile(path) {
   const env = {};
+  const lines = readFileSync(path, "utf8").split(/\r?\n/);
   for (const line of lines) {
     const m = line.match(/^([^#=]+)=(.*)$/);
     if (m) env[m[1].trim()] = m[2].trim().replace(/^["']|["']$/g, "");
+  }
+  return env;
+}
+
+function loadEnv() {
+  const env = {};
+  for (const file of [".env", ".env.local"]) {
+    const path = resolve(root, file);
+    if (existsSync(path)) Object.assign(env, parseEnvFile(path));
+  }
+  if (Object.keys(env).length === 0) {
+    console.error("Missing .env or .env.local");
+    process.exit(1);
   }
   return env;
 }
@@ -34,7 +42,7 @@ const adminEmail = env.ADMIN_EMAIL || "admin@bearhugke.co.ke";
 const adminPassword = env.ADMIN_PASSWORD || "BearHug@2026";
 
 if (!url || !serviceKey) {
-  console.error("Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env.local");
+  console.error("Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env");
   process.exit(1);
 }
 
@@ -78,6 +86,8 @@ function generateProducts(count = 100) {
     products.push({
       slug,
       name,
+      brand: "BearHug KE",
+      in_stock: true,
       tagline: "Soft hugs for every occasion",
       description: `Premium ${color.toLowerCase()} ${size} teddy bear from BearHug KE.`,
       care_instructions: "Spot clean with mild detergent. Air dry.",

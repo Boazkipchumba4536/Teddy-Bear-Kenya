@@ -33,7 +33,7 @@ export default function ShopPagination({ page, totalPages, onPage }: ShopPaginat
       </button>
       {pages.map((p, i) =>
         p === "ellipsis" ? (
-          <span key={`e-${i}`} className="px-2 text-market-muted">
+          <span key={`e-${i}`} className="px-2 text-ink-light">
             …
           </span>
         ) : (

@@ -1,10 +1,12 @@
 import { create } from "zustand";
 import type { Product } from "@/types/product";
 import type { SiteSettings, Testimonial } from "@/types/admin";
-import { DEFAULT_PRODUCTS, DEFAULT_TESTIMONIALS } from "@/lib/products";
+import { DEFAULT_TESTIMONIALS } from "@/lib/products";
 
 interface CatalogState {
   products: Product[];
+  /** Set from admin layout (fast count query) — use on dashboard instead of loading all products. */
+  catalogProductCount: number;
   testimonials: Testimonial[];
   settings: SiteSettings;
   loaded: boolean;
@@ -41,7 +43,8 @@ export const defaultSiteSettings: SiteSettings = {
 };
 
 export const useCatalogStore = create<CatalogState>((set, get) => ({
-  products: DEFAULT_PRODUCTS,
+  products: [],
+  catalogProductCount: 0,
   testimonials: DEFAULT_TESTIMONIALS,
   settings: defaultSiteSettings,
   loaded: false,

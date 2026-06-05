@@ -8,12 +8,14 @@ interface ProductGridProps {
   products: Product[];
   emptyTitle?: string;
   emptyDescription?: string;
+  variant?: "home" | "shop";
 }
 
 export default function ProductGrid({
   products,
   emptyTitle = "No bears found",
   emptyDescription = "Try a different occasion or browse our full collection.",
+  variant = "shop",
 }: ProductGridProps) {
   if (products.length === 0) {
     return (
@@ -29,10 +31,12 @@ export default function ProductGrid({
     );
   }
 
+  const gridClass = variant === "home" ? "product-grid-home" : "shop-grid";
+
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+    <div className={gridClass}>
       {products.map((product, i) => (
-        <ProductCard key={product.id} product={product} index={i} />
+        <ProductCard key={product.id} product={product} index={i} variant={variant} />
       ))}
     </div>
   );

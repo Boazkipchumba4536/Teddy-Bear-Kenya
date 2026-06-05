@@ -1,14 +1,9 @@
-const JPG_ONLY = new Set([1]);
+import { productImage, optimizedImageUrl } from "@/lib/images";
 
+/** CDN card-sized image (300×300) — always exists on WordPress. */
 export function catalogImage(n: number): string {
-  return JPG_ONLY.has(n) ? `/images/image${n}.jpg` : `/images/image${n}.webp`;
+  return optimizedImageUrl(productImage(String(n)), "card");
 }
-
-const EXTRA_IMAGES = [
-  "/images/category-giant.webp",
-  "/images/category-personalised.webp",
-  "/images/hero.webp",
-] as const;
 
 /** Assign a unique primary image per product (no duplicate hero images in grids). */
 export function assignUniquePrimaryImages<T extends { slug: string; image: string }>(
@@ -25,9 +20,8 @@ export function assignUniquePrimaryImages<T extends { slug: string; image: strin
     }
 
     let next: string | undefined;
-    while (poolIndex < pool.length + EXTRA_IMAGES.length) {
-      const candidate =
-        poolIndex < pool.length ? pool[poolIndex] : EXTRA_IMAGES[poolIndex - pool.length];
+    while (poolIndex < pool.length) {
+      const candidate = pool[poolIndex];
       poolIndex += 1;
       if (!used.has(candidate)) {
         next = candidate;

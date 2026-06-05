@@ -3,11 +3,24 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
+    "clean": "node scripts/kill-dev-ports.mjs && node scripts/clean-next-cache.mjs",
+    "dev:clean": "npm run clean && next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed:supabase": "node scripts/seed-supabase.mjs"
+    "seed:supabase": "node scripts/seed-supabase.mjs",
+    "catalog:fetch": "node scripts/fetch-littleteddy-catalog.mjs",
+    "catalog:fetch-tambo": "node scripts/fetch-tambo-catalog.mjs",
+    "catalog:enrich-images": "node scripts/enrich-catalog-images.mjs",
+    "catalog:import": "node scripts/import-littleteddy-catalog.mjs",
+    "catalog:import-tambo": "node scripts/import-tambo-catalog.mjs",
+    "catalog:sync": "node scripts/enrich-catalog-images.mjs && node scripts/import-littleteddy-catalog.mjs",
+    "catalog:sync-tambo": "node scripts/fetch-tambo-catalog.mjs && node scripts/import-tambo-catalog.mjs",
+    "catalog:fix-images": "node scripts/fix-product-images.mjs",
+    "catalog:dedupe": "node scripts/dedupe-products.mjs",
+    "catalog:dedupe:apply": "node scripts/dedupe-products.mjs --delete",
+    "catalog:sync-public-images": "node scripts/sync-public-product-images.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

@@ -1,93 +1,85 @@
-"use client";
-
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { site } from "@/lib/site";
-
-const words = ["Send", "a", "hug", "that", "lasts", "forever."];
-
-export default function HeroSection() {
-  return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-caramel/20 via-blush/30 to-cream"
-        style={{
-          backgroundImage: "url(/images/hero.webp)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/80 to-cream/40" />
-
-      <div className="container-main relative z-10 py-16 md:py-24">
-        <div className="max-w-2xl">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-sm font-semibold uppercase tracking-widest text-caramel mb-4"
-          >
-            {site.tagline}
-          </motion.p>
-
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-ink leading-[1.1] mb-6">
-            {words.map((word, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="inline-block mr-[0.25em]"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-lg text-ink-muted mb-8 max-w-lg leading-relaxed"
-          >
-            Premium plush bears for every occasion — same-day delivery in Nairobi, trusted
-            nationwide shipping, and secure M-Pesa checkout.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="flex flex-wrap gap-3"
-          >
-            <Link href="/shop" className="btn-primary">
-              Shop Now
-            </Link>
-            <Link href="/custom" className="btn-outline">
-              Build a Custom Bear
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
-            className="mt-10 flex flex-wrap gap-4 md:gap-8"
-          >
-            {[
-              "🐻 Same-day Nairobi Delivery",
-              "📱 Pay via M-Pesa",
-              "🎁 Free Gift Wrapping",
-            ].map((badge) => (
-              <span
-                key={badge}
-                className="text-sm font-medium text-ink-muted bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full"
-              >
-                {badge}
-              </span>
-            ))}
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
+"use client";
+
+import Link from "next/link";
+import { ArrowRight, Truck } from "lucide-react";
+import { site, whatsappLink } from "@/lib/site";
+import { HERO_CAROUSEL_IMAGES } from "@/lib/images";
+import ImageFadeCarousel from "@/components/ImageFadeCarousel";
+
+export default function HeroSection() {
+  return (
+    <section className="hero-banner">
+      <div className="hero-banner-bg">
+        <ImageFadeCarousel
+          images={HERO_CAROUSEL_IMAGES}
+          alt="BearHug KE teddy bears"
+          priority
+          sizes="100vw"
+          className="absolute inset-0"
+          intervalMs={5500}
+        />
+        <div className="hero-banner-overlay absolute inset-0 z-[2]" aria-hidden />
+      </div>
+
+      <div className="container-main relative z-10 w-full pb-12 md:pb-16 pt-32 md:pt-36">
+        <div className="max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-accent-light mb-4">
+            {site.tagline}
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight">
+            Teddy bears that make every moment unforgettable.
+          </h1>
+          <p className="mt-5 text-base md:text-lg text-white/75 max-w-lg leading-relaxed">
+            Premium plush gifts for every occasion. Same-day delivery in Nairobi. Pay with M-Pesa,
+            shipped nationwide.
+          </p>
+
+          <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
+            <Link href="/shop" className="btn-primary !bg-white !text-ink hover:!bg-white/90 group">
+              Shop all bears
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+            <Link
+              href="/custom"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/30 text-white px-6 py-3 min-h-[44px] text-sm font-semibold hover:bg-white/10 transition-colors"
+            >
+              Build custom bear
+            </Link>
+            <a
+              href={whatsappLink("Hi BearHug KE! I'd like help choosing a teddy bear.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] text-white px-6 py-3 min-h-[44px] text-sm font-semibold hover:bg-[#20bd5a] transition-colors shadow-lg"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <div className="hero-stat">
+              <p className="text-[10px] uppercase tracking-widest text-white/50 font-semibold">
+                Happy clients
+              </p>
+              <p className="text-lg font-bold text-white mt-0.5">{site.stats.happyClients}</p>
+            </div>
+            <div className="hero-stat">
+              <p className="text-[10px] uppercase tracking-widest text-white/50 font-semibold">
+                Delivery
+              </p>
+              <p className="text-lg font-bold text-white mt-0.5 flex items-center gap-1.5">
+                <Truck className="w-4 h-4 text-accent-light" aria-hidden />
+                {site.stats.delivery}
+              </p>
+            </div>
+            <div className="hero-stat">
+              <p className="text-[10px] uppercase tracking-widest text-white/50 font-semibold">
+                Checkout
+              </p>
+              <p className="text-lg font-bold text-mpesa-light mt-0.5">M-Pesa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

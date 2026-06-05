@@ -1,5 +1,18 @@
 export type BearSize = "S" | "M" | "L" | "Giant";
-export type BearColor = "Brown" | "White" | "Pink" | "Grey" | "Custom";
+export type BearColor =
+  | "Brown"
+  | "White"
+  | "Cream"
+  | "Pink"
+  | "Red"
+  | "Blue"
+  | "Purple"
+  | "Green"
+  | "Yellow"
+  | "Grey"
+  | "Black"
+  | "Multicolor"
+  | "Custom";
 export type Occasion =
   | "Valentine's"
   | "Birthday"
@@ -14,6 +27,8 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
+  brand: string;
+  inStock: boolean;
   tagline: string;
   description: string;
   careInstructions: string;

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import OptimizedProductImage from "@/components/OptimizedProductImage";
 import { Search, X } from "lucide-react";
 import { useProducts } from "@/hooks/useCatalog";
 import { formatKES } from "@/lib/format";
@@ -15,6 +15,12 @@ interface SearchModalProps {
 export default function SearchModal({ open, onClose }: SearchModalProps) {
   const products = useProducts();
   const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedQuery(query), 200);
+    return () => clearTimeout(t);
+  }, [query]);
 
   useEffect(() => {
     if (!open) setQuery("");
@@ -30,14 +36,19 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
 
   if (!open) return null;
 
-  const results = query.trim()
-    ? products.filter(
+  const results = useMemo(() => {
+    const q = debouncedQuery.trim().toLowerCase();
+    if (!q) return products.slice(0, 6);
+    return products
+      .filter(
         (p) =>
-          p.name.toLowerCase().includes(query.toLowerCase()) ||
-          p.tagline.toLowerCase().includes(query.toLowerCase()) ||
-          p.occasions.some((o) => o.toLowerCase().includes(query.toLowerCase()))
+          p.name.toLowerCase().includes(q) ||
+          p.tagline.toLowerCase().includes(q) ||
+          p.brand.toLowerCase().includes(q) ||
+          p.occasions.some((o) => o.toLowerCase().includes(q))
       )
-    : products.slice(0, 6);
+      .slice(0, 24);
+  }, [products, debouncedQuery]);
 
   return (
     <div className="fixed inset-0 z-[70]">
@@ -75,7 +86,14 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
                     className="flex items-center gap-4 p-3 rounded-xl hover:bg-white transition-colors"
                   >
                     <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-blush/20">
-                      <Image src={p.image} alt={p.name} fill className="object-cover" />
+                      <OptimizedProductImage
+                        productId={p.id}
+                        slug={p.slug}
+                        src={p.image}
+                        alt={p.name}
+                        variant="thumb"
+                        className="object-cover"
+                      />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-ink line-clamp-1">{p.name}</p>

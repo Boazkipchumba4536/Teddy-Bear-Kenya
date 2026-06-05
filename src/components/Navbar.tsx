@@ -1,41 +1,39 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import { Search, Heart, ShoppingBag, User, Menu, X, HelpCircle } from "lucide-react";
-import { useCartStore } from "@/store/cartStore";
+import { Search, Heart, ShoppingBag, Menu, X } from "lucide-react";
+import { selectCartItemCount, useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
-import { useAuthStore } from "@/store/authStore";
 import { site } from "@/lib/site";
-import SearchModal from "./SearchModal";
 
-const quickLinks = [
-  { href: "/shop", label: "Teddy Bears" },
+const SearchModal = dynamic(() => import("./SearchModal"), { ssr: false });
+
+const navLinks = [
+  { href: "/shop", label: "Shop" },
   { href: "/custom", label: "Custom" },
-  { href: "/track", label: "Track Order" },
-  { href: "/contact", label: "Help" },
+  { href: "/shop?occasion=Valentine's", label: "Gifts" },
+  { href: "/track", label: "Track" },
 ];
 
 export default function Navbar() {
-  const router = useRouter();
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const itemCount = useCartStore((s) => s.itemCount());
+  const [scrolled, setScrolled] = useState(false);
+  const itemCount = useCartStore(selectCartItemCount);
   const wishlistCount = useWishlistStore((s) => s.ids.length);
   const toggleCart = useCartStore((s) => s.toggleOpen);
-  const user = useAuthStore((s) => s.user);
-  const authLoaded = useAuthStore((s) => s.loaded);
 
-  const onSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const q = searchQuery.trim();
-    if (q) router.push(`/shop?q=${encodeURIComponent(q)}`);
-    else router.push("/shop");
-    setSearchQuery("");
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -46,95 +44,127 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  const isActive = (href: string) => {
+    if (href === "/shop") return pathname === "/shop" && !pathname.includes("?");
+    if (href.startsWith("/shop?")) return pathname.startsWith("/shop");
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
+  const onHero = isHome && !scrolled;
+
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white border-b border-market-border shadow-market overflow-x-hidden">
-        <div className="container-main max-w-[100vw]">
-          <div className="flex items-center gap-2 md:gap-4 h-14 md:h-16 min-w-0">
-            <Link href="/" className="flex items-center gap-1.5 shrink min-w-0 max-w-[42%] sm:max-w-none">
-              <span className="text-xl sm:text-2xl shrink-0" aria-hidden>
-                🧸
-              </span>
-              <span className="font-bold text-base sm:text-[20px] md:text-[22px] text-market-orange leading-none truncate">
+      <header
+        className={`fixed top-8 left-0 right-0 z-50 transition-all duration-300 ${
+          onHero
+            ? "bg-transparent border-b border-transparent"
+            : "bg-white/95 backdrop-blur-xl border-b border-ink/5 shadow-soft"
+        }`}
+      >
+        <div className="container-main">
+          <div className="flex items-center justify-between h-14 md:h-16 gap-4">
+            <Link href="/" className="shrink-0" aria-label={`${site.name} home`}>
+              <span
+                className={`text-lg md:text-xl font-bold tracking-tight ${
+                  onHero ? "text-white" : "text-ink"
+                }`}
+              >
                 {site.name}
               </span>
             </Link>
 
-            <form
-              onSubmit={onSearchSubmit}
-              className="hidden md:flex flex-1 max-w-2xl mx-2"
-              role="search"
-            >
-              <div className="flex w-full rounded overflow-hidden border border-market-border focus-within:border-market-orange focus-within:ring-1 focus-within:ring-market-orange/30">
-                <input
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search teddy bears, occasions, gifts…"
-                  className="flex-1 px-4 py-2.5 text-[13px] text-market-dark placeholder:text-market-muted focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="bg-market-orange hover:bg-market-orange-dark text-white px-5 font-bold text-[13px] transition-colors"
+            <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-semibold px-4 py-2 rounded-lg transition-colors ${
+                    isActive(link.href)
+                      ? onHero
+                        ? "bg-white/15 text-white"
+                        : "bg-accent/10 text-accent"
+                      : onHero
+                        ? "text-white/80 hover:text-white hover:bg-white/10"
+                        : "text-ink-muted hover:text-ink hover:bg-surface-dark"
+                  }`}
                 >
-                  Search
-                </button>
-              </div>
-            </form>
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
 
-            <div className="flex items-center shrink-0 gap-0 sm:gap-0.5 md:gap-1 ml-auto">
-              <button
-                type="button"
-                onClick={() => setSearchOpen(true)}
-                className="md:hidden p-2 w-10 h-10 flex items-center justify-center hover:bg-market-gray rounded shrink-0"
-                aria-label="Search"
-              >
-                <Search className="w-5 h-5 text-market-dark" />
-              </button>
-              <Link
-                href="/contact"
-                className="hidden lg:flex p-2.5 items-center gap-1 text-[13px] font-medium text-market-text hover:text-market-orange"
-              >
-                <HelpCircle className="w-4 h-4" />
-                Help
-              </Link>
-              <Link
-                href={user ? "/account" : "/login"}
-                className="flex items-center justify-center p-2 w-10 h-10 shrink-0 text-market-text hover:text-market-orange"
-                aria-label="Account"
-              >
-                <User className="w-5 h-5" />
-              </Link>
+            <div className="flex items-center gap-0.5">
+              {[
+                { icon: Search, label: "Search", onClick: () => setSearchOpen(true) },
+              ].map(({ icon: Icon, label, onClick }) => (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={onClick}
+                  className={`p-2.5 rounded-lg transition-colors ${
+                    onHero
+                      ? "text-white/90 hover:bg-white/10"
+                      : "text-ink-muted hover:text-accent hover:bg-surface-dark"
+                  }`}
+                  aria-label={label}
+                >
+                  <Icon className="w-5 h-5" strokeWidth={1.75} />
+                </button>
+              ))}
               <Link
                 href="/wishlist"
-                className="relative hidden sm:flex items-center justify-center p-2 w-10 h-10 shrink-0 text-market-text hover:text-market-orange"
+                className={`relative hidden sm:flex p-2.5 rounded-lg transition-colors ${
+                  onHero
+                    ? "text-white/90 hover:bg-white/10"
+                    : "text-ink-muted hover:text-accent hover:bg-surface-dark"
+                }`}
                 aria-label="Wishlist"
               >
-                <Heart className="w-5 h-5" />
+                <Heart className="w-5 h-5" strokeWidth={1.75} />
                 {wishlistCount > 0 && (
-                  <span className="absolute top-0.5 right-0.5 w-4 h-4 bg-market-orange text-white text-[9px] font-bold rounded-full flex items-center justify-center">
-                    {wishlistCount}
+                  <span className="absolute top-1 right-1 min-w-[18px] h-[18px] bg-accent text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">
+                    {wishlistCount > 9 ? "9+" : wishlistCount}
                   </span>
                 )}
               </Link>
               <button
                 type="button"
                 onClick={toggleCart}
-                className="relative flex items-center justify-center p-2 w-10 h-10 shrink-0 text-market-text hover:text-market-orange"
+                className={`relative p-2.5 rounded-lg transition-colors ${
+                  onHero
+                    ? "text-white/90 hover:bg-white/10"
+                    : "text-ink-muted hover:text-accent hover:bg-surface-dark"
+                }`}
                 aria-label="Cart"
               >
-                <ShoppingBag className="w-5 h-5" />
+                <ShoppingBag className="w-5 h-5" strokeWidth={1.75} />
                 {itemCount > 0 && (
-                  <span className="absolute top-0.5 right-0.5 min-w-[18px] h-[18px] bg-market-orange text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">
+                  <span className="absolute top-1 right-1 min-w-[18px] h-[18px] bg-ink text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">
                     {itemCount > 9 ? "9+" : itemCount}
                   </span>
                 )}
               </button>
+              <Link
+                href="/shop"
+                className={`hidden md:inline-flex ml-1 px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                  onHero
+                    ? "bg-white text-ink hover:bg-white/90"
+                    : "bg-accent text-white hover:bg-accent-dark"
+                }`}
+              >
+                Shop now
+              </Link>
               <button
                 type="button"
                 onClick={() => setMobileOpen(true)}
-                className="lg:hidden p-2 w-10 h-10 flex items-center justify-center shrink-0 hover:bg-market-gray rounded"
-                aria-label="Menu"
+                className={`lg:hidden p-2.5 rounded-lg ${
+                  onHero ? "text-white hover:bg-white/10" : "hover:bg-surface-dark"
+                }`}
+                aria-label="Open menu"
               >
                 <Menu className="w-5 h-5" />
               </button>
@@ -143,73 +173,70 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile drawer — overflow-hidden on shell stops off-screen panel from widening the page */}
+      {/* Spacer so content clears fixed nav (except hero which is full-bleed) */}
+      {!isHome && <div className="h-[4.5rem] md:h-20 shrink-0" aria-hidden />}
+
       <div
-        className={`fixed inset-0 z-[60] lg:hidden overflow-hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] lg:hidden transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!mobileOpen}
       >
-        <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
         <div
-          className={`absolute top-0 right-0 h-full w-[min(300px,100vw)] max-w-full bg-white shadow-elevated transition-transform duration-300 ease-out overflow-y-auto overflow-x-hidden ${
+          className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
+          onClick={() => setMobileOpen(false)}
+        />
+        <div
+          className={`absolute top-0 right-0 h-full w-[min(300px,100vw)] bg-white shadow-elevated transition-transform duration-300 ease-out overflow-y-auto ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
           role="dialog"
           aria-modal={mobileOpen}
-          aria-label="Navigation menu"
+          aria-label="Menu"
         >
-          <div className="flex items-center justify-between p-4 border-b border-market-border">
-            <span className="font-bold text-market-orange">{site.name}</span>
-            <button type="button" onClick={() => setMobileOpen(false)} aria-label="Close">
+          <div className="flex items-center justify-between p-5 border-b border-ink/5">
+            <span className="text-lg font-bold text-ink">{site.name}</span>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              className="p-2 rounded-lg hover:bg-surface-dark"
+              aria-label="Close menu"
+            >
               <X className="w-5 h-5" />
             </button>
           </div>
-          <form onSubmit={onSearchSubmit} className="p-4 border-b border-market-border">
-            <div className="flex rounded overflow-hidden border border-market-border">
-              <input
-                type="search"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search teddy bears…"
-                className="flex-1 px-3 py-2.5 text-sm"
-              />
-              <button type="submit" className="bg-market-orange text-white px-3 font-bold text-sm">
-                Go
-              </button>
-            </div>
-          </form>
-          <nav className="flex flex-col p-2">
-            {quickLinks.map((link) => (
+          <nav className="flex flex-col p-3 gap-1">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`px-4 py-3 rounded-lg text-[15px] font-medium ${
-                  pathname === link.href
-                    ? "bg-market-orange/10 text-market-orange"
-                    : "text-market-text hover:bg-market-gray"
+                className={`px-4 py-3.5 rounded-lg text-[15px] font-semibold transition-colors ${
+                  isActive(link.href)
+                    ? "bg-accent/10 text-accent"
+                    : "text-ink-muted hover:bg-surface-dark"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
-              href="/about"
-              onClick={() => setMobileOpen(false)}
-              className="px-4 py-3 rounded-lg text-[15px] font-medium text-market-text hover:bg-market-gray"
-            >
-              About
-            </Link>
-            <Link
               href="/wishlist"
               onClick={() => setMobileOpen(false)}
-              className="px-4 py-3 rounded-lg text-[15px] font-medium text-market-text hover:bg-market-gray sm:hidden"
+              className="px-4 py-3.5 rounded-lg text-[15px] font-semibold text-ink-muted hover:bg-surface-dark sm:hidden"
             >
-              Wishlist
-              {wishlistCount > 0 ? ` (${wishlistCount})` : ""}
+              Wishlist{wishlistCount > 0 ? ` (${wishlistCount})` : ""}
             </Link>
           </nav>
+          <div className="p-4">
+            <Link
+              href="/shop"
+              onClick={() => setMobileOpen(false)}
+              className="btn-primary w-full text-center"
+            >
+              Shop all bears
+            </Link>
+          </div>
         </div>
       </div>
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />

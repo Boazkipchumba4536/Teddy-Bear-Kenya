@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import DeliveryTrustStrip from "@/components/DeliveryTrustStrip";
 import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
+import dynamic from "next/dynamic";
+
+const CartDrawer = dynamic(() => import("@/components/CartDrawer"), { ssr: false });
 import WhatsAppFAB from "@/components/WhatsAppFAB";
 import MobileNav from "@/components/MobileNav";
 import CookieConsent from "@/components/CookieConsent";
@@ -25,9 +27,11 @@ export default function StorefrontShell({ children }: { children: React.ReactNod
       <RouteProgressBar />
       <DeliveryTrustStrip />
       <Navbar />
-      <Suspense fallback={null}>
-        <CategoryTabBar />
-      </Suspense>
+      {(pathname?.startsWith("/shop") || pathname === "/custom") && (
+        <Suspense fallback={null}>
+          <CategoryTabBar />
+        </Suspense>
+      )}
       <main id="main" className="flex-1 page-enter">
         {children}
       </main>
